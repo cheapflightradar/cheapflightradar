@@ -893,9 +893,9 @@ const HomePage = ({ onDealClick }) => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">About Our Radar</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Contact</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">About Our Radar</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
@@ -916,9 +916,9 @@ const HomePage = ({ onDealClick }) => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Legal</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</a></li>
               </ul>
             </div>
           </div>
