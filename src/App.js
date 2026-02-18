@@ -976,24 +976,24 @@ const DealDetailPage = ({ deal, onBack }) => {
   // ========== HOTEL AFFILIATE LINKS ==========
   // Add your hotel booking affiliate links here
   const hotelLinks = [
-    { name: 'Booking.com', url: 'https://www.booking.com/...' },
-    { name: 'Hotels.com', url: 'https://www.hotels.com/...' },
-    { name: 'Expedia Hotels', url: 'https://www.expedia.com/Hotels/...' },
-    { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels/...' },
-    { name: 'Agoda', url: 'https://www.agoda.com/...' },
-    { name: 'Airbnb', url: 'https://www.airbnb.com/...' },
+    { name: 'Booking.com', url: 'https://www.booking.com' },
+    { name: 'Hotels.com', url: 'https://www.hotels.com' },
+    { name: 'Expedia Hotels', url: 'https://www.expedia.com/Hotels' },
+    { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels' },
+    { name: 'Agoda', url: 'https://www.agoda.com' },
+    { name: 'Airbnb', url: 'https://www.airbnb.com' },
     // Add more hotel links as needed
   ].filter(hotel => hotel.url !== '');
 
   // ========== ESIM AFFILIATE LINKS ==========
   // Add your eSIM provider affiliate links here
   const esimLinks = [
-    { name: 'Airalo', url: 'https://www.airalo.com/...' },
-    { name: 'Holafly', url: 'https://esim.holafly.com/...' },
-    { name: 'Nomad', url: 'https://www.getnomad.app/...' },
-    { name: 'Ubigi', url: 'https://cellulardata.ubigi.com/...' },
-    { name: 'SimOptions', url: 'https://www.simoptions.com/...' },
-    { name: 'eSIM Go', url: 'https://esimgo.com/...' },
+    { name: 'Airalo', url: 'https://www.airalo.com' },
+    { name: 'Holafly', url: 'https://esim.holafly.com' },
+    { name: 'Nomad', url: 'https://www.getnomad.app' },
+    { name: 'Ubigi', url: 'https://cellulardata.ubigi.com' },
+    { name: 'SimOptions', url: 'https://www.simoptions.com' },
+    { name: 'eSIM Go', url: 'https://esimgo.com' },
     // Add more eSIM links as needed
   ].filter(esim => esim.url !== '');
   // ============================================================
