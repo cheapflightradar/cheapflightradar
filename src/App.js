@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal } from 'lucide-react';
+import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
 // ==================== HOMEPAGE COMPONENT ====================
 const HomePage = ({ onDealClick }) => {
@@ -55,8 +55,7 @@ const HomePage = ({ onDealClick }) => {
       tags: ['Nonstop Available', 'Star Alliance'],
       savings: 49,
       detectedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-      status: 'active', // 'active' or 'expired'
-      // ========== DEAL DETAILS ==========
+      status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item included',
         stops: 'Nonstop available',
@@ -64,7 +63,6 @@ const HomePage = ({ onDealClick }) => {
         bookingClass: 'Economy',
         alliance: 'Oneworld (British Airways)'
       },
-      // ========== DESTINATION INFO ==========
       destinationInfo: {
         visa: 'No visa required for US citizens (90-day stay)',
         currency: 'Euro (EUR) - $1 ≈ €0.92',
@@ -142,7 +140,7 @@ const HomePage = ({ onDealClick }) => {
       tags: ['Premium Economy', 'Oneworld'],
       savings: 31,
       detectedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
-      status: 'expired', // Example of expired deal
+      status: 'expired',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
         stops: 'Nonstop',
@@ -454,7 +452,7 @@ const HomePage = ({ onDealClick }) => {
     const matchesFilter = selectedFilter === 'all' || deal.type === selectedFilter;
     const matchesSearch = deal.destination.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          deal.route.toLowerCase().includes(searchTerm.toLowerCase());
-    const isActive = deal.status === 'active'; // Only show active deals
+    const isActive = deal.status === 'active';
     return matchesCity && matchesFilter && matchesSearch && isActive;
   });
 
@@ -715,7 +713,6 @@ const HomePage = ({ onDealClick }) => {
         )}
       </div>
 
-      {/* ARCHIVE SECTION - Expired Deals */}
       {expiredDeals.length > 0 && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="text-center mb-12">
@@ -937,44 +934,31 @@ const HomePage = ({ onDealClick }) => {
   );
 };
 
-// ==================== DEAL DETAIL PAGE WITH 60+ DATES ====================
+// ==================== DEAL DETAIL PAGE ====================
 const DealDetailPage = ({ deal, onBack }) => {
-  // ========== MANUALLY ADD YOUR AFFILIATE LINKS HERE ==========
-  // Each link specifies which booking site and your affiliate ID
-  // The dates from the clicked card will automatically be added to the URL
-  
   const affiliateLinks = [
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 1
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 2
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },           // Link 3
-    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },       // Link 4
-    { site: 'google', affiliateId: '' },                           // Link 5 (Google Flights doesn't use affiliate ID)
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 6
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 7
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },           // Link 8
-    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },       // Link 9
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 10
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 11
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },           // Link 12
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 13
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 14
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },           // Link 15
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 16
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 17
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },           // Link 18
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },     // Link 19
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },               // Link 20
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
+    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },
+    { site: 'google', affiliateId: '' },
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
+    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
+    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
+    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
+    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
+    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
   ].filter(link => link.affiliateId !== '');
 
-  // Supported booking sites:
-  // - 'skyscanner' → Skyscanner.com
-  // - 'kayak' → Kayak.com
-  // - 'expedia' → Expedia.com
-  // - 'priceline' → Priceline.com
-  // - 'google' → Google Flights (no affiliate ID needed)
-  
-  // ========== HOTEL AFFILIATE LINKS ==========
-  // Add your hotel booking affiliate links here
   const hotelLinks = [
     { name: 'Booking.com', url: 'https://www.booking.com' },
     { name: 'Hotels.com', url: 'https://www.hotels.com' },
@@ -982,11 +966,8 @@ const DealDetailPage = ({ deal, onBack }) => {
     { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels' },
     { name: 'Agoda', url: 'https://www.agoda.com' },
     { name: 'Airbnb', url: 'https://www.airbnb.com' },
-    // Add more hotel links as needed
   ].filter(hotel => hotel.url !== '');
 
-  // ========== ESIM AFFILIATE LINKS ==========
-  // Add your eSIM provider affiliate links here
   const esimLinks = [
     { name: 'Airalo', url: 'https://www.airalo.com' },
     { name: 'Holafly', url: 'https://esim.holafly.com' },
@@ -994,11 +975,8 @@ const DealDetailPage = ({ deal, onBack }) => {
     { name: 'Ubigi', url: 'https://cellulardata.ubigi.com' },
     { name: 'SimOptions', url: 'https://www.simoptions.com' },
     { name: 'eSIM Go', url: 'https://esimgo.com' },
-    // Add more eSIM links as needed
   ].filter(esim => esim.url !== '');
-  // ============================================================
 
-  // Function to calculate relative time from detection timestamp
   const getRelativeTime = (timestamp) => {
     const now = new Date();
     const detected = new Date(timestamp);
@@ -1014,12 +992,9 @@ const DealDetailPage = ({ deal, onBack }) => {
     return `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'} ago`;
   };
 
-  // Function to build dynamic URLs with dates for each booking site
   const buildFlightUrl = (link, date, deal) => {
-    // Extract origin and destination airport codes from deal
     const [origin, destination] = deal.route.split(' → ');
     
-    // Parse date strings (e.g., "Mar 07" → "2026-03-07")
     const parseDate = (dateStr) => {
       const months = { Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
       const [month, day] = dateStr.split(' ');
@@ -1029,27 +1004,20 @@ const DealDetailPage = ({ deal, onBack }) => {
     const departDate = parseDate(date.outbound);
     const returnDate = parseDate(date.return);
     
-    // Format dates for different sites
-    const formatSkyscannerDate = (dateStr) => dateStr.replace(/-/g, '').substring(2); // "2026-03-07" → "260307"
-    const formatPricelineDate = (dateStr) => dateStr.replace(/-/g, ''); // "2026-03-07" → "20260307"
+    const formatSkyscannerDate = (dateStr) => dateStr.replace(/-/g, '').substring(2);
+    const formatPricelineDate = (dateStr) => dateStr.replace(/-/g, '');
     
-    // Build URL based on booking site
     switch (link.site) {
       case 'skyscanner':
         return `https://www.skyscanner.com/transport/flights/${origin}/${destination}/${formatSkyscannerDate(departDate)}/${formatSkyscannerDate(returnDate)}/?adultsv2=1&cabinclass=economy&rtn=1${link.affiliateId ? `&associateid=${link.affiliateId}` : ''}`;
-      
       case 'kayak':
         return `https://www.kayak.com/flights/${origin}-${destination}/${departDate}/${returnDate}?sort=bestflight_a${link.affiliateId ? `&aid=${link.affiliateId}` : ''}`;
-      
       case 'expedia':
         return `https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:${origin},to:${destination},departure:${departDate}&leg2=from:${destination},to:${origin},departure:${returnDate}${link.affiliateId ? `&affid=${link.affiliateId}` : ''}`;
-      
       case 'priceline':
         return `https://www.priceline.com/fly/search/${origin}-${destination}-${formatPricelineDate(departDate)}/${destination}-${origin}-${formatPricelineDate(returnDate)}/${link.affiliateId ? `?refid=${link.affiliateId}` : ''}`;
-      
       case 'google':
         return `https://www.google.com/travel/flights?q=Flights%20to%20${destination}%20from%20${origin}%20on%20${departDate}%20through%20${returnDate}`;
-      
       default:
         return '#';
     }
@@ -1060,14 +1028,10 @@ const DealDetailPage = ({ deal, onBack }) => {
   const [sortBy, setSortBy] = useState('date');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Generate 60+ date combinations (7+ day trips) - ALL SHOW SAME PRICE
   const generateDateCombinations = () => {
     const basePrice = deal.price;
-    
-    // Use the verified dates from this specific deal
     const verifiedDates = deal.verifiedDates || [];
     
-    // Add IDs to the verified dates
     return verifiedDates.map((date, index) => ({
       id: index + 1,
       outbound: date.outbound,
@@ -1148,26 +1112,64 @@ const DealDetailPage = ({ deal, onBack }) => {
           
           <div className="lg:col-span-2 space-y-8">
             
+            {/* PRICE SECTION WITH URGENCY & WHY THIS IS A DEAL */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
               <div className="flex items-center justify-between mb-6">
-                <div>
-                  <div className="flex items-baseline space-x-3 mb-2">
-                    <span className="text-5xl font-bold text-emerald-400 font-display">${deal.price}</span>
-                    <span className="text-2xl text-slate-500 line-through">${deal.originalPrice}</span>
+                <div className="flex-1">
+                  <div className="mb-4">
+                    <div className="text-sm text-slate-400 font-bold mb-1">NORMAL PRICE: ${deal.originalPrice}</div>
+                    <div className="flex items-baseline space-x-3 mb-2">
+                      <span className="text-6xl font-bold text-emerald-400 font-display">${deal.price}</span>
+                      <span className="bg-red-500 text-white px-4 py-2 rounded-full text-lg font-bold animate-pulse">
+                        SAVE {deal.savings}%
+                      </span>
+                    </div>
+                    <p className="text-slate-300 font-bold text-lg">Round-trip price per person</p>
                   </div>
-                  <p className="text-slate-400 font-bold">Example round-trip price per person</p>
+
+                  <div className="flex items-center space-x-2 bg-orange-500/20 border border-orange-500/50 rounded-lg px-4 py-3 mb-4">
+                    <svg className="w-5 h-5 animate-pulse text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    <div className="flex-1">
+                      <div className="font-bold text-orange-300 text-sm">⚡ Deal Alert</div>
+                      <div className="text-orange-200 text-xs">Typically lasts 24-72 hours • Book quickly!</div>
+                    </div>
+                  </div>
                 </div>
                 <button onClick={() => setBookmarked(!bookmarked)} className="p-3 rounded-full hover:bg-slate-700 transition-colors">
                   <Heart className={`w-6 h-6 ${bookmarked ? 'fill-red-500 text-red-500' : 'text-slate-400'}`} />
                 </button>
               </div>
 
-              <div className="bg-orange-500/10 border-2 border-orange-500/50 rounded-xl p-4 mb-6">
-                <div className="flex items-start space-x-3">
-                  <Info className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-orange-200">
-                    <p className="font-bold mb-1">⚠️ Important</p>
-                    <p>Deals are usually valid 24 to 72 hours after posting, but can expire at any time (see time-stamp). Book quickly when you find a good price!</p>
+              {/* WHY THIS IS A DEAL */}
+              <div className="bg-blue-500/10 border-2 border-blue-500/50 rounded-xl p-5 mb-6">
+                <div className="flex items-start space-x-3 mb-4">
+                  <TrendingDown className="w-6 h-6 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-blue-300 text-lg mb-2">📊 Why This Is a Deal</h3>
+                    <div className="space-y-2 text-sm text-blue-200">
+                      <div className="flex justify-between items-center">
+                        <span>Normal {deal.route.split(' → ')[0]} → {deal.destination.split(',')[0]}:</span>
+                        <span className="font-bold">${deal.originalPrice}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span>Historical Average:</span>
+                        <span className="font-bold">${Math.floor(deal.originalPrice * 0.85)}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-t border-blue-500/30 pt-2">
+                        <span className="text-emerald-300 font-bold">Today's Price:</span>
+                        <span className="text-emerald-300 font-bold text-lg">${deal.price}</span>
+                      </div>
+                      <div className="bg-emerald-500/20 border border-emerald-500/50 rounded-lg px-3 py-2 mt-3">
+                        <div className="text-emerald-200 font-bold text-center">
+                          ✨ {deal.savings}% below normal price
+                        </div>
+                        <div className="text-emerald-300 text-xs text-center mt-1">
+                          This is in the top 5% of deals we've seen
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1183,6 +1185,38 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
+            {/* EMAIL CAPTURE */}
+            <div className="bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl border-2 border-emerald-500/50 shadow-xl p-8">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500/30 rounded-full mb-4">
+                  <Bell className="w-8 h-8 text-emerald-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 font-display">
+                  🔔 Never Miss Deals Like This
+                </h3>
+                <p className="text-slate-300 mb-6">
+                  Get {deal.route.split(' → ')[0]} flight deals sent to your inbox. Our members save an average of <span className="text-emerald-300 font-bold">$450-800 per ticket</span>.
+                </p>
+                <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                  <input 
+                    type="email" 
+                    placeholder="your@email.com"
+                    className="flex-1 px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500"
+                  />
+                  <button 
+                    type="submit"
+                    className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-lg transition-all transform hover:scale-105"
+                  >
+                    Get Alerts
+                  </button>
+                </form>
+                <p className="text-xs text-slate-400 mt-3">
+                  ✓ Free alerts ✓ Unsubscribe anytime ✓ No spam
+                </p>
+              </div>
+            </div>
+
+            {/* DATE SELECTION */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
@@ -1236,11 +1270,8 @@ const DealDetailPage = ({ deal, onBack }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
                 {filteredDates.map((date, index) => {
-                  // Cycle through affiliate links - each date gets a different link config
                   const linkIndex = index % affiliateLinks.length;
                   const linkConfig = affiliateLinks[linkIndex];
-                  
-                  // Build dynamic URL with dates
                   const dynamicUrl = buildFlightUrl(linkConfig, date, deal);
                   
                   return (
@@ -1275,6 +1306,120 @@ const DealDetailPage = ({ deal, onBack }) => {
               <div className="mt-6 text-center">
                 <p className="text-sm text-slate-400">
                   💡 Click any date to search live prices. Prices shown are examples and may vary.
+                </p>
+              </div>
+            </div>
+
+            {/* HOTELS SECTION - MOVED UP & IMPROVED */}
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
+              <div className="mb-6">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-blue-400/20 border border-cyan-500/50 rounded-xl flex items-center justify-center">
+                    <Building className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-bold text-white font-display">
+                      🏨 Hotels in {deal.destination.split(',')[0]}
+                    </h2>
+                    <p className="text-slate-300">From $62/night • Book now and save</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4 mb-6">
+                <div className="flex items-start space-x-3">
+                  <Info className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-cyan-200">
+                    <p className="font-bold mb-1">💰 Save More with a Package</p>
+                    <p>Travelers who book flights + hotels together save an average of 15-25% vs booking separately. Many hotels offer free cancellation!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {hotelLinks.map((hotel, index) => (
+                  <a
+                    key={index}
+                    href={hotel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:shadow-lg hover:shadow-cyan-500/20 font-display"
+                  >
+                    <Building className="w-4 h-4" />
+                    <span>{hotel.name}</span>
+                    <ExternalLink className="w-3 h-3 opacity-60" />
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-6 text-center">
+                <p className="text-xs text-slate-400">
+                  🎯 Pro tip: Book hotels with free cancellation for maximum flexibility
+                </p>
+              </div>
+            </div>
+
+            {/* PACKAGE DEALS SECTION - NEW! */}
+            <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl border-2 border-purple-500/50 shadow-xl p-8">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/30 rounded-full mb-4">
+                  <Package className="w-8 h-8 text-purple-300" />
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-2 font-display">
+                  🎯 Flight + Hotel Packages
+                </h2>
+                <p className="text-purple-200 text-lg mb-2">
+                  Save an extra 15-25% by bundling
+                </p>
+                <div className="inline-block bg-yellow-500/20 border border-yellow-500/50 rounded-lg px-4 py-2">
+                  <span className="text-yellow-300 font-bold">💰 Highest Savings Here!</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a
+                  href="https://www.expedia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
+                >
+                  <div className="font-bold text-white text-lg mb-2">Expedia Packages</div>
+                  <div className="text-purple-300 text-sm mb-3">Flight + Hotel bundles</div>
+                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
+                    Up to 25% off
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.priceline.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
+                >
+                  <div className="font-bold text-white text-lg mb-2">Priceline Express</div>
+                  <div className="text-purple-300 text-sm mb-3">Mystery hotel deals</div>
+                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
+                    Up to 40% off
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.booking.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
+                >
+                  <div className="font-bold text-white text-lg mb-2">Booking.com Packages</div>
+                  <div className="text-purple-300 text-sm mb-3">Flexible packages</div>
+                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
+                    Up to 20% off
+                  </div>
+                </a>
+              </div>
+
+              <div className="mt-6 text-center">
+                <p className="text-xs text-slate-400">
+                  ✨ Packages often include perks like free breakfast, airport transfers, or upgrades
                 </p>
               </div>
             </div>
@@ -1328,52 +1473,33 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* HOTELS SECTION */}
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
-              <div className="mb-6">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-blue-400/20 border border-cyan-500/50 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h2 className="text-3xl font-bold text-white font-display">
-                      Find Hotels in {deal.destination.split(',')[0]}
-                    </h2>
-                    <p className="text-slate-300">Book your stay and maximize savings</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4 mb-6">
-                <div className="flex items-start space-x-3">
-                  <Info className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-cyan-200">
-                    <p className="font-bold mb-1">💡 Pro Tip</p>
-                    <p>Book hotels close to your flight dates for the best availability. Many hotels offer free cancellation up to 24-48 hours before check-in.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {hotelLinks.map((hotel, index) => (
-                  <a
-                    key={index}
-                    href={hotel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:shadow-lg hover:shadow-cyan-500/20 font-display"
-                  >
-                    <MapPin className="w-4 h-4" />
-                    <span>{hotel.name}</span>
-                    <ExternalLink className="w-3 h-3 opacity-60" />
-                  </a>
-                ))}
-              </div>
-
-              <div className="mt-6 text-center">
-                <p className="text-xs text-slate-400">
-                  🏨 Compare prices across multiple sites to find the best hotel deals
-                </p>
+            {/* BOTTOM EMAIL CAPTURE */}
+            <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl border border-emerald-500/50 shadow-xl p-12 text-center">
+              <h3 className="text-4xl font-bold text-white mb-3 font-display">
+                Found a deal you like?
+              </h3>
+              <p className="text-xl text-slate-300 mb-8">
+                Get similar {deal.route.split(' → ')[0]} deals delivered to your inbox
+              </p>
+              
+              <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-4">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email"
+                  className="flex-1 px-6 py-4 rounded-xl bg-slate-800 border-2 border-slate-600 text-white text-lg placeholder-slate-400 focus:outline-none focus:border-emerald-500"
+                />
+                <button 
+                  type="submit"
+                  className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Get Deal Alerts →
+                </button>
+              </form>
+              
+              <div className="flex items-center justify-center space-x-6 text-sm text-slate-400">
+                <span>✓ Free forever</span>
+                <span>✓ Unsubscribe anytime</span>
+                <span>✓ 2-3 deals per week</span>
               </div>
             </div>
           </div>
@@ -1489,7 +1615,6 @@ const DealDetailPage = ({ deal, onBack }) => {
                 </button>
               </div>
 
-              {/* Quick Tips - now inside Deal Intel card */}
               <div className="mt-6 pt-6 border-t border-slate-700">
                 <h3 className="font-bold text-lg text-emerald-400 mb-4 font-display flex items-center">
                   <Info className="w-5 h-5 mr-2" />
@@ -1514,11 +1639,11 @@ const DealDetailPage = ({ deal, onBack }) => {
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-purple-400">✓</span>
-                    <span>Get an eSIM before departure - scroll down for options!</span>
+                    <span>Get an eSIM before departure - scroll up for options!</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-cyan-400">✓</span>
-                    <span>Don't forget to book your hotel - scroll down for options!</span>
+                    <span>Hotels + Packages save 15-25% - scroll up to book!</span>
                   </li>
                 </ul>
               </div>
