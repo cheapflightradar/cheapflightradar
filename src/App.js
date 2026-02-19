@@ -1,6 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
+// ==================== STICKY EMAIL BAR COMPONENT ====================
+const StickyEmailBar = ({ origin }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 3000);
+    }
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
+      <div className="bg-gradient-to-r from-emerald-600 to-cyan-600 border-t-2 border-emerald-400 shadow-2xl">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          {submitted ? (
+            <div className="flex items-center justify-center space-x-2 text-white font-bold">
+              <span className="text-2xl">✅</span>
+              <span>Subscribed! You'll get the best deals first.</span>
+            </div>
+          ) : (
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+              {/* Left side - Message */}
+              <div className="flex items-center space-x-3">
+                <Bell className="w-5 h-5 text-white animate-pulse flex-shrink-0" />
+                <div>
+                  <div className="text-white font-bold text-sm">
+                    🔔 Get {origin} flight deals sent to your inbox
+                  </div>
+                  <div className="text-emerald-100 text-xs hidden md:block">
+                    ✓ Save $450-800 per ticket • ✓ Free forever
+                  </div>
+                </div>
+              </div>
+
+              {/* Middle - Email form */}
+              <form onSubmit={handleSubmit} className="flex items-center gap-2 w-full md:w-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="flex-1 md:w-64 px-4 py-2 rounded-lg bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white text-sm"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-slate-900 text-emerald-400 rounded-lg font-bold hover:bg-slate-800 transition-all whitespace-nowrap text-sm"
+                >
+                  Get Alerts
+                </button>
+              </form>
+
+              {/* Right side - Close button */}
+              <button
+                onClick={() => setIsVisible(false)}
+                className="absolute top-2 right-2 md:relative md:top-0 md:right-0 p-2 hover:bg-white/20 rounded-lg transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // ==================== HOMEPAGE COMPONENT ====================
 const HomePage = ({ onDealClick }) => {
   const [selectedCity, setSelectedCity] = useState('austin');
@@ -54,7 +130,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Nonstop Available', 'Star Alliance'],
       savings: 49,
-      detectedAt: '2026-02-18T18:00:00Z', // FIXED - 2 hours ago from 8pm
+      detectedAt: '2026-02-18T18:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item included',
@@ -99,7 +175,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1670465897319-9c2e9b2b1f22?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Direct Flight', 'Weekend Deals'],
       savings: 52,
-      detectedAt: '2026-02-18T15:00:00Z', // FIXED - 5 hours ago
+      detectedAt: '2026-02-18T15:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '2 free checked bags included',
@@ -139,7 +215,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Premium Economy', 'Oneworld'],
       savings: 31,
-      detectedAt: '2026-02-17T20:00:00Z', // FIXED - 1 day ago
+      detectedAt: '2026-02-17T20:00:00Z',
       status: 'expired',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -178,7 +254,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://plus.unsplash.com/premium_photo-1697730215093-baeae8060bfe?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Nonstop', 'Beach'],
       savings: 27,
-      detectedAt: '2026-02-18T17:00:00Z', // FIXED - 3 hours ago
+      detectedAt: '2026-02-18T17:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -217,7 +293,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop',
       tags: ['SkyTeam', 'Spring Special'],
       savings: 53,
-      detectedAt: '2026-02-18T14:00:00Z', // FIXED - 6 hours ago
+      detectedAt: '2026-02-18T14:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 checked bag',
@@ -256,7 +332,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1542259009477-d625272157b7?w=800&auto=format&fit=crop',
       tags: ['Island Paradise', 'Direct'],
       savings: 54,
-      detectedAt: '2026-02-18T16:00:00Z', // FIXED - 4 hours ago
+      detectedAt: '2026-02-18T16:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -295,7 +371,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop',
       tags: ['Oneworld', 'History Buff'],
       savings: 53,
-      detectedAt: '2026-02-17T20:00:00Z', // FIXED - 1 day ago
+      detectedAt: '2026-02-17T20:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -334,7 +410,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1629716520458-f8f11b3a81a8?w=800&auto=format&fit=crop',
       tags: ['Pacific Northwest', 'Direct'],
       savings: 56,
-      detectedAt: '2026-02-18T12:00:00Z', // FIXED - 8 hours ago
+      detectedAt: '2026-02-18T12:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -373,7 +449,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=800&auto=format&fit=crop',
       tags: ['West Coast', 'Weekend Getaway'],
       savings: 60,
-      detectedAt: '2026-02-18T08:00:00Z', // FIXED - 12 hours ago
+      detectedAt: '2026-02-18T08:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '2 free checked bags',
@@ -412,7 +488,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&auto=format&fit=crop',
       tags: ['Big Apple', 'Direct Flight'],
       savings: 56,
-      detectedAt: '2026-02-18T13:00:00Z', // FIXED - 7 hours ago
+      detectedAt: '2026-02-18T13:00:00Z',
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -929,6 +1005,21 @@ const HomePage = ({ onDealClick }) => {
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
         * { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Rajdhani', sans-serif; }
+        
+        @keyframes slide-up {
+          from {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.5s ease-out;
+        }
       `}</style>
     </div>
   );
@@ -1023,9 +1114,8 @@ const DealDetailPage = ({ deal, onBack }) => {
     }
   };
 
-  // Function to build hotel URLs with dates
   const buildHotelUrl = (platform, date, deal) => {
-    const destination = deal.destination.split(',')[0]; // e.g., "Madrid"
+    const destination = deal.destination.split(',')[0];
     
     const parseDate = (dateStr) => {
       const months = { Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
@@ -1037,7 +1127,6 @@ const DealDetailPage = ({ deal, onBack }) => {
     const checkOut = parseDate(date.return);
     const affiliateId = platform.affiliateId || '';
     
-    // Build URLs for different platforms
     switch (platform.name) {
       case 'Booking.com':
         return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}${affiliateId ? `&aid=${affiliateId}` : ''}`;
@@ -1091,8 +1180,13 @@ const DealDetailPage = ({ deal, onBack }) => {
       return 0;
     });
 
+  const origin = deal.route.split(' → ')[0];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+      {/* STICKY EMAIL BAR */}
+      <StickyEmailBar origin={origin} />
+
       <div className="bg-slate-900 border-b border-slate-800 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button 
@@ -1140,7 +1234,7 @@ const DealDetailPage = ({ deal, onBack }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           <div className="lg:col-span-2 space-y-8">
@@ -1218,38 +1312,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* EMAIL CAPTURE */}
-            <div className="bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl border-2 border-emerald-500/50 shadow-xl p-8">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500/30 rounded-full mb-4">
-                  <Bell className="w-8 h-8 text-emerald-300" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2 font-display">
-                  🔔 Never Miss Deals Like This
-                </h3>
-                <p className="text-slate-300 mb-6">
-                  Get {deal.route.split(' → ')[0]} flight deals sent to your inbox. Our members save an average of <span className="text-emerald-300 font-bold">$450-800 per ticket</span>.
-                </p>
-                <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                  <input 
-                    type="email" 
-                    placeholder="your@email.com"
-                    className="flex-1 px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500"
-                  />
-                  <button 
-                    type="submit"
-                    className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-lg transition-all transform hover:scale-105"
-                  >
-                    Get Alerts
-                  </button>
-                </form>
-                <p className="text-xs text-slate-400 mt-3">
-                  ✓ Free alerts ✓ Unsubscribe anytime ✓ No spam
-                </p>
-              </div>
-            </div>
-
-            {/* DATE SELECTION */}
+            {/* DATE SELECTION - REMOVED MIDDLE EMAIL CAPTURE */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
@@ -1343,7 +1406,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* HOTELS SECTION WITH DATES - MOVED UP & IMPROVED */}
+            {/* HOTELS SECTION WITH DATES */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
               <div className="mb-6">
                 <div className="flex items-center space-x-3 mb-3">
@@ -1544,7 +1607,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* BOTTOM EMAIL CAPTURE */}
+            {/* BOTTOM EMAIL CAPTURE - KEPT */}
             <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl border border-emerald-500/50 shadow-xl p-12 text-center">
               <h3 className="text-4xl font-bold text-white mb-3 font-display">
                 Found a deal you like?
@@ -1727,6 +1790,21 @@ const DealDetailPage = ({ deal, onBack }) => {
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
         * { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Rajdhani', sans-serif; }
+        
+        @keyframes slide-up {
+          from {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.5s ease-out;
+        }
         
         .scrollbar-thin::-webkit-scrollbar {
           width: 8px;
