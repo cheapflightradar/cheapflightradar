@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useParams, useSearchParams, Link } from 'react-router-dom';
 import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
 // ==================== STICKY EMAIL BAR COMPONENT ====================
@@ -78,12 +79,18 @@ const StickyEmailBar = ({ origin }) => {
 };
 
 // ==================== HOMEPAGE COMPONENT ====================
-const HomePage = ({ onDealClick }) => {
-  const [selectedCity, setSelectedCity] = useState('austin');
+const HomePage = () => {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedCity, setSelectedCity] = useState(searchParams.get('city') || 'austin');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    setSearchParams({ city: selectedCity });
+  }, [selectedCity, setSearchParams]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -563,8 +570,8 @@ const HomePage = ({ onDealClick }) => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">Detected Deals</a>
-              <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">How It Works</a>
+              <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">Detected Deals</Link>
+              <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">How It Works</Link>
               <button className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/50 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
                 <Bell className="w-4 h-4" />
                 <span>Get Alerts</span>
@@ -582,8 +589,8 @@ const HomePage = ({ onDealClick }) => {
           {showMobileMenu && (
             <div className="md:hidden py-4 border-t border-slate-700">
               <div className="flex flex-col space-y-3">
-                <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">Detected Deals</a>
-                <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">How It Works</a>
+                <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">Detected Deals</Link>
+                <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">How It Works</Link>
                 <button className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold flex items-center justify-center space-x-2">
                   <Bell className="w-4 h-4" />
                   <span>Get Alerts</span>
@@ -726,7 +733,7 @@ const HomePage = ({ onDealClick }) => {
             {filteredDeals.map((deal) => (
               <div
                 key={deal.id}
-                onClick={() => onDealClick(deal)}
+                onClick={() => navigate(`/deals/${deal.slug}`)}
                 className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
               >
                 <div className="relative h-56 overflow-hidden">
@@ -810,7 +817,7 @@ const HomePage = ({ onDealClick }) => {
             {expiredDeals.map((deal) => (
               <div
                 key={deal.id}
-                onClick={() => onDealClick(deal)}
+                onClick={() => navigate(`/deals/${deal.slug}`)}
                 className="group bg-slate-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 opacity-70 hover:opacity-95 transition-all duration-300 cursor-pointer hover:scale-[1.02]"
               >
                 <div className="relative h-56 overflow-hidden">
@@ -966,9 +973,9 @@ const HomePage = ({ onDealClick }) => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">About Our Radar</a></li>
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">Contact</a></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">About Our Radar</Link></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">How It Works</Link></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
@@ -989,9 +996,9 @@ const HomePage = ({ onDealClick }) => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Legal</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
-                <li><a href="/" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</a></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Terms of Service</Link></li>
+                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</Link></li>
               </ul>
             </div>
           </div>
@@ -1025,8 +1032,48 @@ const HomePage = ({ onDealClick }) => {
   );
 };
 
+
+// ==================== DEAL DETAIL PAGE WRAPPER ====================
+const DealDetailPageWrapper = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  
+  const deal = allDeals.find(d => d.slug === slug);
+  
+  useEffect(() => {
+    if (!deal) {
+      navigate('/');
+    }
+  }, [deal, navigate]);
+  
+  if (!deal) return null;
+  
+  return <DealDetailPage deal={deal} onBack={() => navigate(-1)} />;
+};
+
 // ==================== DEAL DETAIL PAGE ====================
 const DealDetailPage = ({ deal, onBack }) => {
+  
+  const handleShare = async () => {
+    const shareData = {
+      title: `${deal.destination} - $${deal.price}`,
+      text: `Check out this flight deal to ${deal.destination} for only $${deal.price}!`,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('✅ Link copied to clipboard!');
+      }
+    } catch (err) {
+      console.log('Share canceled');
+    }
+  };
+
+
   const affiliateLinks = [
     { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
     { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
@@ -1394,7 +1441,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                           ~${date.price}
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -1460,7 +1507,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                           </div>
                         </div>
                         <ExternalLink className="w-4 h-4 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>
@@ -1481,7 +1528,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                       <Building className="w-4 h-4" />
                       <span>{hotel.name}</span>
                       <ExternalLink className="w-3 h-3 opacity-60" />
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -1522,7 +1569,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                   <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
                     Up to 25% off
                   </div>
-                </a>
+                </Link>
 
                 <a
                   href="https://www.priceline.com/packages"
@@ -1535,7 +1582,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                   <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
                     Up to 40% off
                   </div>
-                </a>
+                </Link>
 
                 <a
                   href="https://www.booking.com/packages"
@@ -1548,7 +1595,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                   <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
                     Up to 20% off
                   </div>
-                </a>
+                </Link>
               </div>
 
               <div className="mt-6 text-center">
@@ -1596,7 +1643,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                     <Radar className="w-4 h-4" />
                     <span>{esim.name}</span>
                     <ExternalLink className="w-3 h-3 opacity-60" />
-                  </a>
+                  </Link>
                 ))}
               </div>
 
@@ -1743,7 +1790,9 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
 
               <div className="mt-6 pt-6 border-t border-slate-700">
-                <button className="w-full flex items-center justify-center space-x-2 bg-slate-700/50 text-slate-300 px-4 py-3 rounded-xl hover:bg-slate-600/50 transition-colors border border-slate-600">
+                <button 
+                  onClick={handleShare}
+                  className="w-full flex items-center justify-center space-x-2 bg-slate-700/50 text-slate-300 px-4 py-3 rounded-xl hover:bg-slate-600/50 transition-colors border border-slate-600">
                   <Share2 className="w-4 h-4" />
                   <span className="font-bold font-display">Share Deal</span>
                 </button>
@@ -1823,27 +1872,13 @@ const DealDetailPage = ({ deal, onBack }) => {
 
 // ==================== MAIN APP ====================
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [selectedDeal, setSelectedDeal] = useState(null);
-
-  const handleDealClick = (deal) => {
-    setSelectedDeal(deal);
-    setCurrentPage('detail');
-    window.scrollTo(0, 0);
-  };
-
-  const handleBackToHome = () => {
-    setCurrentPage('home');
-    window.scrollTo(0, 0);
-  };
-
   return (
-    <div>
-      {currentPage === 'home' && <HomePage onDealClick={handleDealClick} />}
-      {currentPage === 'detail' && selectedDeal && (
-        <DealDetailPage deal={selectedDeal} onBack={handleBackToHome} />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/deals/:slug" element={<DealDetailPageWrapper />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
