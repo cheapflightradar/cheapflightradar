@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useParams, useSearchParams, Link } from 'react-router-dom';
 import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
 // ==================== STICKY EMAIL BAR COMPONENT ====================
@@ -32,7 +31,7 @@ const StickyEmailBar = ({ origin }) => {
           ) : (
             <div className="flex flex-col md:flex-row items-center justify-between gap-3">
               {/* Left side - Message */}
-              <Link to="/" className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3">
                 <Bell className="w-5 h-5 text-white animate-pulse flex-shrink-0" />
                 <div>
                   <div className="text-white font-bold text-sm">
@@ -79,18 +78,12 @@ const StickyEmailBar = ({ origin }) => {
 };
 
 // ==================== HOMEPAGE COMPONENT ====================
-const HomePage = () => {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedCity, setSelectedCity] = useState(searchParams.get('city') || 'austin');
+const HomePage = ({ onDealClick }) => {
+  const [selectedCity, setSelectedCity] = useState('austin');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    setSearchParams({ city: selectedCity });
-  }, [selectedCity, setSearchParams]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -567,7 +560,7 @@ const HomePage = () => {
                 </h1>
                 <p className="text-xs text-emerald-300 -mt-1 tracking-wider">ALWAYS SCANNING. ALWAYS SAVING.</p>
               </div>
-            </Link>
+            </div>
 
             <div className="hidden md:flex items-center space-x-8">
               <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">Detected Deals</a>
@@ -733,7 +726,7 @@ const HomePage = () => {
             {filteredDeals.map((deal) => (
               <div
                 key={deal.id}
-                onClick={() => navigate(`/deals/${deal.slug}`)}
+                onClick={() => onDealClick(deal)}
                 className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
               >
                 <div className="relative h-56 overflow-hidden">
@@ -817,7 +810,7 @@ const HomePage = () => {
             {expiredDeals.map((deal) => (
               <div
                 key={deal.id}
-                onClick={() => navigate(`/deals/${deal.slug}`)}
+                onClick={() => onDealClick(deal)}
                 className="group bg-slate-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 opacity-70 hover:opacity-95 transition-all duration-300 cursor-pointer hover:scale-[1.02]"
               >
                 <div className="relative h-56 overflow-hidden">
@@ -973,9 +966,9 @@ const HomePage = () => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">About Our Radar</Link></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">About Our Radar</a></li>
                 <li><a href="/" className="hover:text-emerald-400 transition-colors">How It Works</a></li>
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Contact</Link></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
@@ -996,9 +989,9 @@ const HomePage = () => {
             <div>
               <h4 className="font-bold text-white mb-4 font-display">Legal</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Terms of Service</Link></li>
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</Link></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                <li><a href="/" className="hover:text-emerald-400 transition-colors">Affiliate Disclosure</a></li>
               </ul>
             </div>
           </div>
@@ -1032,47 +1025,8 @@ const HomePage = () => {
   );
 };
 
-
-// ==================== DEAL DETAIL PAGE WRAPPER ====================
-const DealDetailPageWrapper = () => {
-  const { slug } = useParams();
-  const navigate = useNavigate();
-  
-  const deal = allDeals.find(d => d.slug === slug);
-  
-  useEffect(() => {
-    if (!deal) {
-      navigate('/');
-    }
-  }, [deal, navigate]);
-  
-  if (!deal) return null;
-  
-  return <DealDetailPage deal={deal} onBack={() => navigate(-1)} />;
-};
-
 // ==================== DEAL DETAIL PAGE ====================
 const DealDetailPage = ({ deal, onBack }) => {
-  const handleShare = async () => {
-    const shareData = {
-      title: `${deal.destination} - $${deal.price}`,
-      text: `Check out this flight deal to ${deal.destination} for only $${deal.price}!`,
-      url: window.location.href
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        alert('✅ Link copied to clipboard!');
-      }
-    } catch (err) {
-      console.log('Share canceled');
-    }
-  };
-
-
   const affiliateLinks = [
     { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
     { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
@@ -1789,7 +1743,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
 
               <div className="mt-6 pt-6 border-t border-slate-700">
-                <button onClick={handleShare} className="w-full flex items-center justify-center space-x-2 bg-slate-700/50 text-slate-300 px-4 py-3 rounded-xl hover:bg-slate-600/50 transition-colors border border-slate-600">
+                <button className="w-full flex items-center justify-center space-x-2 bg-slate-700/50 text-slate-300 px-4 py-3 rounded-xl hover:bg-slate-600/50 transition-colors border border-slate-600">
                   <Share2 className="w-4 h-4" />
                   <span className="font-bold font-display">Share Deal</span>
                 </button>
@@ -1869,13 +1823,27 @@ const DealDetailPage = ({ deal, onBack }) => {
 
 // ==================== MAIN APP ====================
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [selectedDeal, setSelectedDeal] = useState(null);
+
+  const handleDealClick = (deal) => {
+    setSelectedDeal(deal);
+    setCurrentPage('detail');
+    window.scrollTo(0, 0);
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/deals/:slug" element={<DealDetailPageWrapper />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      {currentPage === 'home' && <HomePage onDealClick={handleDealClick} />}
+      {currentPage === 'detail' && selectedDeal && (
+        <DealDetailPage deal={selectedDeal} onBack={handleBackToHome} />
+      )}
+    </div>
   );
 }
 
