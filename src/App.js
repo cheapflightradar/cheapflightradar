@@ -54,7 +54,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Nonstop Available', 'Star Alliance'],
       savings: 49,
-      detectedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T18:00:00Z', // FIXED - 2 hours ago from 8pm
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item included',
@@ -99,7 +99,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1670465897319-9c2e9b2b1f22?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Direct Flight', 'Weekend Deals'],
       savings: 52,
-      detectedAt: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T15:00:00Z', // FIXED - 5 hours ago
       status: 'active',
       dealDetails: {
         baggage: '2 free checked bags included',
@@ -139,7 +139,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Premium Economy', 'Oneworld'],
       savings: 31,
-      detectedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-17T20:00:00Z', // FIXED - 1 day ago
       status: 'expired',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -178,7 +178,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://plus.unsplash.com/premium_photo-1697730215093-baeae8060bfe?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Nonstop', 'Beach'],
       savings: 27,
-      detectedAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T17:00:00Z', // FIXED - 3 hours ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -217,7 +217,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop',
       tags: ['SkyTeam', 'Spring Special'],
       savings: 53,
-      detectedAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T14:00:00Z', // FIXED - 6 hours ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 checked bag',
@@ -256,7 +256,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1542259009477-d625272157b7?w=800&auto=format&fit=crop',
       tags: ['Island Paradise', 'Direct'],
       savings: 54,
-      detectedAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T16:00:00Z', // FIXED - 4 hours ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -295,7 +295,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop',
       tags: ['Oneworld', 'History Buff'],
       savings: 53,
-      detectedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-17T20:00:00Z', // FIXED - 1 day ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -334,7 +334,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1629716520458-f8f11b3a81a8?w=800&auto=format&fit=crop',
       tags: ['Pacific Northwest', 'Direct'],
       savings: 56,
-      detectedAt: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T12:00:00Z', // FIXED - 8 hours ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -373,7 +373,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=800&auto=format&fit=crop',
       tags: ['West Coast', 'Weekend Getaway'],
       savings: 60,
-      detectedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T08:00:00Z', // FIXED - 12 hours ago
       status: 'active',
       dealDetails: {
         baggage: '2 free checked bags',
@@ -412,7 +412,7 @@ const HomePage = ({ onDealClick }) => {
       image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&auto=format&fit=crop',
       tags: ['Big Apple', 'Direct Flight'],
       savings: 56,
-      detectedAt: new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString(),
+      detectedAt: '2026-02-18T13:00:00Z', // FIXED - 7 hours ago
       status: 'active',
       dealDetails: {
         baggage: '1 carry-on, 1 personal item',
@@ -960,13 +960,13 @@ const DealDetailPage = ({ deal, onBack }) => {
   ].filter(link => link.affiliateId !== '');
 
   const hotelLinks = [
-    { name: 'Booking.com', url: 'https://www.booking.com' },
-    { name: 'Hotels.com', url: 'https://www.hotels.com' },
-    { name: 'Expedia Hotels', url: 'https://www.expedia.com/Hotels' },
-    { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels' },
-    { name: 'Agoda', url: 'https://www.agoda.com' },
-    { name: 'Airbnb', url: 'https://www.airbnb.com' },
-  ].filter(hotel => hotel.url !== '');
+    { name: 'Booking.com', url: 'https://www.booking.com', affiliateId: 'YOUR_BOOKING_ID' },
+    { name: 'Hotels.com', url: 'https://www.hotels.com', affiliateId: 'YOUR_HOTELS_ID' },
+    { name: 'Expedia Hotels', url: 'https://www.expedia.com/Hotels', affiliateId: 'YOUR_EXPEDIA_ID' },
+    { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels', affiliateId: 'YOUR_PRICELINE_ID' },
+    { name: 'Agoda', url: 'https://www.agoda.com', affiliateId: 'YOUR_AGODA_ID' },
+    { name: 'Airbnb', url: 'https://www.airbnb.com', affiliateId: 'YOUR_AIRBNB_ID' },
+  ];
 
   const esimLinks = [
     { name: 'Airalo', url: 'https://www.airalo.com' },
@@ -1020,6 +1020,39 @@ const DealDetailPage = ({ deal, onBack }) => {
         return `https://www.google.com/travel/flights?q=Flights%20to%20${destination}%20from%20${origin}%20on%20${departDate}%20through%20${returnDate}`;
       default:
         return '#';
+    }
+  };
+
+  // Function to build hotel URLs with dates
+  const buildHotelUrl = (platform, date, deal) => {
+    const destination = deal.destination.split(',')[0]; // e.g., "Madrid"
+    
+    const parseDate = (dateStr) => {
+      const months = { Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
+      const [month, day] = dateStr.split(' ');
+      return `2026-${months[month]}-${day}`;
+    };
+    
+    const checkIn = parseDate(date.outbound);
+    const checkOut = parseDate(date.return);
+    const affiliateId = platform.affiliateId || '';
+    
+    // Build URLs for different platforms
+    switch (platform.name) {
+      case 'Booking.com':
+        return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}${affiliateId ? `&aid=${affiliateId}` : ''}`;
+      case 'Hotels.com':
+        return `https://www.hotels.com/search.do?q-destination=${encodeURIComponent(destination)}&q-check-in=${checkIn}&q-check-out=${checkOut}${affiliateId ? `&affid=${affiliateId}` : ''}`;
+      case 'Expedia Hotels':
+        return `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(destination)}&startDate=${checkIn}&endDate=${checkOut}${affiliateId ? `&affid=${affiliateId}` : ''}`;
+      case 'Priceline Hotels':
+        return `https://www.priceline.com/relax/at/${encodeURIComponent(destination)}/from/${checkIn}/to/${checkOut}${affiliateId ? `?refid=${affiliateId}` : ''}`;
+      case 'Agoda':
+        return `https://www.agoda.com/search?city=${encodeURIComponent(destination)}&checkIn=${checkIn}&checkOut=${checkOut}${affiliateId ? `&cid=${affiliateId}` : ''}`;
+      case 'Airbnb':
+        return `https://www.airbnb.com/s/${encodeURIComponent(destination)}/homes?checkin=${checkIn}&checkout=${checkOut}`;
+      default:
+        return `${platform.url}/search?destination=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}`;
     }
   };
 
@@ -1310,7 +1343,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* HOTELS SECTION - MOVED UP & IMPROVED */}
+            {/* HOTELS SECTION WITH DATES - MOVED UP & IMPROVED */}
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
               <div className="mb-6">
                 <div className="flex items-center space-x-3 mb-3">
@@ -1321,7 +1354,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                     <h2 className="text-3xl font-bold text-white font-display">
                       🏨 Hotels in {deal.destination.split(',')[0]}
                     </h2>
-                    <p className="text-slate-300">From $62/night • Book now and save</p>
+                    <p className="text-slate-300">Compare prices and find the best deals</p>
                   </div>
                 </div>
               </div>
@@ -1331,25 +1364,63 @@ const DealDetailPage = ({ deal, onBack }) => {
                   <Info className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                   <div className="text-sm text-cyan-200">
                     <p className="font-bold mb-1">💰 Save More with a Package</p>
-                    <p>Travelers who book flights + hotels together save an average of 15-25% vs booking separately. Many hotels offer free cancellation!</p>
+                    <p>Book flights + hotels together and save 15-25%. Many hotels offer free cancellation!</p>
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {hotelLinks.map((hotel, index) => (
-                  <a
-                    key={index}
-                    href={hotel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:shadow-lg hover:shadow-cyan-500/20 font-display"
-                  >
-                    <Building className="w-4 h-4" />
-                    <span>{hotel.name}</span>
-                    <ExternalLink className="w-3 h-3 opacity-60" />
-                  </a>
-                ))}
+              {/* HOTEL DATES - MATCHING FLIGHT DATES */}
+              <div className="mb-6">
+                <h3 className="text-white font-bold mb-3">Hotels for your travel dates:</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+                  {deal.verifiedDates.slice(0, 8).map((date, idx) => {
+                    const hotelPlatform = hotelLinks[idx % hotelLinks.length];
+                    const hotelUrl = buildHotelUrl(hotelPlatform, date, deal);
+                    
+                    return (
+                      <a
+                        key={idx}
+                        href={hotelUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 border border-cyan-500/30 transition-all group"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <Calendar className="w-4 h-4 text-cyan-400" />
+                          <div>
+                            <div className="text-white text-sm font-bold">
+                              {date.outbound} → {date.return}
+                            </div>
+                            <div className="text-xs text-slate-400">
+                              {date.length} nights • {hotelPlatform.name}
+                            </div>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-4 h-4 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* GENERAL HOTEL LINKS */}
+              <div className="pt-6 border-t border-slate-700">
+                <h3 className="text-white font-bold mb-3">Or browse all hotels:</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {hotelLinks.map((hotel, index) => (
+                    <a
+                      key={index}
+                      href={hotel.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:shadow-lg hover:shadow-cyan-500/20 font-display"
+                    >
+                      <Building className="w-4 h-4" />
+                      <span>{hotel.name}</span>
+                      <ExternalLink className="w-3 h-3 opacity-60" />
+                    </a>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-6 text-center">
@@ -1359,7 +1430,7 @@ const DealDetailPage = ({ deal, onBack }) => {
               </div>
             </div>
 
-            {/* PACKAGE DEALS SECTION - NEW! */}
+            {/* PACKAGE DEALS SECTION */}
             <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl border-2 border-purple-500/50 shadow-xl p-8">
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/30 rounded-full mb-4">
@@ -1378,7 +1449,7 @@ const DealDetailPage = ({ deal, onBack }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
-                  href="https://www.expedia.com"
+                  href="https://www.expedia.com/Packages"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
@@ -1391,7 +1462,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                 </a>
 
                 <a
-                  href="https://www.priceline.com"
+                  href="https://www.priceline.com/packages"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
@@ -1404,7 +1475,7 @@ const DealDetailPage = ({ deal, onBack }) => {
                 </a>
 
                 <a
-                  href="https://www.booking.com"
+                  href="https://www.booking.com/packages"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
