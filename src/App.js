@@ -15,15 +15,18 @@ const useSubscribe = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      const data = await res.json();
-      if (data.success) {
+      // Safely parse JSON — if response is not JSON, catch the parse error
+      let data = {};
+      try { data = await res.json(); } catch { data = {}; }
+
+      if (res.ok && data.success) {
         setStatus('success');
         setMessage("You're in! Deals coming your way soon.");
       } else {
         setStatus('error');
-        setMessage(data.error || 'Something went wrong. Try again.');
+        setMessage(data.error || `Error ${res.status}. Please try again.`);
       }
-    } catch {
+    } catch (err) {
       setStatus('error');
       setMessage('Network error. Please try again.');
     }

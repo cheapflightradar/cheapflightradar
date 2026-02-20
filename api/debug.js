@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString('base64')}`,
     },
     body: JSON.stringify({
-      email_address: 'debug-test@example.com',
+      email_address: 'debugtest@gmail.com',
       status: 'subscribed',
     }),
   });
