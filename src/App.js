@@ -447,13 +447,20 @@ const allDeals = [
 const StickyEmailBar = ({ origin }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [email, setEmail] = useState('');
-  const { subscribe, status } = useSubscribe();
+  const { subscribe, status, message } = useSubscribe();
+
+  // Hide bar 3 seconds after successful subscription
+  useEffect(() => {
+    if (status === 'success') {
+      const t = setTimeout(() => setIsVisible(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
-    await subscribe(email);
-    setTimeout(() => setIsVisible(false), 3000);
+    subscribe(email);
   };
 
   if (!isVisible) return null;
@@ -476,9 +483,13 @@ const StickyEmailBar = ({ origin }) => {
                   <div className="text-white font-bold text-sm">
                     🔔 Get {origin} flight deals sent to your inbox
                   </div>
-                  <div className="text-emerald-100 text-xs hidden md:block">
-                    ✓ Save $450-800 per ticket • ✓ Free forever
-                  </div>
+                  {status === 'error' ? (
+                    <div className="text-red-200 text-xs">{message || 'Something went wrong. Try again.'}</div>
+                  ) : (
+                    <div className="text-emerald-100 text-xs hidden md:block">
+                      ✓ Save $450-800 per ticket • ✓ Free forever
+                    </div>
+                  )}
                 </div>
               </div>
 

@@ -1,6 +1,10 @@
 // Vercel serverless function — keeps your Mailchimp API key secret
 // Environment variables are set in Vercel dashboard → Project Settings → Environment Variables
 
+export const config = {
+  api: { bodyParser: true },
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
