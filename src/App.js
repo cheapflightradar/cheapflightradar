@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
 // ==================== MAILCHIMP SUBSCRIBE HOOK ====================
@@ -10,7 +10,7 @@ const useSubscribe = () => {
   const subscribe = async (email) => {
     setStatus('loading');
     try {
-      const res = await fetch('/api/subscribe', {
+      const res = await fetch('https://www.cheapflightradar.com/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -1937,10 +1937,20 @@ const DealDetailPage = () => {
   );
 };
 
+// ==================== SCROLL TO TOP ====================
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 // ==================== MAIN APP ====================
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/deals/:slug" element={<DealDetailPage />} />
