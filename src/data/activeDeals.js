@@ -14,7 +14,7 @@ const activeDeals = [
     dates: 'Mar - Apr 2026',
     route: 'SAT → STT',
     type: 'Beach',
-    image: 'https://images.unsplash.com/photo-42G3KZyjO18?w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-nVOFg37Jtks?w=800&auto=format&fit=crop',
     tags: ['31" Legroom', 'Seat USB'],
     savings: 60,
     detectedAt: '2026-02-20T19:12:00Z',
