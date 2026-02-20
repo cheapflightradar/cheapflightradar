@@ -140,6 +140,8 @@ const HomePage = () => {
   const [ctaEmail, setCtaEmail] = useState('');
   const { subscribe: ctaSubscribe, status: ctaStatus } = useSubscribe();
   const [archivedPage, setArchivedPage] = useState(0); // 0-indexed page for expired deals
+  const [savingsTooltip, setSavingsTooltip] = useState(false);
+  const [scansTooltip, setScansTooltip] = useState(false);
 
   // Reset archived page when city changes
   useEffect(() => { setArchivedPage(0); }, [selectedCity]);
@@ -346,29 +348,76 @@ const HomePage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: 'Deals Detected', value: filteredDeals.length.toString(), icon: TrendingDown, color: 'emerald' },
-            { label: 'Avg Savings', value: '53%', icon: DollarSign, color: 'cyan' },
-            { label: 'Active Scans', value: '1,247', icon: Radar, color: 'emerald' }
-          ].map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div 
-                key={index}
-                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">{stat.label}</p>
-                    <p className="text-3xl font-bold text-white font-display">{stat.value}</p>
-                  </div>
-                  <div className={`w-12 h-12 bg-gradient-to-br from-${stat.color}-500/20 to-${stat.color}-400/20 border border-${stat.color}-500/50 rounded-xl flex items-center justify-center`}>
-                    <Icon className={`w-6 h-6 text-${stat.color}-400`} />
-                  </div>
+
+          {/* Box 1: Deals Detected — scrolls to deals */}
+          <div
+            onClick={() => document.getElementById('deals').scrollIntoView({ behavior: 'smooth' })}
+            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">DEALS DETECTED</p>
+                <p className="text-3xl font-bold text-white font-display">{filteredDeals.length}</p>
+                <p className="text-xs text-emerald-400 mt-1 font-bold group-hover:underline">View all deals →</p>
+              </div>
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-400/20 border border-emerald-500/50 rounded-xl flex items-center justify-center">
+                <TrendingDown className="w-6 h-6 text-emerald-400" />
+              </div>
+            </div>
+          </div>
+
+          {/* Box 2: Avg Savings — info tooltip */}
+          <div className="relative">
+            <div
+              onClick={() => setSavingsTooltip(o => !o)}
+              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">AVG SAVINGS</p>
+                  <p className="text-3xl font-bold text-white font-display">53%</p>
+                  <p className="text-xs text-cyan-400 mt-1 font-bold group-hover:underline">How we calculate this →</p>
+                </div>
+                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-cyan-400/20 border border-cyan-500/50 rounded-xl flex items-center justify-center">
+                  <DollarSign className="w-6 h-6 text-cyan-400" />
                 </div>
               </div>
-            );
-          })}
+            </div>
+            {savingsTooltip && (
+              <div className="absolute z-20 top-full mt-2 left-0 right-0 bg-slate-900 border border-cyan-500/50 rounded-xl p-4 shadow-2xl shadow-cyan-500/10">
+                <button onClick={() => setSavingsTooltip(false)} className="absolute top-2 right-2 p-1 text-slate-500 hover:text-white"><X className="w-4 h-4" /></button>
+                <p className="text-cyan-300 font-bold text-sm mb-1">📊 How we calculate savings</p>
+                <p className="text-slate-300 text-xs leading-relaxed">We compare each deal's price against 90-day historical averages for that exact route. The 53% figure is the median saving across all deals we've published in the last 30 days.</p>
+              </div>
+            )}
+          </div>
+
+          {/* Box 3: Active Scans — info tooltip */}
+          <div className="relative">
+            <div
+              onClick={() => setScansTooltip(o => !o)}
+              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">ACTIVE SCANS</p>
+                  <p className="text-3xl font-bold text-white font-display">1,247</p>
+                  <p className="text-xs text-emerald-400 mt-1 font-bold group-hover:underline">What are we scanning? →</p>
+                </div>
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-400/20 border border-emerald-500/50 rounded-xl flex items-center justify-center">
+                  <Radar className="w-6 h-6 text-emerald-400" />
+                </div>
+              </div>
+            </div>
+            {scansTooltip && (
+              <div className="absolute z-20 top-full mt-2 left-0 right-0 bg-slate-900 border border-emerald-500/50 rounded-xl p-4 shadow-2xl shadow-emerald-500/10">
+                <button onClick={() => setScansTooltip(false)} className="absolute top-2 right-2 p-1 text-slate-500 hover:text-white"><X className="w-4 h-4" /></button>
+                <p className="text-emerald-300 font-bold text-sm mb-1">🛰️ What we monitor</p>
+                <p className="text-slate-300 text-xs leading-relaxed">We scan 1,247 routes departing from Austin, Houston, Dallas, and San Antonio — every 6 hours, 24/7. When a price drops 40%+ below the historical average, we flag it as a deal.</p>
+              </div>
+            )}
+          </div>
+
         </div>
       </div>
 
