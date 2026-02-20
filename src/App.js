@@ -999,32 +999,32 @@ const DealDetailPage = () => {
               </div>
 
               {/* WHY THIS IS A DEAL */}
-              <div className="bg-blue-500/10 border-2 border-blue-500/50 rounded-xl p-5 mb-6">
-                <div className="flex items-start space-x-3 mb-4">
-                  <TrendingDown className="w-6 h-6 text-blue-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-blue-300 text-lg mb-2">📊 Why This Is a Deal</h3>
-                    <div className="space-y-2 text-sm text-blue-200">
-                      <div className="flex justify-between items-center">
-                        <span>Normal {deal.route.split(' → ')[0]} → {deal.destination.split(',')[0]}:</span>
-                        <span className="font-bold">${deal.originalPrice}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span>Historical Average:</span>
-                        <span className="font-bold">${Math.floor(deal.originalPrice * 0.85)}</span>
-                      </div>
-                      <div className="flex justify-between items-center border-t border-blue-500/30 pt-2">
-                        <span className="text-emerald-300 font-bold">Today's Price:</span>
-                        <span className="text-emerald-300 font-bold text-lg">${deal.price}</span>
-                      </div>
-                      <div className="bg-emerald-500/20 border border-emerald-500/50 rounded-lg px-3 py-2 mt-3">
-                        <div className="text-emerald-200 font-bold text-center">
-                          ✨ {deal.savings}% below normal price
-                        </div>
-                        <div className="text-emerald-300 text-xs text-center mt-1">
-                          This is in the top 5% of deals we've seen
-                        </div>
-                      </div>
+              <div className="bg-blue-500/10 border-2 border-blue-500/50 rounded-xl p-6 mb-6">
+                {/* Header — icon + title centered */}
+                <div className="flex items-center justify-center space-x-2 mb-5">
+                  <TrendingDown className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                  <h3 className="font-bold text-blue-300 text-lg">📊 Why This Is a Deal</h3>
+                </div>
+                {/* Price comparison — constrained width so it looks tidy on desktop */}
+                <div className="max-w-sm mx-auto space-y-2 text-sm text-blue-200">
+                  <div className="flex justify-between items-center">
+                    <span>Normal {deal.route.split(' → ')[0]} → {deal.destination.split(',')[0]}:</span>
+                    <span className="font-bold">${deal.originalPrice}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Historical Average:</span>
+                    <span className="font-bold">${Math.floor(deal.originalPrice * 0.85)}</span>
+                  </div>
+                  <div className="flex justify-between items-center border-t border-blue-500/30 pt-2">
+                    <span className="text-emerald-300 font-bold">Today's Price:</span>
+                    <span className="text-emerald-300 font-bold text-lg">${deal.price}</span>
+                  </div>
+                  <div className="bg-emerald-500/20 border border-emerald-500/50 rounded-lg px-3 py-2 mt-3">
+                    <div className="text-emerald-200 font-bold text-center">
+                      ✨ {deal.savings}% below normal price
+                    </div>
+                    <div className="text-emerald-300 text-xs text-center mt-1">
+                      This is in the top 5% of deals we've seen
                     </div>
                   </div>
                 </div>
