@@ -601,8 +601,8 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg shadow-emerald-500/10' : 'bg-transparent'
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        scrolled || showMobileMenu ? 'bg-slate-900/95 backdrop-blur-md shadow-lg shadow-emerald-500/10' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
@@ -642,7 +642,7 @@ const HomePage = () => {
           </div>
 
           {showMobileMenu && (
-            <div className="md:hidden py-4 border-t border-slate-700">
+            <div className="md:hidden py-4 border-t border-slate-700 bg-slate-900 shadow-xl shadow-black/50 rounded-b-2xl px-4">
               <div className="flex flex-col space-y-3">
                 <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">Detected Deals</a>
                 <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">How It Works</a>
