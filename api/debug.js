@@ -1,14 +1,35 @@
-// Temporary debug endpoint — DELETE THIS FILE after fixing the issue
-export default function handler(req, res) {
-  const apiKey = process.env.MAILCHIMP_API_KEY;
-  const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
+// Temporary debug — DELETE after fixing
+export default async function handler(req, res) {
+  const API_KEY     = process.env.MAILCHIMP_API_KEY;
+  const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+  const DC          = API_KEY ? API_KEY.split('-')[1] : null;
 
-  res.status(200).json({
-    hasApiKey: !!apiKey,
-    apiKeyLength: apiKey ? apiKey.length : 0,
-    apiKeyEndsWithDash: apiKey ? apiKey.includes('-') : false,
-    datacenter: apiKey ? apiKey.split('-').pop() : null,
-    hasAudienceId: !!audienceId,
-    audienceIdLength: audienceId ? audienceId.length : 0,
+  if (!API_KEY || !AUDIENCE_ID || !DC) {
+    return res.status(200).json({ error: 'env vars missing', hasApiKey: !!API_KEY, hasAudienceId: !!AUDIENCE_ID });
+  }
+
+  // Make a real test call to Mailchimp with a dummy email
+  const url = `https://${DC}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from(`anystring:${API_KEY}`).toString('base64')}`,
+    },
+    body: JSON.stringify({
+      email_address: 'debug-test@example.com',
+      status: 'subscribed',
+    }),
+  });
+
+  const data = await response.json();
+
+  // Return full Mailchimp response so we can see exact error
+  return res.status(200).json({
+    mailchimpStatus: response.status,
+    mailchimpResponse: data,
+    dc: DC,
+    apiKeyLength: API_KEY.length,
+    audienceIdLength: AUDIENCE_ID.length,
   });
 }
