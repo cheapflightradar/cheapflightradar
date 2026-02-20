@@ -621,7 +621,10 @@ const HomePage = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">Detected Deals</a>
               <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium">How It Works</a>
-              <button className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/50 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+              <button
+                onClick={() => document.getElementById('get-alerts').scrollIntoView({ behavior: 'smooth' })}
+                className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/50 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+              >
                 <Bell className="w-4 h-4" />
                 <span>Get Alerts</span>
               </button>
@@ -640,7 +643,10 @@ const HomePage = () => {
               <div className="flex flex-col space-y-3">
                 <a href="#deals" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">Detected Deals</a>
                 <a href="#how" className="text-slate-300 hover:text-emerald-400 transition-colors font-medium py-2">How It Works</a>
-                <button className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold flex items-center justify-center space-x-2">
+                <button
+                  onClick={() => { setShowMobileMenu(false); document.getElementById('get-alerts').scrollIntoView({ behavior: 'smooth' }); }}
+                  className="bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 px-6 py-2.5 rounded-full font-bold flex items-center justify-center space-x-2"
+                >
                   <Bell className="w-4 h-4" />
                   <span>Get Alerts</span>
                 </button>
@@ -972,7 +978,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div id="get-alerts" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-cyan-500 to-emerald-600"></div>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0" style={{
