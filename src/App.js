@@ -2,6 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package } from 'lucide-react';
 
+// ==================== MAILCHIMP SUBSCRIBE HOOK ====================
+const useSubscribe = () => {
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
+
+  const subscribe = async (email) => {
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setMessage("You're in! Deals coming your way soon.");
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Something went wrong. Try again.');
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Network error. Please try again.');
+    }
+  };
+
+  return { subscribe, status, message };
+};
+
 // ==================== DEALS DATA ====================
 const allDeals = [
   {
@@ -417,16 +447,13 @@ const allDeals = [
 const StickyEmailBar = ({ origin }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const { subscribe, status } = useSubscribe();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 3000);
-    }
+    if (!email) return;
+    await subscribe(email);
+    setTimeout(() => setIsVisible(false), 3000);
   };
 
   if (!isVisible) return null;
@@ -435,7 +462,7 @@ const StickyEmailBar = ({ origin }) => {
     <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
       <div className="bg-gradient-to-r from-emerald-600 to-cyan-600 border-t-2 border-emerald-400 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          {submitted ? (
+          {status === 'success' ? (
             <div className="flex items-center justify-center space-x-2 text-white font-bold">
               <span className="text-2xl">✅</span>
               <span>Subscribed! You'll get the best deals first.</span>
@@ -463,13 +490,15 @@ const StickyEmailBar = ({ origin }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
+                  disabled={status === 'loading'}
                   className="flex-1 md:w-64 px-4 py-2 rounded-lg bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white text-sm"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-slate-900 text-emerald-400 rounded-lg font-bold hover:bg-slate-800 transition-all whitespace-nowrap text-sm"
+                  disabled={status === 'loading'}
+                  className="px-6 py-2 bg-slate-900 text-emerald-400 rounded-lg font-bold hover:bg-slate-800 transition-all whitespace-nowrap text-sm disabled:opacity-60"
                 >
-                  Get Alerts
+                  {status === 'loading' ? '...' : 'Get Alerts'}
                 </button>
               </form>
 
@@ -497,6 +526,8 @@ const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [ctaEmail, setCtaEmail] = useState('');
+  const { subscribe: ctaSubscribe, status: ctaStatus } = useSubscribe();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -947,16 +978,34 @@ const HomePage = () => {
           <p className="text-xl text-emerald-50 mb-8 max-w-2xl mx-auto">
             Join 10,000+ travelers who never miss a deal. Get instant alerts when we detect price drops.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-xl border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all font-bold font-display"
-            />
-            <button className="bg-slate-900 text-emerald-400 px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transform hover:scale-105 transition-all duration-300 shadow-xl whitespace-nowrap font-display">
-              Start Scanning →
-            </button>
-          </div>
+          {ctaStatus === 'success' ? (
+            <div className="text-white text-xl font-bold py-4">✅ You're on the radar! Deals incoming.</div>
+          ) : (
+            <form
+              onSubmit={(e) => { e.preventDefault(); ctaSubscribe(ctaEmail); }}
+              className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+            >
+              <input
+                type="email"
+                value={ctaEmail}
+                onChange={(e) => setCtaEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                disabled={ctaStatus === 'loading'}
+                className="flex-1 px-6 py-4 rounded-xl border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all font-bold font-display"
+              />
+              <button
+                type="submit"
+                disabled={ctaStatus === 'loading'}
+                className="bg-slate-900 text-emerald-400 px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transform hover:scale-105 transition-all duration-300 shadow-xl whitespace-nowrap font-display disabled:opacity-60"
+              >
+                {ctaStatus === 'loading' ? 'Joining...' : 'Start Scanning →'}
+              </button>
+            </form>
+          )}
+          {ctaStatus === 'error' && (
+            <p className="text-red-300 text-sm mt-2">Something went wrong. Please try again.</p>
+          )}
           <p className="text-sm text-emerald-100 mt-4">
             ✓ No spam, unsubscribe anytime  •  ✓ 100% free forever  •  ✓ Instant deal alerts
           </p>
@@ -1048,6 +1097,8 @@ const DealDetailPage = () => {
   const [bookmarked, setBookmarked] = useState(false);
   const [lengthFilter, setLengthFilter] = useState('all');
   const [sortBy, setSortBy] = useState('date');
+  const [bottomEmail, setBottomEmail] = useState('');
+  const { subscribe: bottomSubscribe, status: bottomStatus } = useSubscribe();
   const [showFilters, setShowFilters] = useState(false);
 
   if (!deal) {
@@ -1644,20 +1695,34 @@ const DealDetailPage = () => {
                 Get similar {deal.route.split(' → ')[0]} deals delivered to your inbox
               </p>
               
-              <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-4">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email"
-                  className="flex-1 px-6 py-4 rounded-xl bg-slate-800 border-2 border-slate-600 text-white text-lg placeholder-slate-400 focus:outline-none focus:border-emerald-500"
-                />
-                <button 
-                  type="submit"
-                  className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-lg"
+              {bottomStatus === 'success' ? (
+                <div className="text-emerald-400 text-xl font-bold py-4">✅ You're in! Deals incoming.</div>
+              ) : (
+                <form
+                  onSubmit={(e) => { e.preventDefault(); bottomSubscribe(bottomEmail); }}
+                  className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-4"
                 >
-                  Get Deal Alerts →
-                </button>
-              </form>
-              
+                  <input
+                    type="email"
+                    value={bottomEmail}
+                    onChange={(e) => setBottomEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    disabled={bottomStatus === 'loading'}
+                    className="flex-1 px-6 py-4 rounded-xl bg-slate-800 border-2 border-slate-600 text-white text-lg placeholder-slate-400 focus:outline-none focus:border-emerald-500"
+                  />
+                  <button
+                    type="submit"
+                    disabled={bottomStatus === 'loading'}
+                    className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white text-lg font-bold rounded-xl transition-all transform hover:scale-105 shadow-lg disabled:opacity-60"
+                  >
+                    {bottomStatus === 'loading' ? 'Joining...' : 'Get Deal Alerts →'}
+                  </button>
+                </form>
+              )}
+              {bottomStatus === 'error' && (
+                <p className="text-red-400 text-sm mb-4">Something went wrong. Please try again.</p>
+              )}
               <div className="flex items-center justify-center space-x-6 text-sm text-slate-400">
                 <span>✓ Free forever</span>
                 <span>✓ Unsubscribe anytime</span>
