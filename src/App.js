@@ -973,9 +973,8 @@ const DealDetailPage = () => {
               {/* Price + heart bookmark row */}
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-sm font-bold text-slate-500 line-through decoration-red-400 decoration-2">Was ${deal.originalPrice}</span>
-                    <span className="text-xs font-bold text-red-400 bg-red-500/10 border border-red-500/30 px-2 py-0.5 rounded-full">↓ {deal.savings}% off</span>
+                  <div className="mb-2">
+                    <span className="text-base font-bold text-slate-400 line-through decoration-red-400 decoration-2">Was ${deal.originalPrice}</span>
                   </div>
                   <div className="flex items-baseline space-x-3 mb-2">
                     <span className="text-6xl font-bold text-emerald-400 font-display">${deal.price}</span>
