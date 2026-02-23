@@ -1333,11 +1333,11 @@ const DealDetailPage = () => {
             </div>
 
             {/* ESIM SECTION */}
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 shadow-xl p-8">
+            <div className="bg-gradient-to-br from-teal-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl border-2 border-teal-500/50 shadow-xl p-8">
               <div className="mb-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500/20 to-pink-400/20 border border-purple-500/50 rounded-xl flex items-center justify-center">
-                    <Radar className="w-5 h-5 text-purple-400" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-teal-500/20 to-cyan-400/20 border border-teal-500/50 rounded-xl flex items-center justify-center">
+                    <Radar className="w-5 h-5 text-teal-400" />
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold text-white font-display">
@@ -1348,10 +1348,10 @@ const DealDetailPage = () => {
                 </div>
               </div>
 
-              <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4 mb-6">
+              <div className="bg-teal-500/10 border border-teal-500/30 rounded-xl p-4 mb-6">
                 <div className="flex items-start space-x-3">
-                  <Info className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-purple-200">
+                  <Info className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-teal-200">
                     <p className="font-bold mb-1">📱 Why eSIM?</p>
                     <p>Skip expensive roaming charges! Install an eSIM before your trip for instant data when you land. No physical SIM card needed.</p>
                   </div>
@@ -1365,7 +1365,7 @@ const DealDetailPage = () => {
                     href={esim.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/50 text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:shadow-lg hover:shadow-purple-500/20 font-display"
+                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold transition-all transform hover:scale-105 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 border border-teal-500/50 text-teal-300 hover:from-teal-500/30 hover:to-cyan-500/30 hover:shadow-lg hover:shadow-teal-500/20 font-display"
                   >
                     <Radar className="w-4 h-4" />
                     <span>{esim.name}</span>
