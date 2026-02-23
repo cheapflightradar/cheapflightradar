@@ -101,46 +101,6 @@ const activeDeals = [
     ]
   },
   {
-    id: 4,
-    slug: 'miami-florida',
-    city: 'austin',
-    destination: 'Miami, FL',
-    price: 91,
-    originalPrice: 340,
-    airline: 'AA',
-    dates: 'Mar-Jun 2026',
-    route: 'AUS → MIA',
-    type: 'Domestic',
-    image: 'https://plus.unsplash.com/premium_photo-1697730215093-baeae8060bfe?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['Nonstop', 'Beach'],
-    savings: 27,
-    detectedAt: '2026-02-18T17:00:00Z',
-    status: 'active',
-    dealDetails: {
-      baggage: '1 carry-on, 1 personal item',
-      stops: 'Nonstop',
-      duration: '2h 50m',
-      bookingClass: 'Economy',
-      alliance: 'Oneworld (American Airlines)'
-    },
-    destinationInfo: {
-      visa: 'N/A (domestic)',
-      currency: 'USD',
-      bestTime: 'December-May (dry season, beach weather)',
-      topTips: [
-        'South Beach is touristy - try Mid-Beach for less crowds',
-        'Rent a bike to cruise Ocean Drive',
-        'Little Havana for authentic Cuban food',
-        'Wynwood Walls has amazing street art (free entry)',
-        'Book South Beach parking in advance - very limited'
-      ]
-    },
-    verifiedDates: [
-      { outbound: 'Mar 20', return: 'Mar 27', length: 7, dayOfWeek: 'Thu' },
-      { outbound: 'Apr 03', return: 'Apr 10', length: 7, dayOfWeek: 'Thu' },
-    ]
-  },
-  {
     id: 5,
     slug: 'paris-france',
     city: 'houston',
