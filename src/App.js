@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
-import { Search, MapPin, Calendar, DollarSign, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, Plane, TrendingDown, Bell, Menu, X, ArrowLeft, Info, Share2, Heart, ExternalLink, Radar, SlidersHorizontal, Building, Package, ChevronLeft, ChevronRight } from 'lucide-react';
 import activeDeals from './data/activeDeals';
 import archivedDeals from './data/archivedDeals';
 
@@ -129,19 +129,64 @@ const StickyEmailBar = ({ origin }) => {
   );
 };
 
+// ==================== EMAIL CAPTURE SECTION COMPONENT ====================
+const EmailCaptureSection = ({ cityName }) => {
+  const [email, setEmail] = useState('');
+  const { subscribe, status } = useSubscribe();
+
+  if (status === 'success') {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-slate-800/40 border border-emerald-500/30 rounded-2xl p-6 text-center">
+          <p className="text-emerald-400 font-bold">✅ You're on the radar! Deals from {cityName} coming your way.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="bg-slate-800/40 border border-slate-700 rounded-2xl p-6 sm:p-8">
+        <div className="max-w-xl mx-auto text-center">
+          <p className="text-lg font-bold text-white mb-1">Get flight deals under $400 from {cityName}</p>
+          <p className="text-sm text-slate-400 mb-5">No spam. Just cheap flights.</p>
+          <form onSubmit={(e) => { e.preventDefault(); subscribe(email); }} className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+              disabled={status === 'loading'}
+              className="flex-1 px-5 py-4 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-sm"
+            />
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 rounded-xl font-bold hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 whitespace-nowrap font-display disabled:opacity-60"
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Me Deals'}
+            </button>
+          </form>
+          {status === 'error' && <p className="text-red-400 text-xs mt-2">Something went wrong. Please try again.</p>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // ==================== HOMEPAGE COMPONENT ====================
 const HomePage = () => {
   const navigate = useNavigate();
   const [selectedCity, setSelectedCity] = useState('austin');
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [searchTerm, setSearchTerm] = useState(''); // temporarily disabled — re-enable with search UI when needed
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [ctaEmail, setCtaEmail] = useState('');
   const { subscribe: ctaSubscribe, status: ctaStatus } = useSubscribe();
   const [archivedPage, setArchivedPage] = useState(0); // 0-indexed page for expired deals
-  const [savingsTooltip, setSavingsTooltip] = useState(false);
-  const [scansTooltip, setScansTooltip] = useState(false);
 
   // Reset archived page when city changes
   useEffect(() => { setArchivedPage(0); }, [selectedCity]);
@@ -170,6 +215,13 @@ const HomePage = () => {
     return `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'} ago`;
   };
 
+  // Returns urgency badge label + color for a deal card based on savings %
+  const getUrgencyBadge = (savings) => {
+    if (savings > 40) return { text: `⚡ Major Price Drop · ${savings}% OFF`, className: 'bg-gradient-to-r from-red-500 to-orange-500 text-white' };
+    if (savings > 25) return { text: `🔥 Limited Fare · ${savings}% OFF`, className: 'bg-gradient-to-r from-orange-500 to-yellow-500 text-white' };
+    return { text: `${savings}% OFF`, className: 'bg-gradient-to-r from-red-500 to-orange-500 text-white' };
+  };
+
   const cities = [
     { id: 'austin', name: 'Austin', airport: 'AUS', emoji: '🌮' },
     { id: 'houston', name: 'Houston', airport: 'IAH', emoji: '🚀' },
@@ -188,9 +240,10 @@ const HomePage = () => {
   const filteredDeals = activeDeals.filter(deal => {
     const matchesCity = deal.city === selectedCity;
     const matchesFilter = selectedFilter === 'all' || deal.type === selectedFilter;
-    const matchesSearch = deal.destination.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         deal.route.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCity && matchesFilter && matchesSearch;
+    // Search bar temporarily disabled — re-enable by uncommenting below and adding && matchesSearch to return
+    // const matchesSearch = deal.destination.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    //                       deal.route.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCity && matchesFilter;
   });
 
   // Archived deals for current city, sorted newest first (archivedDeals.js is already newest-first)
@@ -264,80 +317,58 @@ const HomePage = () => {
         </div>
       </nav>
 
-      <div className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 20%, rgba(16, 185, 129, 0.1) 20%, rgba(16, 185, 129, 0.1) 21%, transparent 21%), 
-                             radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(16, 185, 129, 0.1) 40%, rgba(16, 185, 129, 0.1) 41%, transparent 41%), 
-                             radial-gradient(circle at center, transparent 0%, transparent 60%, rgba(16, 185, 129, 0.1) 60%, rgba(16, 185, 129, 0.1) 61%, transparent 61%), 
-                             radial-gradient(circle at center, transparent 0%, transparent 80%, rgba(16, 185, 129, 0.1) 80%, rgba(16, 185, 129, 0.1) 81%, transparent 81%)`,
-            backgroundSize: '100% 100%'
-          }}></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center max-w-4xl mx-auto mb-12">
-            <div className="inline-flex items-center space-x-2 mb-6 px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 rounded-full text-sm font-bold backdrop-blur-sm animate-pulse">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
-              <span>🎯 SCANNING ACTIVE • 1,247 ROUTES MONITORED</span>
+      {/* ==================== COMPACT ABOVE-FOLD HEADER ==================== */}
+      <div className="pt-24 pb-6 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Scanning badge + headline */}
+          <div className="mb-6 text-center">
+            <div className="inline-flex items-center space-x-2 mb-3 px-4 py-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 rounded-full text-xs font-bold">
+              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></div>
+              <span>SCANNING ACTIVE · {filteredDeals.length} DEALS FOUND</span>
             </div>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight font-display">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-300">
-                Your Flight Deal
+            <h2 className="text-3xl sm:text-4xl font-bold text-white font-display leading-tight">
+              🔥 Today's Cheapest Flights From{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-300">
+                {currentCity.name}
               </span>
-              <br />
-              <span className="text-white">Detection System</span>
             </h2>
-            <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-              We scan the skies 24/7, detecting price drops and alerting you the moment a deal appears. From Texas to anywhere, for a fraction of the cost.
+            <p className="text-slate-400 text-sm mt-2">
+              Updated continuously · Prices may change anytime · Book fast
             </p>
-
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="relative">
-                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-emerald-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search detected deals... (Tokyo, London, Cancún)"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-14 pr-6 py-4 rounded-2xl border-2 border-emerald-500/30 bg-slate-800/50 backdrop-blur-sm text-white placeholder-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 transition-all text-lg shadow-xl"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {cities.map((city) => (
-                <button
-                  key={city.id}
-                  onClick={() => setSelectedCity(city.id)}
-                  className={`px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2 transform hover:scale-105 font-display ${
-                    selectedCity === city.id
-                      ? 'bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 shadow-lg shadow-emerald-500/50'
-                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 border-2 border-slate-700'
-                  }`}
-                >
-                  <span>{city.emoji}</span>
-                  <span>{city.name}</span>
-                  <span className="text-xs opacity-75">({city.airport})</span>
-                </button>
-              ))}
-            </div>
           </div>
-
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {/* City selector */}
+          <div className="flex flex-wrap gap-2 mb-4 justify-center">
+            {cities.map((city) => (
+              <button
+                key={city.id}
+                onClick={() => setSelectedCity(city.id)}
+                className={`px-5 py-2.5 rounded-full font-bold transition-all duration-300 flex items-center space-x-2 font-display text-sm ${
+                  selectedCity === city.id
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 shadow-lg shadow-emerald-500/40'
+                    : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 border border-slate-700'
+                }`}
+              >
+                <span>{city.emoji}</span>
+                <span>{city.name}</span>
+                <span className="text-xs opacity-75">({city.airport})</span>
+              </button>
+            ))}
+          </div>
+          {/* Category filters */}
+          <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((category) => {
               const Icon = category.icon;
               return (
                 <button
                   key={category.id}
                   onClick={() => setSelectedFilter(category.id)}
-                  className={`px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center space-x-2 transform hover:scale-105 font-display ${
+                  className={`px-5 py-2 rounded-full font-bold transition-all duration-300 flex items-center space-x-2 font-display text-sm ${
                     selectedFilter === category.id
-                      ? 'bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 shadow-lg shadow-emerald-500/50'
-                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 border-2 border-slate-700'
+                      ? 'bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 shadow-lg shadow-emerald-500/40'
+                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 border border-slate-700'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                   <span>{category.label}</span>
                 </button>
               );
@@ -346,82 +377,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          {/* Box 1: Deals Detected — scrolls to deals */}
-          <div
-            onClick={() => document.getElementById('deals').scrollIntoView({ behavior: 'smooth' })}
-            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">DEALS DETECTED</p>
-                <p className="text-3xl font-bold text-white font-display">{filteredDeals.length}</p>
-                <p className="text-xs text-emerald-400 mt-1 font-bold group-hover:underline">View all deals →</p>
-              </div>
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-400/20 border border-emerald-500/50 rounded-xl flex items-center justify-center">
-                <TrendingDown className="w-6 h-6 text-emerald-400" />
-              </div>
-            </div>
-          </div>
-
-          {/* Box 2: Avg Savings — info tooltip */}
-          <div className="relative">
-            <div
-              onClick={() => setSavingsTooltip(o => !o)}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">AVG SAVINGS</p>
-                  <p className="text-3xl font-bold text-white font-display">53%</p>
-                  <p className="text-xs text-cyan-400 mt-1 font-bold group-hover:underline">How we calculate this →</p>
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-cyan-400/20 border border-cyan-500/50 rounded-xl flex items-center justify-center">
-                  <DollarSign className="w-6 h-6 text-cyan-400" />
-                </div>
-              </div>
-            </div>
-            {savingsTooltip && (
-              <div className="absolute z-20 top-full mt-2 left-0 right-0 bg-slate-900 border border-cyan-500/50 rounded-xl p-4 shadow-2xl shadow-cyan-500/10">
-                <button onClick={() => setSavingsTooltip(false)} className="absolute top-2 right-2 p-1 text-slate-500 hover:text-white"><X className="w-4 h-4" /></button>
-                <p className="text-cyan-300 font-bold text-sm mb-1">📊 How we calculate savings</p>
-                <p className="text-slate-300 text-xs leading-relaxed">We compare each deal's price against 90-day historical averages for that exact route. The 53% figure is the median saving across all deals we've published in the last 30 days.</p>
-              </div>
-            )}
-          </div>
-
-          {/* Box 3: Active Scans — info tooltip */}
-          <div className="relative">
-            <div
-              onClick={() => setScansTooltip(o => !o)}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-slate-400 mb-1 font-bold tracking-wider font-display">ACTIVE SCANS</p>
-                  <p className="text-3xl font-bold text-white font-display">1,247</p>
-                  <p className="text-xs text-emerald-400 mt-1 font-bold group-hover:underline">What are we scanning? →</p>
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-400/20 border border-emerald-500/50 rounded-xl flex items-center justify-center">
-                  <Radar className="w-6 h-6 text-emerald-400" />
-                </div>
-              </div>
-            </div>
-            {scansTooltip && (
-              <div className="absolute z-20 top-full mt-2 left-0 right-0 bg-slate-900 border border-emerald-500/50 rounded-xl p-4 shadow-2xl shadow-emerald-500/10">
-                <button onClick={() => setScansTooltip(false)} className="absolute top-2 right-2 p-1 text-slate-500 hover:text-white"><X className="w-4 h-4" /></button>
-                <p className="text-emerald-300 font-bold text-sm mb-1">🛰️ What we monitor</p>
-                <p className="text-slate-300 text-xs leading-relaxed">We scan 1,247 routes departing from Austin, Houston, Dallas, and San Antonio — every 6 hours, 24/7. When a price drops 40%+ below the historical average, we flag it as a deal.</p>
-              </div>
-            )}
-          </div>
-
-        </div>
-      </div>
-
-      <div id="deals" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div id="deals" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <div className="text-center mb-12">
           <div className="inline-flex items-center space-x-2 mb-4">
             <Radar className="w-6 h-6 text-emerald-400 animate-pulse" />
@@ -440,7 +396,9 @@ const HomePage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredDeals.map((deal) => (
+            {filteredDeals.map((deal) => {
+              const urgencyBadge = getUrgencyBadge(deal.savings);
+              return (
               <div
                 key={deal.id}
                 onClick={() => navigate('/deals/' + deal.slug)}
@@ -450,10 +408,11 @@ const HomePage = () => {
                   <img
                     src={deal.image}
                     alt={deal.destination}
+                    loading="lazy"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                    {deal.savings}% OFF
+                  <div className={`absolute top-4 right-4 px-3 py-1.5 rounded-full text-xs font-bold shadow-lg ${urgencyBadge.className}`}>
+                    {urgencyBadge.text}
                   </div>
                   <div className="absolute top-4 left-4 flex items-center space-x-1 bg-emerald-500/90 text-white px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm">
                     <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
@@ -496,15 +455,48 @@ const HomePage = () => {
                     ))}
                   </div>
 
-                  <button className="w-full bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-emerald-500/50 transform hover:scale-105 transition-all duration-300">
-                    View Deal →
+                  <button className="w-full bg-gradient-to-r from-emerald-500 to-cyan-400 text-slate-900 py-4 rounded-xl font-bold hover:shadow-lg hover:shadow-emerald-500/50 transform hover:scale-105 transition-all duration-300">
+                    Book Before It Changes →
                   </button>
+                  <p className="text-xs text-slate-400 opacity-80 text-center mt-2">
+                    Price verified recently · May increase anytime
+                  </p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
+
+      {/* ==================== LEGACY HERO — ABOVE EMAIL CAPTURE ==================== */}
+      <div className="relative pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        {/* Radar rings — desktop only, hidden on mobile for performance */}
+        <div className="absolute inset-0 opacity-10 hidden md:block" aria-hidden="true">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 20%, rgba(16, 185, 129, 0.1) 20%, rgba(16, 185, 129, 0.1) 21%, transparent 21%),
+                             radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(16, 185, 129, 0.1) 40%, rgba(16, 185, 129, 0.1) 41%, transparent 41%),
+                             radial-gradient(circle at center, transparent 0%, transparent 60%, rgba(16, 185, 129, 0.1) 60%, rgba(16, 185, 129, 0.1) 61%, transparent 61%),
+                             radial-gradient(circle at center, transparent 0%, transparent 80%, rgba(16, 185, 129, 0.1) 80%, rgba(16, 185, 129, 0.1) 81%, transparent 81%)`,
+            backgroundSize: '100% 100%'
+          }}></div>
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-300">
+              Your Flight Deal
+            </span>
+            <br />
+            <span className="text-white">Detection System</span>
+          </h2>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            We scan the skies 24/7, detecting price drops and alerting you the moment a deal appears. From Texas to anywhere, for a fraction of the cost.
+          </p>
+        </div>
+      </div>
+
+      {/* ==================== EMAIL CAPTURE — AFTER HERO ==================== */}
+      <EmailCaptureSection cityName={currentCity.name} />
 
       {cityArchivedDeals.length > 0 && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -763,11 +755,13 @@ const HomePage = () => {
         </div>
       </footer>
 
+      <StickyEmailBar origin={currentCity.airport} />
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
         * { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Rajdhani', sans-serif; }
-        
+
         @keyframes slide-up {
           from {
             transform: translateY(100%);
@@ -778,7 +772,7 @@ const HomePage = () => {
             opacity: 1;
           }
         }
-        
+
         .animate-slide-up {
           animation: slide-up 0.5s ease-out;
         }
