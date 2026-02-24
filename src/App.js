@@ -1406,6 +1406,25 @@ const DealDetailPage = () => {
                       </ul>
                     </div>
                   )}
+                  {deal.destinationInfo.attractions && deal.destinationInfo.attractions.length > 0 && (
+                    <div className="pt-3 border-t border-blue-500/20">
+                      <div className="text-xs font-bold text-blue-300 mb-2">🎟️ THINGS TO DO</div>
+                      <div className="space-y-2">
+                        {deal.destinationInfo.attractions.map((attraction, index) => (
+                          <a
+                            key={index}
+                            href={attraction.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between p-2.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/50 transition-all group"
+                          >
+                            <span className="text-sm text-slate-300 group-hover:text-white transition-colors">{attraction.name}</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-blue-400 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-2 transition-opacity" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
