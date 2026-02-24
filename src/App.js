@@ -807,22 +807,14 @@ const DealDetailPage = () => {
   const KIWI_AFFILID = 'travelpayoutsdeeplink_cheapflightradar.com_1903a8e6c5814ff2bbad35a7c-703930';
 
   const hotelLinks = [
-    { name: 'Booking.com', url: 'https://www.booking.com', affiliateId: 'YOUR_BOOKING_ID' },
-    { name: 'Hotels.com', url: 'https://www.hotels.com', affiliateId: 'YOUR_HOTELS_ID' },
-    { name: 'Expedia Hotels', url: 'https://www.expedia.com/Hotels', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { name: 'Priceline Hotels', url: 'https://www.priceline.com/hotels', affiliateId: 'YOUR_PRICELINE_ID' },
-    { name: 'Agoda', url: 'https://www.agoda.com', affiliateId: 'YOUR_AGODA_ID' },
-    { name: 'Airbnb', url: 'https://www.airbnb.com', affiliateId: 'YOUR_AIRBNB_ID' },
+    { name: 'Expedia Hotels', url: 'https://www.kqzyfj.com/click-101689576-15488923' },
   ];
 
   const esimLinks = [
-    { name: 'Airalo', url: 'https://www.airalo.com' },
-    { name: 'Holafly', url: 'https://esim.holafly.com' },
-    { name: 'Nomad', url: 'https://www.getnomad.app' },
-    { name: 'Ubigi', url: 'https://cellulardata.ubigi.com' },
-    { name: 'SimOptions', url: 'https://www.simoptions.com' },
-    { name: 'eSIM Go', url: 'https://esimgo.com' },
-  ].filter(esim => esim.url !== '');
+    { name: 'Saily', url: 'https://saily.tpx.gr/yOJg905y' },
+    { name: 'Airalo', url: 'https://airalo.tpx.gr/OfM2Xs4n' },
+    { name: 'Yesim', url: 'https://yesim.tpx.gr/nyV5W6J0' },
+  ];
 
   const getRelativeTime = (timestamp) => {
     const now = new Date();
@@ -857,33 +849,17 @@ const DealDetailPage = () => {
 
   const buildHotelUrl = (platform, date, deal) => {
     const destination = deal.destination.split(',')[0];
-    
+
     const parseDate = (dateStr) => {
-      const months = { Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
+      const months = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
       const [month, day] = dateStr.split(' ');
-      return `2026-${months[month]}-${day}`;
+      return `2026-${months[month]}-${day.padStart(2, '0')}`;
     };
-    
+
     const checkIn = parseDate(date.outbound);
     const checkOut = parseDate(date.return);
-    const affiliateId = platform.affiliateId || '';
-    
-    switch (platform.name) {
-      case 'Booking.com':
-        return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}${affiliateId ? `&aid=${affiliateId}` : ''}`;
-      case 'Hotels.com':
-        return `https://www.hotels.com/search.do?q-destination=${encodeURIComponent(destination)}&q-check-in=${checkIn}&q-check-out=${checkOut}${affiliateId ? `&affid=${affiliateId}` : ''}`;
-      case 'Expedia Hotels':
-        return `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(destination)}&startDate=${checkIn}&endDate=${checkOut}${affiliateId ? `&affid=${affiliateId}` : ''}`;
-      case 'Priceline Hotels':
-        return `https://www.priceline.com/relax/at/${encodeURIComponent(destination)}/from/${checkIn}/to/${checkOut}${affiliateId ? `?refid=${affiliateId}` : ''}`;
-      case 'Agoda':
-        return `https://www.agoda.com/search?city=${encodeURIComponent(destination)}&checkIn=${checkIn}&checkOut=${checkOut}${affiliateId ? `&cid=${affiliateId}` : ''}`;
-      case 'Airbnb':
-        return `https://www.airbnb.com/s/${encodeURIComponent(destination)}/homes?checkin=${checkIn}&checkout=${checkOut}`;
-      default:
-        return `${platform.url}/search?destination=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}`;
-    }
+    const expediaDeepLink = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(destination)}&startDate=${checkIn}&endDate=${checkOut}`;
+    return `https://www.kqzyfj.com/click-101689576-15488923?url=${encodeURIComponent(expediaDeepLink)}`;
   };
 
   const generateDateCombinations = () => {
@@ -1203,6 +1179,7 @@ const DealDetailPage = () => {
               </div>
 
               {/* GENERAL HOTEL LINKS */}
+              {/* Commented out - only Expedia affiliate for now, may re-enable later
               <div className="pt-6 border-t border-slate-700">
                 <h3 className="text-white font-bold mb-3">Or browse all hotels:</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -1221,6 +1198,7 @@ const DealDetailPage = () => {
                   ))}
                 </div>
               </div>
+              */}
 
               <div className="mt-6 text-center">
                 <p className="text-xs text-slate-400">
@@ -1246,43 +1224,17 @@ const DealDetailPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="flex justify-center">
                 <a
-                  href="https://www.expedia.com/Packages"
+                  href="https://www.dpbolvw.net/click-101689576-13364951"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
+                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center max-w-sm w-full"
                 >
                   <div className="font-bold text-white text-lg mb-2">Expedia Packages</div>
                   <div className="text-purple-300 text-sm mb-3">Flight + Hotel bundles</div>
                   <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
                     Up to 25% off
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.priceline.com/packages"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
-                >
-                  <div className="font-bold text-white text-lg mb-2">Priceline Express</div>
-                  <div className="text-purple-300 text-sm mb-3">Mystery hotel deals</div>
-                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
-                    Up to 40% off
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.booking.com/packages"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center"
-                >
-                  <div className="font-bold text-white text-lg mb-2">Booking.com Packages</div>
-                  <div className="text-purple-300 text-sm mb-3">Flexible packages</div>
-                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
-                    Up to 20% off
                   </div>
                 </a>
               </div>
