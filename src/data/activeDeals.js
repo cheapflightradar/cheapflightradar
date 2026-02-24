@@ -33,7 +33,7 @@ const activeDeals = [
       topTips: [
         'The Atlanta BeltLine is the best free attraction — 22 miles of trails connecting neighborhoods, murals, and food',
         'Ponce City Market in Old Fourth Ward is a must — great food hall, rooftop mini golf, and amazing views',
-        'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line',
+        { text: 'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line', attraction: 'Georgia Aquarium' },
         'MARTA rail connects the airport to downtown/Midtown in 20 minutes for $2.50 — skip the Uber',
         'Martin Luther King Jr. National Historic Site is free and one of the most moving experiences in the South',
       ],
@@ -81,7 +81,7 @@ const activeDeals = [
       topTips: [
         'The Atlanta BeltLine is the best free attraction — 22 miles of trails connecting neighborhoods, murals, and food',
         'Ponce City Market in Old Fourth Ward is a must — great food hall, rooftop mini golf, and amazing views',
-        'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line',
+        { text: 'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line', attraction: 'Georgia Aquarium' },
         'MARTA rail connects the airport to downtown/Midtown in 20 minutes for $2.50 — skip the Uber',
         'Martin Luther King Jr. National Historic Site is free and one of the most moving experiences in the South',
       ],
@@ -129,7 +129,7 @@ const activeDeals = [
       topTips: [
         'The Atlanta BeltLine is the best free attraction — 22 miles of trails connecting neighborhoods, murals, and food',
         'Ponce City Market in Old Fourth Ward is a must — great food hall, rooftop mini golf, and amazing views',
-        'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line',
+        { text: 'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line', attraction: 'Georgia Aquarium' },
         'MARTA rail connects the airport to downtown/Midtown in 20 minutes for $2.50 — skip the Uber',
         'Martin Luther King Jr. National Historic Site is free and one of the most moving experiences in the South',
       ],
@@ -177,7 +177,7 @@ const activeDeals = [
       topTips: [
         'The Atlanta BeltLine is the best free attraction — 22 miles of trails connecting neighborhoods, murals, and food',
         'Ponce City Market in Old Fourth Ward is a must — great food hall, rooftop mini golf, and amazing views',
-        'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line',
+        { text: 'The Georgia Aquarium is the largest in the Western Hemisphere — book tickets online to skip the line', attraction: 'Georgia Aquarium' },
         'MARTA rail connects the airport to downtown/Midtown in 20 minutes for $2.50 — skip the Uber',
         'Martin Luther King Jr. National Historic Site is free and one of the most moving experiences in the South',
       ],

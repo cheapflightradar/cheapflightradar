@@ -1403,32 +1403,38 @@ const DealDetailPage = () => {
                     <div>
                       <div className="text-xs font-bold text-blue-300 mb-2">INSIDER TIPS</div>
                       <ul className="space-y-2">
-                        {deal.destinationInfo.topTips.map((tip, index) => (
-                          <li key={index} className="flex items-start space-x-2 text-sm text-slate-300">
-                            <span className="text-blue-400 mt-0.5">•</span>
-                            <span>{tip}</span>
-                          </li>
-                        ))}
+                        {deal.destinationInfo.topTips.map((tip, index) => {
+                          const isLinked = typeof tip === 'object' && tip.attraction;
+                          if (isLinked) {
+                            const parts = tip.text.split(tip.attraction);
+                            return (
+                              <li key={index} className="flex items-start space-x-2 text-sm text-slate-300">
+                                <span className="text-blue-400 mt-0.5">•</span>
+                                <span>
+                                  {parts[0]}
+                                  <a
+                                    href={buildAttractionUrl(tip.attraction)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-300 underline underline-offset-2 hover:text-blue-200 inline-flex items-center gap-0.5"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    {tip.attraction}
+                                    <ExternalLink className="w-3 h-3 opacity-70 flex-shrink-0" />
+                                  </a>
+                                  {parts[1]}
+                                </span>
+                              </li>
+                            );
+                          }
+                          return (
+                            <li key={index} className="flex items-start space-x-2 text-sm text-slate-300">
+                              <span className="text-blue-400 mt-0.5">•</span>
+                              <span>{typeof tip === 'string' ? tip : tip.text}</span>
+                            </li>
+                          );
+                        })}
                       </ul>
-                    </div>
-                  )}
-                  {deal.destinationInfo.attractions && deal.destinationInfo.attractions.length > 0 && (
-                    <div className="pt-3 border-t border-blue-500/20">
-                      <div className="text-xs font-bold text-blue-300 mb-2">🎟️ THINGS TO DO</div>
-                      <div className="space-y-2">
-                        {deal.destinationInfo.attractions.map((attraction, index) => (
-                          <a
-                            key={index}
-                            href={buildAttractionUrl(attraction)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-between p-2.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/50 transition-all group"
-                          >
-                            <span className="text-sm text-slate-300 group-hover:text-white transition-colors">{attraction}</span>
-                            <ExternalLink className="w-3.5 h-3.5 text-blue-400 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-2 transition-opacity" />
-                          </a>
-                        ))}
-                      </div>
                     </div>
                   )}
                 </div>
