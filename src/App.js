@@ -805,6 +805,12 @@ const DealDetailPage = () => {
     );
   }
   const KIWI_AFFILID = 'travelpayoutsdeeplink_cheapflightradar.com_1903a8e6c5814ff2bbad35a7c-703930';
+  const EXPEDIA_ACTIVITIES_AFFILID = 'https://www.tkqlhce.com/click-101689576-12639039';
+
+  const buildAttractionUrl = (attractionName) => {
+    const expediaUrl = `https://www.expedia.com/things-to-do/search?location=${encodeURIComponent(attractionName)}`;
+    return `${EXPEDIA_ACTIVITIES_AFFILID}?url=${encodeURIComponent(expediaUrl)}`;
+  };
 
   const hotelLinks = [
     { name: 'Expedia Hotels', url: 'https://www.kqzyfj.com/click-101689576-15488923' },
@@ -1413,12 +1419,12 @@ const DealDetailPage = () => {
                         {deal.destinationInfo.attractions.map((attraction, index) => (
                           <a
                             key={index}
-                            href={attraction.url}
+                            href={buildAttractionUrl(attraction)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-between p-2.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/50 transition-all group"
                           >
-                            <span className="text-sm text-slate-300 group-hover:text-white transition-colors">{attraction.name}</span>
+                            <span className="text-sm text-slate-300 group-hover:text-white transition-colors">{attraction}</span>
                             <ExternalLink className="w-3.5 h-3.5 text-blue-400 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-2 transition-opacity" />
                           </a>
                         ))}
