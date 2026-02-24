@@ -804,7 +804,7 @@ const DealDetailPage = () => {
       </div>
     );
   }
-  const KIWI_AFFILIATE_BASE = 'https://kiwi.tpx.gr/5lFIeRk3';
+  const KIWI_AFFILID = 'travelpayoutsdeeplink_cheapflightradar.com_1903a8e6c5814ff2bbad35a7c-703930';
 
   const hotelLinks = [
     { name: 'Booking.com', url: 'https://www.booking.com', affiliateId: 'YOUR_BOOKING_ID' },
@@ -852,8 +852,7 @@ const DealDetailPage = () => {
     const departDate = parseDate(date.outbound);
     const returnDate = parseDate(date.return);
 
-    const kiwiDeepLink = `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${departDate}&return=${returnDate}&adults=1&cabinClass=economy`;
-    return `${KIWI_AFFILIATE_BASE}?custom_url=${encodeURIComponent(kiwiDeepLink)}`;
+    return `https://www.kiwi.com/deep?affilid=${KIWI_AFFILID}&from=${origin}&to=${destination}&departure=${departDate}&return=${returnDate}&adults=1&cabinClass=economy`;
   };
 
   const buildHotelUrl = (platform, date, deal) => {
