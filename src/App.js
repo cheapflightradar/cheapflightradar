@@ -804,7 +804,7 @@ const DealDetailPage = () => {
       </div>
     );
   }
-  const KIWI_AFFILIATE_URL = 'https://kiwi.tpx.gr/5lFIeRk3';
+  const KIWI_AFFILIATE_BASE = 'https://kiwi.tpx.gr/5lFIeRk3';
 
   const hotelLinks = [
     { name: 'Booking.com', url: 'https://www.booking.com', affiliateId: 'YOUR_BOOKING_ID' },
@@ -839,7 +839,22 @@ const DealDetailPage = () => {
     return `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'} ago`;
   };
 
-  const buildFlightUrl = () => KIWI_AFFILIATE_URL;
+  const buildFlightUrl = (date, deal) => {
+    const [origin, destination] = deal.route.split(' → ');
+
+    const parseDate = (dateStr) => {
+      const months = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
+      const [month, day] = dateStr.trim().split(' ');
+      const paddedDay = day.padStart(2, '0');
+      return `2026-${months[month]}-${paddedDay}`;
+    };
+
+    const departDate = parseDate(date.outbound);
+    const returnDate = parseDate(date.return);
+
+    const kiwiDeepLink = `https://www.kiwi.com/deep?from=${origin}&to=${destination}&departure=${departDate}&return=${returnDate}&adults=1&cabinClass=economy`;
+    return `${KIWI_AFFILIATE_BASE}?custom_url=${encodeURIComponent(kiwiDeepLink)}`;
+  };
 
   const buildHotelUrl = (platform, date, deal) => {
     const destination = deal.destination.split(',')[0];
@@ -1090,7 +1105,7 @@ const DealDetailPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
                 {filteredDates.map((date, index) => {
-                  const dynamicUrl = buildFlightUrl();
+                  const dynamicUrl = buildFlightUrl(date, deal);
                   
                   return (
                     <a
