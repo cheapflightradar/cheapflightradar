@@ -804,28 +804,7 @@ const DealDetailPage = () => {
       </div>
     );
   }
-  const affiliateLinks = [
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },
-    { site: 'google', affiliateId: '' },
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { site: 'priceline', affiliateId: 'YOUR_PRICELINE_ID' },
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-    { site: 'expedia', affiliateId: 'YOUR_EXPEDIA_ID' },
-    { site: 'skyscanner', affiliateId: 'YOUR_SKYSCANNER_ID' },
-    { site: 'kayak', affiliateId: 'YOUR_KAYAK_ID' },
-  ].filter(link => link.affiliateId !== '');
+  const KIWI_AFFILIATE_URL = 'https://kiwi.tpx.gr/5lFIeRk3';
 
   const hotelLinks = [
     { name: 'Booking.com', url: 'https://www.booking.com', affiliateId: 'YOUR_BOOKING_ID' },
@@ -860,36 +839,7 @@ const DealDetailPage = () => {
     return `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'} ago`;
   };
 
-  const buildFlightUrl = (link, date, deal) => {
-    const [origin, destination] = deal.route.split(' → ');
-    
-    const parseDate = (dateStr) => {
-      const months = { Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
-      const [month, day] = dateStr.split(' ');
-      return `2026-${months[month]}-${day}`;
-    };
-    
-    const departDate = parseDate(date.outbound);
-    const returnDate = parseDate(date.return);
-    
-    const formatSkyscannerDate = (dateStr) => dateStr.replace(/-/g, '').substring(2);
-    const formatPricelineDate = (dateStr) => dateStr.replace(/-/g, '');
-    
-    switch (link.site) {
-      case 'skyscanner':
-        return `https://www.skyscanner.com/transport/flights/${origin}/${destination}/${formatSkyscannerDate(departDate)}/${formatSkyscannerDate(returnDate)}/?adultsv2=1&cabinclass=economy&rtn=1${link.affiliateId ? `&associateid=${link.affiliateId}` : ''}`;
-      case 'kayak':
-        return `https://www.kayak.com/flights/${origin}-${destination}/${departDate}/${returnDate}?sort=bestflight_a${link.affiliateId ? `&aid=${link.affiliateId}` : ''}`;
-      case 'expedia':
-        return `https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:${origin},to:${destination},departure:${departDate}&leg2=from:${destination},to:${origin},departure:${returnDate}${link.affiliateId ? `&affid=${link.affiliateId}` : ''}`;
-      case 'priceline':
-        return `https://www.priceline.com/fly/search/${origin}-${destination}-${formatPricelineDate(departDate)}/${destination}-${origin}-${formatPricelineDate(returnDate)}/${link.affiliateId ? `?refid=${link.affiliateId}` : ''}`;
-      case 'google':
-        return `https://www.google.com/travel/flights?q=Flights%20to%20${destination}%20from%20${origin}%20on%20${departDate}%20through%20${returnDate}`;
-      default:
-        return '#';
-    }
-  };
+  const buildFlightUrl = () => KIWI_AFFILIATE_URL;
 
   const buildHotelUrl = (platform, date, deal) => {
     const destination = deal.destination.split(',')[0];
@@ -1140,9 +1090,7 @@ const DealDetailPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
                 {filteredDates.map((date, index) => {
-                  const linkIndex = index % affiliateLinks.length;
-                  const linkConfig = affiliateLinks[linkIndex];
-                  const dynamicUrl = buildFlightUrl(linkConfig, date, deal);
+                  const dynamicUrl = buildFlightUrl();
                   
                   return (
                     <a
