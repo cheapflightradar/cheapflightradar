@@ -805,11 +805,9 @@ const DealDetailPage = () => {
     );
   }
   const KIWI_AFFILID = 'travelpayoutsdeeplink_cheapflightradar.com_1903a8e6c5814ff2bbad35a7c-703930';
-  const EXPEDIA_ACTIVITIES_AFFILID = 'https://www.tkqlhce.com/click-101689576-12639039';
-
   const buildAttractionUrl = (attractionName) => {
     const expediaUrl = `https://www.expedia.com/things-to-do/search?location=${encodeURIComponent(attractionName)}`;
-    return `${EXPEDIA_ACTIVITIES_AFFILID}?url=${encodeURIComponent(expediaUrl)}`;
+    return `https://www.kqzyfj.com/click-101689576-15488923?url=${encodeURIComponent(expediaUrl)}`;
   };
 
   const hotelLinks = [
