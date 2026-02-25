@@ -862,8 +862,8 @@ const DealDetailPage = () => {
 
     const startDate = parseDate(date.outbound);
     const endDate = parseDate(date.return);
-    const expediaPackageLink = `https://www.expedia.com/Vacation-Packages-Results?destination=${encodeURIComponent(destination)}&startDate=${startDate}&endDate=${endDate}&adults=2&children=0`;
-    return `https://www.dpbolvw.net/click-101689576-13364951?url=${encodeURIComponent(expediaPackageLink)}`;
+    const expediaPackageLink = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(destination)}&startDate=${startDate}&endDate=${endDate}&adults=2`;
+    return `https://www.kqzyfj.com/click-101689576-15488923?url=${encodeURIComponent(expediaPackageLink)}`;
   };
 
   const buildHotelUrl = (platform, date, deal) => {
