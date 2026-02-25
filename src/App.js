@@ -851,6 +851,21 @@ const DealDetailPage = () => {
     return `https://www.kiwi.com/deep?affilid=${KIWI_AFFILID}&from=${origin}&to=${destination}&departure=${departDate}&return=${returnDate}&adults=1&cabinClass=economy`;
   };
 
+  const buildPackageUrl = (date, deal) => {
+    const destination = deal.destination.split(',')[0];
+
+    const parseDate = (dateStr) => {
+      const months = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
+      const [month, day] = dateStr.split(' ');
+      return `2026-${months[month]}-${day.padStart(2, '0')}`;
+    };
+
+    const startDate = parseDate(date.outbound);
+    const endDate = parseDate(date.return);
+    const expediaPackageLink = `https://www.expedia.com/Vacation-Packages-Results?destination=${encodeURIComponent(destination)}&startDate=${startDate}&endDate=${endDate}&adults=2&children=0`;
+    return `https://www.dpbolvw.net/click-101689576-13364951?url=${encodeURIComponent(expediaPackageLink)}`;
+  };
+
   const buildHotelUrl = (platform, date, deal) => {
     const destination = deal.destination.split(',')[0];
 
@@ -1228,19 +1243,32 @@ const DealDetailPage = () => {
                 </div>
               </div>
 
-              <div className="flex justify-center">
-                <a
-                  href="https://www.dpbolvw.net/click-101689576-13364951"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/50 rounded-xl p-6 transition-all transform hover:scale-105 text-center max-w-sm w-full"
-                >
-                  <div className="font-bold text-white text-lg mb-2">Expedia Packages</div>
-                  <div className="text-purple-300 text-sm mb-3">Flight + Hotel bundles</div>
-                  <div className="bg-purple-500/20 text-purple-200 text-xs font-bold py-2 rounded-lg">
-                    Up to 25% off
-                  </div>
-                </a>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+                {deal.verifiedDates.slice(0, 8).map((date, idx) => {
+                  const packageUrl = buildPackageUrl(date, deal);
+                  return (
+                    <a
+                      key={idx}
+                      href={packageUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 border border-purple-500/30 transition-all group"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <Calendar className="w-4 h-4 text-purple-400" />
+                        <div>
+                          <div className="text-white text-sm font-bold">
+                            {date.outbound} → {date.return}
+                          </div>
+                          <div className="text-xs text-slate-400">
+                            {date.length} nights • Expedia Packages
+                          </div>
+                        </div>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  );
+                })}
               </div>
 
               <div className="mt-6 text-center">
