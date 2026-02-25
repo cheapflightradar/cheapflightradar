@@ -110,7 +110,7 @@ const activeDeals = [
     dates: 'Apr-May 2026',
     route: 'DFW → DXB',
     type: 'International',
-    image: 'https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     tags: ['Star Alliance', 'Luxury City'],
     savings: 55,
     detectedAt: '2026-02-24T16:50:00Z',
