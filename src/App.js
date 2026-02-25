@@ -793,6 +793,36 @@ const DealDetailPage = () => {
   const [bottomEmail, setBottomEmail] = useState('');
   const { subscribe: bottomSubscribe, status: bottomStatus } = useSubscribe();
   const [showFilters, setShowFilters] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const shareData = {
+      title: `✈️ ${deal.route} from $${deal.price}`,
+      text: `Check out this flight deal: ${deal.route} from $${deal.price}! 🔥`,
+      url,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (e) {
+        // user cancelled or share failed — fall through to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 2000);
+  };
 
   if (!deal) {
     return (
@@ -1504,11 +1534,15 @@ const DealDetailPage = () => {
 
               <div className="mt-6 pt-6 border-t border-slate-700">
                 <button
-                  onClick={() => navigator.clipboard.writeText(window.location.href)}
-                  className="w-full flex items-center justify-center space-x-2 bg-slate-700/50 text-slate-300 px-4 py-3 rounded-xl hover:bg-slate-600/50 transition-colors border border-slate-600"
+                  onClick={handleShare}
+                  className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl transition-all border font-bold font-display ${
+                    shareCopied
+                      ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50'
+                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50 border-slate-600'
+                  }`}
                 >
                   <Share2 className="w-4 h-4" />
-                  <span className="font-bold font-display">Share Deal</span>
+                  <span>{shareCopied ? '✓ Link Copied!' : 'Share Deal'}</span>
                 </button>
               </div>
 
