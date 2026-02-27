@@ -57,7 +57,7 @@ const activeDeals = [
     price: 850,
     originalPrice: 1200,
     airline: 'United',
-    dates: 'May-Sep 2026',
+    dates: 'Sep 2026-Jan 2027',
     route: 'DFW → SGN',
     type: 'International',
     image: 'https://images.unsplash.com/photo-1590855639250-5e9a52395cc9?q=80&w=978&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
