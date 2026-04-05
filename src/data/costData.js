@@ -57,7 +57,7 @@ const costData = [
     },
     costBreakdowns: [
       {
-        category: 'Getting There (Round Trip from Texas)',
+        category: 'Getting There (Round Trip from the US)',
         items: [
           { name: 'Budget flight (off-peak, Spirit/Frontier)', cost: '$150–200' },
           { name: 'Standard flight (American/United)', cost: '$220–320' },
@@ -169,7 +169,7 @@ const costData = [
     },
     costBreakdowns: [
       {
-        category: 'Flights (Round Trip from Texas)',
+        category: 'Flights (Round Trip from the US)',
         items: [
           { name: 'Budget airline (Frontier/Spirit, off-peak)', cost: '$139–200' },
           { name: 'Standard (United/American)', cost: '$220–350' },
@@ -283,7 +283,7 @@ const costData = [
     },
     costBreakdowns: [
       {
-        category: 'Flights (Round Trip from Texas)',
+        category: 'Flights (Round Trip from the US)',
         items: [
           { name: 'Best-case price (Copa via PTY)', cost: '$320–400' },
           { name: 'Standard routing (United/American)', cost: '$420–550' },
@@ -395,7 +395,7 @@ const costData = [
     },
     costBreakdowns: [
       {
-        category: 'Flights to Europe (Round Trip from Texas)',
+        category: 'Flights to Europe (Round Trip from the US)',
         items: [
           { name: 'Budget deal (off-peak, flexible dates)', cost: '$500–650' },
           { name: 'Standard economy', cost: '$700–950' },
@@ -496,7 +496,7 @@ const costData = [
     },
     costBreakdowns: [
       {
-        category: 'Flights (Round Trip from Texas)',
+        category: 'Flights (Round Trip from the US)',
         items: [
           { name: 'Best price (Korean Air/Asiana via ICN)', cost: '$700–850' },
           { name: 'Direct JAL from DFW', cost: '$850–1,100' },

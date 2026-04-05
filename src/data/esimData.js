@@ -12,8 +12,8 @@ const esimData = [
     flag: '🇲🇽',
     heroImage: 'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80',
     metaTitle: 'Best eSIM for Mexico 2026 — Stay Connected Without Roaming Fees',
-    metaDesc: 'Traveling to Mexico from Texas? Get an Airalo eSIM from $5. Works on Telcel & AT&T Mexico. No roaming bills.',
-    intro: `Mexico is the most popular international destination for Texas travelers — and roaming charges from US carriers can hit $10–15/day if you're not careful. An eSIM is the smartest solution: buy it before you board, activate it when you land, and pay a fraction of what your carrier charges.`,
+    metaDesc: 'Traveling to Mexico? Get an Airalo eSIM from $5. Works on Telcel & AT&T Mexico. No roaming bills.',
+    intro: `Mexico is the most popular international destination for US travelers — and roaming charges from US carriers can hit $10–15/day if you're not careful. An eSIM is the smartest solution: buy it before you board, activate it when you land, and pay a fraction of what your carrier charges.`,
     networks: ['Telcel', 'AT&T México', 'Movistar'],
     coverage: 'Excellent 4G/LTE coverage in tourist areas. 5G available in Mexico City, Guadalajara, and Monterrey.',
     plans: [
@@ -35,7 +35,7 @@ const esimData = [
       'Cancún, Los Cabos, and Puerto Vallarta have excellent LTE even on beaches.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)', 'Austin (AUS)', 'San Antonio (SAT)'],
-    flightTime: '2.5–3.5 hours from Texas',
+    flightTime: '2.5–3.5 hours from the US',
     topDestinations: ['Cancún', 'Mexico City', 'Los Cabos', 'Puerto Vallarta', 'Guadalajara', 'Oaxaca'],
     faqs: [
       {
@@ -86,7 +86,7 @@ const esimData = [
       'The Digital Nomad Visa lets you stay 2 years — get a 30-day plan and top up monthly.',
     ],
     popularFrom: ['Houston (IAH)', 'Dallas (DFW)', 'Miami (MIA)'],
-    flightTime: '4–5 hours from Texas',
+    flightTime: '4–5 hours from the US',
     topDestinations: ['Medellín', 'Bogotá', 'Cartagena', 'Cali', 'Salento', 'Santa Marta'],
     faqs: [
       {
@@ -134,7 +134,7 @@ const esimData = [
       'The Camino de Santiago has decent coverage on the French route but some rural gaps — download Wikiloc maps offline.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)', 'Austin (AUS)'],
-    flightTime: '10–11 hours from Texas (usually 1 stop)',
+    flightTime: '10–11 hours from the US (usually 1 stop)',
     topDestinations: ['Barcelona', 'Madrid', 'Seville', 'Valencia', 'San Sebastián', 'Málaga'],
     faqs: [
       {
@@ -183,7 +183,7 @@ const esimData = [
       'Download Hyperdia or Google Maps offline for the shinkansen routes between cities.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)', 'Austin (AUS)'],
-    flightTime: '13–15 hours from Texas (direct or 1 stop)',
+    flightTime: '13–15 hours from the US (direct or 1 stop)',
     topDestinations: ['Tokyo', 'Kyoto', 'Osaka', 'Hiroshima', 'Nara', 'Hakone'],
     faqs: [
       {
@@ -230,7 +230,7 @@ const esimData = [
       'Airalo\'s Europe plan covers Italy + all neighboring countries if you\'re doing a Grand Tour.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)', 'Austin (AUS)'],
-    flightTime: '10–12 hours from Texas (usually 1 stop)',
+    flightTime: '10–12 hours from the US (usually 1 stop)',
     topDestinations: ['Rome', 'Florence', 'Venice', 'Amalfi Coast', 'Cinque Terre', 'Sicily'],
     faqs: [
       {
@@ -239,7 +239,7 @@ const esimData = [
       },
       {
         q: 'Can I buy a TIM SIM card at the Rome airport?',
-        a: 'Yes, but expect a queue and passport registration. An eSIM is just easier — activate it from your Texas couch the night before and you land in Rome already connected.',
+        a: 'Yes, but expect a queue and passport registration. An eSIM is just easier — activate it from your home the night before and you land in Rome already connected.',
       },
     ],
   },
@@ -274,7 +274,7 @@ const esimData = [
       'Thailand 30-day tourist visa is free on arrival — perfect for a longer stay with unlimited data.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
-    flightTime: '18–22 hours from Texas (2 stops usually)',
+    flightTime: '18–22 hours from the US (2 stops usually)',
     topDestinations: ['Bangkok', 'Chiang Mai', 'Phuket', 'Koh Samui', 'Koh Tao', 'Pai'],
     faqs: [
       {
@@ -317,7 +317,7 @@ const esimData = [
       'Consider Portugal\'s Digital Nomad Visa — the tech scene in Lisbon is booming.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
-    flightTime: '10–11 hours from Texas (usually 1 stop)',
+    flightTime: '10–11 hours from the US (usually 1 stop)',
     topDestinations: ['Lisbon', 'Porto', 'Sintra', 'Algarve', 'Alentejo', 'Azores'],
     faqs: [
       {
@@ -357,7 +357,7 @@ const esimData = [
       'Altitude sickness apps and offline guides are worth downloading before heading above 3,500m.',
     ],
     popularFrom: ['Houston (IAH)', 'Dallas (DFW)', 'Miami (MIA)'],
-    flightTime: '7–9 hours from Texas (usually 1 stop in Bogotá or Lima hub)',
+    flightTime: '7–9 hours from the US (usually 1 stop in Bogotá or Lima hub)',
     topDestinations: ['Lima', 'Cusco', 'Machu Picchu', 'Sacred Valley', 'Lake Titicaca', 'Arequipa'],
     faqs: [
       {
@@ -400,7 +400,7 @@ const esimData = [
       'Download SNCF app for train schedules — France\'s TGV network is world-class.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
-    flightTime: '10–11 hours from Texas (usually 1 stop)',
+    flightTime: '10–11 hours from the US (usually 1 stop)',
     topDestinations: ['Paris', 'Nice', 'Lyon', 'Bordeaux', 'Provence', 'Mont Saint-Michel'],
     faqs: [
       {
@@ -442,7 +442,7 @@ const esimData = [
       'Download offline Google Maps for Santorini\'s Oia neighborhood — the caldera-side alleys are a maze.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
-    flightTime: '12–14 hours from Texas (usually 1–2 stops)',
+    flightTime: '12–14 hours from the US (usually 1–2 stops)',
     topDestinations: ['Athens', 'Santorini', 'Mykonos', 'Crete', 'Rhodes', 'Corfu'],
     faqs: [
       {
@@ -481,7 +481,7 @@ const esimData = [
       'The Reunification Express train from HCMC to Hanoi has WiFi in some classes — supplement with eSIM.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
-    flightTime: '18–22 hours from Texas (2 stops usually)',
+    flightTime: '18–22 hours from the US (2 stops usually)',
     topDestinations: ['Hanoi', 'Ho Chi Minh City', 'Ha Long Bay', 'Hoi An', 'Da Nang', 'Phú Quốc'],
     faqs: [
       {
@@ -519,7 +519,7 @@ const esimData = [
       'Manuel Antonio National Park requires advance online booking — do it before you arrive in the country.',
     ],
     popularFrom: ['Houston (IAH)', 'Dallas (DFW)', 'Austin (AUS)'],
-    flightTime: '3–4 hours from Texas (some direct flights)',
+    flightTime: '3–4 hours from the US (some direct flights)',
     topDestinations: ['San José', 'Arenal', 'Monteverde', 'Manuel Antonio', 'Tamarindo', 'Puerto Viejo'],
     faqs: [
       {

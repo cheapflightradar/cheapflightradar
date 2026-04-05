@@ -492,7 +492,7 @@ export function AirportsIndexPage() {
                 <div className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors">
                   {airport.name}
                 </div>
-                <div className="text-sm text-gray-500">{airport.city}, {airport.state}</div>
+                <div className="text-sm text-gray-500">{airport.city}</div>
                 {airport.topRoutes && (
                   <div className="text-xs text-gray-400 mt-1">
                     {airport.topRoutes.slice(0, 3).map((r) => r.dest.split('(')[1]?.replace(')', '')).filter(Boolean).join(' · ')}

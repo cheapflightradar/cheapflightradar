@@ -52,7 +52,7 @@ const airportData = [
       'Global Entry kiosks in Terminal D speed up US return processing dramatically.',
       'DFW to downtown Dallas on DART is $2.50 — the most underused money-saver at this airport.',
     ],
-    bestFor: 'The best Texas airport for international travel — most routes, most airlines, best lounge access, and direct flights to Europe/Asia.',
+    bestFor: 'One of the best US airports for international travel — most routes, most airlines, best lounge access, and direct flights to Europe/Asia.',
   },
 
   {
@@ -182,7 +182,7 @@ const airportData = [
     },
     lounges: [],
     tips: [
-      'SAT has fewer international options than DFW/IAH — worth comparing prices at all 3 Texas airports.',
+      'SAT has fewer international options than DFW/IAH — worth comparing prices at nearby airports.',
       'For most international destinations, it\'s worth driving to Houston or Dallas if prices differ by $100+.',
       'San Antonio to Austin or Houston by car is 1–1.5 hours — expanding your airport options significantly.',
     ],
@@ -223,12 +223,12 @@ const airportData = [
     },
     lounges: [],
     tips: [
-      'Southwest\'s hub at HOU means often the cheapest Mexico prices in Texas — always check southwest.com.',
+      'Southwest\'s hub at HOU means often the cheapest Mexico prices around — always check southwest.com.',
       'Southwest fares don\'t appear on Google Flights or Kayak — their website only.',
       'HOU is smaller and less stressful than IAH — faster security and easier navigation.',
       'The METRORail Red Line to downtown Houston is $1.25 — a great option for avoiding Uber surge pricing.',
     ],
-    bestFor: 'Best Texas airport for Southwest Mexico deals. Often cheapest for Cancún, Mexico City, and Cabo.',
+    bestFor: 'Best Southwest hub for Mexico deals. Often cheapest for Cancún, Mexico City, and Cabo.',
   },
 
   // ─── Popular Arrival Airports ─────────────────────────────
