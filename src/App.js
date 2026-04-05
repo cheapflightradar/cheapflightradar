@@ -213,6 +213,7 @@ const NewsletterSection = ({ variant = 'dark' }) => {
 };
 
 // ==================== STICKY BAR ====================
+// eslint-disable-next-line no-unused-vars
 const StickyEmailBar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [email, setEmail] = useState('');
