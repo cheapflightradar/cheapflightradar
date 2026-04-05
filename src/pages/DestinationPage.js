@@ -112,9 +112,9 @@ export default function DestinationPage() {
         <HotelCTA city={dest.city} />
 
         {/* Must-see */}
-        <div className="mb-10">
+        <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Must-See in {dest.city}</h2>
-          <ul className="space-y-2">
+          <ul className="space-y-2 mb-5">
             {dest.mustSee.map((item, i) => (
               <li key={i} className="flex gap-3 text-gray-700">
                 <span className="text-emerald-500 font-bold shrink-0">→</span>
@@ -122,6 +122,8 @@ export default function DestinationPage() {
               </li>
             ))}
           </ul>
+          {/* Attractions → Expedia: find a hotel close to everything you want to see */}
+          <HotelCTA city={dest.city} />
         </div>
 
         {/* Food */}
@@ -168,7 +170,7 @@ export default function DestinationPage() {
         {dest.dayTrips && dest.dayTrips.length > 0 && (
           <div className="mb-10">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Day Trips from {dest.city}</h2>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 gap-4 mb-5">
               {dest.dayTrips.map((trip) => (
                 <div key={trip.dest} className="border border-gray-200 rounded-xl p-4">
                   <div className="font-bold text-gray-900 mb-1">{trip.dest}</div>
@@ -177,6 +179,8 @@ export default function DestinationPage() {
                 </div>
               ))}
             </div>
+            {/* Day trips are destination recommendations → Kiwi for cheapest flights */}
+            <FlightCTA dest={dest.bestTo} destLabel={`${dest.city} & surrounding areas`} />
           </div>
         )}
 

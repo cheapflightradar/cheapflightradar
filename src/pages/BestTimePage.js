@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FlightCTA, EsimCTA } from '../components/Affiliates';
+import { FlightCTA, HotelCTA, EsimCTA } from '../components/Affiliates';
 import { findBestTimeBySlug } from '../data/bestTimeData';
 
 const ratingColors = {
@@ -155,6 +155,9 @@ export default function BestTimePage() {
             ))}
           </ul>
         </div>
+
+        {/* Hotel recommendation → Expedia */}
+        <HotelCTA city={data.destination} />
 
         {/* eSIM and bottom CTAs */}
         <EsimCTA country={data.country} />

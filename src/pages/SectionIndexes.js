@@ -6,7 +6,8 @@ import routeData, { getRoutesByOrigin } from '../data/routeData';
 import costData from '../data/costData';
 import bestTimeData from '../data/bestTimeData';
 import airportData, { texasAirports, internationalAirports } from '../data/airportData';
-import { EsimCTA, FlightCTA } from '../components/Affiliates';
+import { EsimCTA, FlightCTA, HotelCTA } from '../components/Affiliates';
+import affiliates from '../config/affiliates';
 
 // ─────────────────────────────────────────────────────────────
 //  eSIM Index
@@ -146,34 +147,46 @@ export function DestinationIndexPage() {
           ))}
         </div>
 
-        {/* Destination grid */}
+        {/* Destination grid — recommending destinations → Kiwi search link on each card */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filtered.map((dest) => (
-            <Link
+            <div
               key={dest.id}
-              to={`/destinations/${dest.slug}`}
-              className="group border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all"
+              className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all"
             >
-              <div className="relative h-44 overflow-hidden">
-                <img
-                  src={dest.heroImage}
-                  alt={dest.city}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <div className="text-white font-bold text-xl">{dest.flag} {dest.city}</div>
-                  <div className="text-white/80 text-sm">{dest.country}</div>
+              <Link to={`/destinations/${dest.slug}`} className="group block">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={dest.heroImage}
+                    alt={dest.city}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="text-white font-bold text-xl">{dest.flag} {dest.city}</div>
+                    <div className="text-white/80 text-sm">{dest.country}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">{dest.tagline}</p>
-                <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>~${dest.avgFlightPrice.avg} RT from Texas</span>
-                  <span className="text-emerald-600 font-semibold">From ${dest.budgetPerDay.backpacker}/day</span>
+                <div className="p-4 pb-3">
+                  <p className="text-gray-600 text-sm mb-2 line-clamp-2">{dest.tagline}</p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                    <span>~${dest.avgFlightPrice.avg} RT from Texas</span>
+                    <span className="text-emerald-600 font-semibold">From ${dest.budgetPerDay.backpacker}/day</span>
+                  </div>
                 </div>
+              </Link>
+              {/* Destination recommendation → Kiwi affiliate link */}
+              <div className="px-4 pb-4">
+                <a
+                  href={affiliates.kiwi.search('texas', dest.bestTo || dest.city)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  ✈️ Search Flights to {dest.city}
+                </a>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

@@ -132,14 +132,16 @@ export default function EsimPage() {
           <FlightCTA dest={country.airaloSlug.toUpperCase()} destLabel={country.country} />
         </div>
 
-        {/* Top destinations in country */}
+        {/* Top destinations in country — destination recommendations → Kiwi */}
         <div className="my-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Top Destinations in {country.country}</h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-5">
             {country.topDestinations.map((dest) => (
               <span key={dest} className="bg-gray-100 px-3 py-1.5 rounded-full text-sm text-gray-700">{dest}</span>
             ))}
           </div>
+          {/* Recommending destinations → Kiwi for flights */}
+          <FlightCTA destLabel={country.country} />
         </div>
 
         {/* FAQs */}
@@ -160,8 +162,8 @@ export default function EsimPage() {
           <EsimCTA country={country.country} countrySlug={country.airaloSlug} variant="hero" />
         </div>
 
-        {/* Also find hotels */}
-        <HotelCTA city={country.topDestinations[0]} />
+        {/* Hotels at the destination → Expedia */}
+        <HotelCTA city={country.topDestinations[0] || country.country} />
 
         {/* Back link */}
         <div className="mt-10 pt-6 border-t border-gray-100">
