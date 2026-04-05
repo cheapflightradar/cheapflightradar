@@ -24,7 +24,7 @@ export default function RoutePage() {
     <div className="bg-white">
       {/* Hero */}
       <div className="relative h-64 md:h-80 overflow-hidden">
-        <img src={route.image} alt={route.dest.city} className="w-full h-full object-cover" />
+        <img src={route.image} alt={route.dest.city} className="w-full h-full object-cover" fetchpriority="high" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-6 lg:px-8 pb-8 max-w-4xl mx-auto">
           <nav className="text-sm text-white/70 mb-3">

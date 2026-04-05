@@ -69,6 +69,8 @@ export function EsimIndexPage() {
                   src={country.heroImage}
                   alt={country.country}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-2 left-3 right-3">
@@ -160,6 +162,8 @@ export function DestinationIndexPage() {
                     src={dest.heroImage}
                     alt={dest.city}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
@@ -259,7 +263,7 @@ export function FlightsIndexPage() {
               className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all group"
             >
               <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                <img src={route.image} alt={route.dest.city} className="w-full h-full object-cover" />
+                <img src={route.image} alt={route.dest.city} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 flex items-center justify-center text-xl">{route.dest.flag}</div>
               </div>
               <div className="flex-1 min-w-0">
@@ -315,6 +319,8 @@ export function CostsIndexPage() {
                   src={item.heroImage}
                   alt={item.destination}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-3 left-3">
@@ -375,6 +381,8 @@ export function BestTimeIndexPage() {
                     src={item.heroImage}
                     alt={item.destination}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-3 left-3">
@@ -450,7 +458,7 @@ export function AirportsIndexPage() {
               className="group flex gap-4 p-4 border border-gray-200 rounded-2xl hover:shadow-md transition-all"
             >
               <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                <img src={airport.heroImage} alt={airport.iata} className="w-full h-full object-cover" />
+                <img src={airport.heroImage} alt={airport.iata} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                   <span className="font-mono font-bold text-white text-lg">{airport.iata}</span>
                 </div>
@@ -480,7 +488,7 @@ export function AirportsIndexPage() {
               className="group border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-all"
             >
               <div className="relative h-28 overflow-hidden">
-                <img src={airport.heroImage} alt={airport.name} className="w-full h-full object-cover" />
+                <img src={airport.heroImage} alt={airport.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-2 left-3">
                   <span className="font-mono font-bold text-white">{airport.iata}</span>

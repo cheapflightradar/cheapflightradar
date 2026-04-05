@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense, memo } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -27,21 +27,32 @@ import {
 } from 'lucide-react';
 import blogPosts from './data/blogPosts';
 
-// ── New section page imports ──────────────────────────────────
-import EsimPage from './pages/EsimPage';
-import DestinationPage from './pages/DestinationPage';
-import RoutePage from './pages/RoutePage';
-import CostPage from './pages/CostPage';
-import BestTimePage from './pages/BestTimePage';
-import AirportPage from './pages/AirportPage';
-import {
-  EsimIndexPage,
-  DestinationIndexPage,
-  FlightsIndexPage,
-  CostsIndexPage,
-  BestTimeIndexPage,
-  AirportsIndexPage,
-} from './pages/SectionIndexes';
+// ── Page-level loading skeleton ───────────────────────────────
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="flex flex-col items-center gap-3 text-gray-400">
+      <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+      <span className="text-sm">Loading…</span>
+    </div>
+  </div>
+);
+
+// ── Lazy-loaded detail pages (code splitting) ─────────────────
+// Each module only loads when its route is first visited
+const EsimPage        = lazy(() => import('./pages/EsimPage'));
+const DestinationPage = lazy(() => import('./pages/DestinationPage'));
+const RoutePage       = lazy(() => import('./pages/RoutePage'));
+const CostPage        = lazy(() => import('./pages/CostPage'));
+const BestTimePage    = lazy(() => import('./pages/BestTimePage'));
+const AirportPage     = lazy(() => import('./pages/AirportPage'));
+
+// ── Lazy-loaded section index pages (named exports → default shim) ──
+const EsimIndexPage        = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.EsimIndexPage })));
+const DestinationIndexPage = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.DestinationIndexPage })));
+const FlightsIndexPage     = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.FlightsIndexPage })));
+const CostsIndexPage       = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.CostsIndexPage })));
+const BestTimeIndexPage    = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.BestTimeIndexPage })));
+const AirportsIndexPage    = lazy(() => import('./pages/SectionIndexes').then(m => ({ default: m.AirportsIndexPage })));
 
 // ==================== SUBSCRIBE HOOK ====================
 const useSubscribe = () => {
@@ -101,7 +112,7 @@ const CategoryBadge = ({ category, categoryLabel }) => {
   );
 };
 
-const BlogCard = ({ post }) => (
+const BlogCard = memo(({ post }) => (
   <Link
     to={`/blog/${post.slug}`}
     className="group block"
@@ -110,6 +121,8 @@ const BlogCard = ({ post }) => (
       <img
         src={post.image}
         alt={post.title}
+        loading="lazy"
+        decoding="async"
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       />
     </div>
@@ -126,7 +139,7 @@ const BlogCard = ({ post }) => (
       <span>{formatDate(post.publishedAt)}</span>
     </div>
   </Link>
-);
+));
 
 // ==================== NEWSLETTER ====================
 const NewsletterSection = ({ variant = 'dark' }) => {
@@ -526,8 +539,9 @@ const HomePage = () => {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2070&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1600&auto=format&fit=crop&fm=webp"
             alt="Airport terminal"
+            fetchpriority="high"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/65 to-gray-900/20" />
@@ -584,6 +598,8 @@ const HomePage = () => {
                 <img
                   src={featuredPost.image}
                   alt={featuredPost.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -804,6 +820,7 @@ const BlogPostPage = () => {
           <img
             src={post.image}
             alt={post.title}
+            fetchpriority="high"
             className="w-full h-full object-cover"
           />
         </div>
@@ -934,40 +951,42 @@ const App = () => (
       <Header />
       <StickyEmailBar />
       <div className="flex-1">
-        <Routes>
-          {/* Core pages */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogListPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/about" element={<AboutPage />} />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {/* Core pages — eagerly loaded (fastest first paint) */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog" element={<BlogListPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/about" element={<AboutPage />} />
 
-          {/* eSIM section */}
-          <Route path="/esim" element={<EsimIndexPage />} />
-          <Route path="/esim/:slug" element={<EsimPage />} />
+            {/* eSIM section — lazy loaded */}
+            <Route path="/esim" element={<EsimIndexPage />} />
+            <Route path="/esim/:slug" element={<EsimPage />} />
 
-          {/* Destinations section */}
-          <Route path="/destinations" element={<DestinationIndexPage />} />
-          <Route path="/destinations/:slug" element={<DestinationPage />} />
+            {/* Destinations section — lazy loaded */}
+            <Route path="/destinations" element={<DestinationIndexPage />} />
+            <Route path="/destinations/:slug" element={<DestinationPage />} />
 
-          {/* Flight routes section */}
-          <Route path="/flights" element={<FlightsIndexPage />} />
-          <Route path="/flights/:slug" element={<RoutePage />} />
+            {/* Flight routes section — lazy loaded */}
+            <Route path="/flights" element={<FlightsIndexPage />} />
+            <Route path="/flights/:slug" element={<RoutePage />} />
 
-          {/* Trip costs section */}
-          <Route path="/trip-costs" element={<CostsIndexPage />} />
-          <Route path="/trip-costs/:slug" element={<CostPage />} />
+            {/* Trip costs section — lazy loaded */}
+            <Route path="/trip-costs" element={<CostsIndexPage />} />
+            <Route path="/trip-costs/:slug" element={<CostPage />} />
 
-          {/* Best time section */}
-          <Route path="/best-time" element={<BestTimeIndexPage />} />
-          <Route path="/best-time/:slug" element={<BestTimePage />} />
+            {/* Best time section — lazy loaded */}
+            <Route path="/best-time" element={<BestTimeIndexPage />} />
+            <Route path="/best-time/:slug" element={<BestTimePage />} />
 
-          {/* Airport guides section */}
-          <Route path="/airports" element={<AirportsIndexPage />} />
-          <Route path="/airports/:code" element={<AirportPage />} />
+            {/* Airport guides section — lazy loaded */}
+            <Route path="/airports" element={<AirportsIndexPage />} />
+            <Route path="/airports/:code" element={<AirportPage />} />
 
-          {/* Fallback */}
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+            {/* Fallback */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </Suspense>
       </div>
       <Footer />
     </div>
