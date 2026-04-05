@@ -45,6 +45,7 @@ const blogPosts = [
           'Colombia (3 GB / 15 days): $10 on Airalo vs. $100 carrier for 10 days',
         ],
       },
+      { type: 'cta-esim' },
       { type: 'h2', text: 'Our Real-World Test Results' },
       {
         type: 'p',
@@ -86,6 +87,7 @@ const blogPosts = [
         type: 'p',
         text: "Saily (by Nord) is Airalo's main competitor. Prices are similar, and Saily has better-designed apps in some regions. For Latin America, Airalo has more plan options. For Europe and Asia, they're roughly equal. Both are good choices — we default to Airalo because of its wider country coverage.",
       },
+      { type: 'cta-saily' },
       {
         type: 'p',
         text: "Local SIMs from airport kiosks are sometimes even cheaper — Telcel in Mexico, Viettel in Vietnam. The tradeoff: you need to find the kiosk, wait in line, show your passport, and potentially navigate a language barrier. An eSIM you activate from your couch the night before is worth a few extra dollars.",
@@ -100,6 +102,7 @@ const blogPosts = [
         title: 'Get Started',
         text: 'Use our Airalo affiliate link to get your eSIM. First-time users get a discount through our link. Plans start at $4 for basic coverage and go up to $35 for unlimited plans in high-cost markets.',
       },
+      { type: 'cta-esim' },
     ],
   },
 
@@ -151,6 +154,7 @@ const blogPosts = [
           'Thailand eSIM: 5GB for 15 days = $8 per person',
         ],
       },
+      { type: 'cta-esim' },
       {
         type: 'callout',
         title: 'The Savings on a Family Trip to Mexico',
@@ -183,6 +187,7 @@ const blogPosts = [
         type: 'p',
         text: "The second most common mistake: buying too little data. 1GB sounds like a lot but can disappear in a day if you use maps, post on Instagram, and stream music. For a week-long trip with typical usage, 3GB is comfortable. Heavy users should get 5GB.",
       },
+      { type: 'cta-esim' },
     ],
   },
 
@@ -228,6 +233,7 @@ const blogPosts = [
         title: 'Our Recommendation',
         text: "Get the 5GB / 30-day plan at $14. Most 2-week Japan trips use 3–4GB — the extra buffer is worth the marginal cost. You won't run out, and you won't spend mental energy monitoring usage.",
       },
+      { type: 'cta-esim', country: 'Japan' },
       { type: 'h2', text: 'Coverage in Japan: What to Expect' },
       {
         type: 'p',
@@ -276,6 +282,8 @@ const blogPosts = [
         type: 'p',
         text: "Pocket WiFi made sense when phones couldn't have eSIMs. In 2026, it's an inferior option on every dimension: more expensive, more cumbersome, requires return at the airport, and creates a single point of failure for your whole group if the device battery dies. Get an eSIM. $14 for 5GB is less than a ramen bowl in Tokyo.",
       },
+      { type: 'cta-esim', country: 'Japan' },
+      { type: 'cta-flight', destLabel: 'Japan' },
     ],
   },
 
@@ -332,11 +340,13 @@ const blogPosts = [
         type: 'p',
         text: "Airalo is the world's largest eSIM marketplace, covering 200+ countries. Plans start at $4 and go up to $35. The app is clean, setup is fast, and coverage is excellent. The Mexico, Colombia, Spain, and Japan plans are the standouts. Our affiliate link gives first-time users a discount.",
       },
+      { type: 'cta-esim' },
       { type: 'h3', text: 'Saily (by Nord)' },
       {
         type: 'p',
         text: "Saily is Airalo's strongest competitor and a reliable alternative. Coverage is similar in most regions. Prices are slightly different — sometimes Saily wins, sometimes Airalo does. Worth checking both for your specific destination.",
       },
+      { type: 'cta-saily' },
       { type: 'h2', text: 'Real Cost Comparison: eSIM vs. Carrier' },
       {
         type: 'ul',
@@ -376,6 +386,7 @@ const blogPosts = [
         type: 'p',
         text: "Everywhere, but especially: Japan (where airport SIM lines are long and pocket WiFi is overpriced), Europe (where day passes add up fast), and countries in Southeast Asia and South America where local data is cheap but tourist-oriented plans are expensive. For Mexico especially — one of the most visited destinations in the world — it's almost irresponsible not to have an eSIM when the savings are this obvious.",
       },
+      { type: 'cta-esim' },
     ],
   },
 
@@ -403,6 +414,7 @@ const blogPosts = [
         type: 'p',
         text: "Roundtrip flights to Medellín's José María Córdova Airport (MDE) typically run $350–550 from Miami or Houston on a good day. Copa Airlines connects through Panama City; LATAM flies through Bogotá. American and United also have options via their hub cities. Flight time is 5–6 hours from major US cities — a long weekend is genuinely viable.",
       },
+      { type: 'cta-flight', destLabel: 'Medellín' },
       {
         type: 'callout',
         title: 'Visa Info',
@@ -418,6 +430,7 @@ const blogPosts = [
         type: 'p',
         text: "El Poblado is the main tourist neighborhood — safe, walkable, and packed with restaurants, cafés, and bars. It's the most expensive part of the city but still very affordable by US standards ($55–90/night for a good hotel). Laureles is preferred by long-term expats and locals for its less touristy character and the excellent La 70 restaurant and bar street.",
       },
+      { type: 'cta-hotel', city: 'Medellín' },
       { type: 'h2', text: 'The Food' },
       {
         type: 'p',
@@ -451,6 +464,7 @@ const blogPosts = [
         title: 'Safety Note',
         text: "Medellín has changed dramatically. Standard urban precautions apply: use Uber (not street taxis), don't flash expensive gear, stick to established neighborhoods at night. The city is not uniquely dangerous for tourists exercising normal awareness.",
       },
+      { type: 'cta-esim', country: 'Colombia' },
     ],
   },
 
@@ -513,6 +527,7 @@ const blogPosts = [
         title: 'When a Deal Appears — Act Quickly',
         text: "The travelers who miss deals usually do so while \"thinking about it.\" When a price hits your threshold on a route you've been watching, book it. You can deal with the logistics after. Great fares rarely survive the weekend.",
       },
+      { type: 'cta-flight' },
     ],
   },
 
@@ -540,6 +555,7 @@ const blogPosts = [
         type: 'p',
         text: "Nothing on this list competes with Mexico City for pure value. You're 3–4 hours from one of the world's great cities from much of the US. Street food runs $2–4 per meal. World-class museums are free or nearly free on Sundays. The neighborhoods of Roma, Condesa, and Coyoacán are each worth entire days. Direct flights exist from most major US airports on American, United, Aeromexico, and Volaris.",
       },
+      { type: 'cta-flight', destLabel: 'Mexico City' },
       { type: 'h2', text: '2. Medellín or Bogotá, Colombia — From ~$350 Roundtrip' },
       {
         type: 'p',
@@ -565,6 +581,8 @@ const blogPosts = [
         title: 'The Rule of Value Travel',
         text: "The best-value destination isn't always the cheapest flight. Factor in ground costs, visa requirements, and how many days you need to make it worthwhile. A $250 flight to a destination with high daily costs can be worse value than a $500 flight somewhere your dollar goes far.",
       },
+      { type: 'cta-flight' },
+      { type: 'cta-esim' },
     ],
   },
 
@@ -622,6 +640,7 @@ const blogPosts = [
           'Chasing too many sign-up bonuses across many cards — creates complexity and credit score impact',
         ],
       },
+      { type: 'cta-flight' },
     ],
   },
 
@@ -649,6 +668,7 @@ const blogPosts = [
         title: 'Essential Logistics',
         text: "Fly into Benito Juárez International (MEX). Take the Metrobús Line 4 from the airport (30 pesos, about $1.50) rather than the expensive taxi touts outside arrivals. Download Uber before you land — it works well throughout the city, is safe, and is far cheaper than official taxis.",
       },
+      { type: 'cta-flight', destLabel: 'Mexico City' },
       { type: 'h2', text: 'Day 1: Arrival + Roma Norte / Condesa' },
       {
         type: 'p',
@@ -669,6 +689,7 @@ const blogPosts = [
         type: 'p',
         text: "Polanco has the Antara Polanco food hall and the Museo Soumaya — free entry and a remarkable private art collection including Rodin sculptures. Breakfast at a Polanco café is excellent people-watching. Head to the airport 3 hours before your flight — security is thorough.",
       },
+      { type: 'cta-hotel', city: 'Mexico City' },
       { type: 'h2', text: 'Budget Tips' },
       {
         type: 'ul',
@@ -680,6 +701,7 @@ const blogPosts = [
           'Bring cash in pesos for street food, small restaurants, and markets — many don\'t accept cards',
         ],
       },
+      { type: 'cta-esim', country: 'Mexico' },
     ],
   },
 
@@ -727,6 +749,7 @@ const blogPosts = [
           'Hopper: Best for mobile users and domestic routes. Prediction algorithm tells you whether to buy now or wait.',
         ],
       },
+      { type: 'cta-flight' },
       { type: 'h2', text: 'Credit Card Points Are Worth Learning' },
       {
         type: 'p',
@@ -742,6 +765,8 @@ const blogPosts = [
           '"Incognito mode shows lower prices": same as clearing cookies — doesn\'t affect airline pricing systems.',
         ],
       },
+      { type: 'cta-flight' },
+      { type: 'cta-esim' },
     ],
   },
 ];

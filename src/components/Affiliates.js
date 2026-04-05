@@ -177,6 +177,50 @@ export function EsimCTA({ country, countrySlug, variant = 'default' }) {
 }
 
 // ─────────────────────────────────────────────
+//  SailyCTA  — links to Saily eSIM
+// ─────────────────────────────────────────────
+export function SailyCTA({ variant = 'default' }) {
+  const url = affiliates.saily.home;
+
+  if (variant === 'inline') {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 bg-violet-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-violet-700 transition-colors"
+      >
+        📱 {affiliates.saily.cta}
+      </a>
+    );
+  }
+
+  return (
+    <div className="bg-violet-50 border border-violet-200 rounded-xl p-5 my-6">
+      <div className="flex items-start gap-4">
+        <span className="text-3xl">📱</span>
+        <div className="flex-1">
+          <p className="font-semibold text-violet-900 text-lg mb-1">
+            Also Worth Checking: Saily by Nord
+          </p>
+          <p className="text-violet-700 text-sm mb-3">
+            {affiliates.saily.note}. Plans are competitively priced and the app is well-designed.
+          </p>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-violet-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-violet-700 transition-colors"
+          >
+            {affiliates.saily.cta} →
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
 //  TripCTA  — shows all 3 affiliate CTAs stacked
 // ─────────────────────────────────────────────
 export function TripCTA({ origin, dest, city, country, countrySlug, originLabel, destLabel }) {

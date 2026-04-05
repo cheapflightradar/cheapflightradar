@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import blogPosts from './data/blogPosts';
 import { SeoHead } from './components/SeoHead';
+import { FlightCTA, HotelCTA, EsimCTA, SailyCTA } from './components/Affiliates';
 
 // ── Page-level loading skeleton ───────────────────────────────
 const PageLoader = () => (
@@ -384,6 +385,14 @@ const ContentRenderer = ({ content }) => (
               ))}
             </ol>
           );
+        case 'cta-esim':
+          return <EsimCTA key={i} country={block.country} countrySlug={block.countrySlug} />;
+        case 'cta-saily':
+          return <SailyCTA key={i} />;
+        case 'cta-flight':
+          return <FlightCTA key={i} destLabel={block.destLabel} />;
+        case 'cta-hotel':
+          return <HotelCTA key={i} city={block.city} />;
         default:
           return null;
       }
