@@ -8,7 +8,7 @@ const blogPosts = [
     slug: 'airalo-review-2026',
     title: 'Airalo Review 2026: Is It Still the Best eSIM for International Travel?',
     excerpt:
-      "We tested Airalo across 8 countries — Mexico, Colombia, Japan, Spain, and more. Here's what worked, what to watch out for, and whether it's worth it for Texas travelers.",
+      "We tested Airalo across 8 countries — Mexico, Colombia, Japan, Spain, and more. Here's what worked, what to watch out for, and whether it's worth it for your next trip.",
     category: 'budget-tips',
     categoryLabel: 'Budget Tips',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80',
@@ -93,7 +93,7 @@ const blogPosts = [
       { type: 'h2', text: 'Bottom Line' },
       {
         type: 'p',
-        text: "Airalo is the best eSIM marketplace for most international travelers. The pricing is transparent, the app is easy to use, and coverage across Latin America, Europe, and Asia is consistently solid. For Texas travelers heading to Mexico, Colombia, Japan, Spain, or most other international destinations — it's the single best way to cut your international connectivity costs.",
+        text: "Airalo is the best eSIM marketplace for most international travelers. The pricing is transparent, the app is easy to use, and coverage across Latin America, Europe, and Asia is consistently solid. Heading to Mexico, Colombia, Japan, Spain, or anywhere else? It's the single best way to cut your international connectivity costs.",
       },
       {
         type: 'callout',
@@ -119,7 +119,7 @@ const blogPosts = [
     content: [
       {
         type: 'lead',
-        text: "Here's a scenario that plays out thousands of times a day: a Texas family lands in Cancún, turns off airplane mode, and their carrier automatically starts charging $10/day per phone for international data. Seven days later, they're home with a $280 surprise on their phone bill — for what should have been a solved problem.",
+        text: "Here's a scenario that plays out thousands of times a day: a family lands in Cancún, turns off airplane mode, and their carrier automatically starts charging $10/day per phone for international data. Seven days later, they're home with a $280 surprise on their phone bill — for what should have been a solved problem.",
       },
       { type: 'h2', text: 'What the Carriers Actually Charge' },
       {
@@ -330,7 +330,7 @@ const blogPosts = [
       { type: 'h3', text: 'Airalo — Our #1 Pick' },
       {
         type: 'p',
-        text: "Airalo is the world's largest eSIM marketplace, covering 200+ countries. Plans start at $4 and go up to $35. The app is clean, setup is fast, and coverage is excellent. For Texas travelers, Airalo's Mexico, Colombia, Spain, and Japan plans are the ones you'll use most. Our affiliate link gives first-time users a discount.",
+        text: "Airalo is the world's largest eSIM marketplace, covering 200+ countries. Plans start at $4 and go up to $35. The app is clean, setup is fast, and coverage is excellent. The Mexico, Colombia, Spain, and Japan plans are the standouts. Our affiliate link gives first-time users a discount.",
       },
       { type: 'h3', text: 'Saily (by Nord)' },
       {
@@ -374,7 +374,7 @@ const blogPosts = [
       { type: 'h2', text: 'Which Destinations Need an eSIM Most?' },
       {
         type: 'p',
-        text: "Everywhere, but especially: Japan (where airport SIM lines are long and pocket WiFi is overpriced), Europe (where day passes add up fast), and countries in Southeast Asia and South America where local data is cheap but tourist-oriented plans are expensive. For Mexico — so close to Texas and so heavily visited — it's almost irresponsible not to have an eSIM when the savings are this obvious.",
+        text: "Everywhere, but especially: Japan (where airport SIM lines are long and pocket WiFi is overpriced), Europe (where day passes add up fast), and countries in Southeast Asia and South America where local data is cheap but tourist-oriented plans are expensive. For Mexico especially — one of the most visited destinations in the world — it's almost irresponsible not to have an eSIM when the savings are this obvious.",
       },
     ],
   },
@@ -384,7 +384,7 @@ const blogPosts = [
     slug: 'medellin-colombia-guide',
     title: "Medellín, Colombia: Why It's One of the Best Budget Destinations Right Now",
     excerpt:
-      "Eternal spring weather, extraordinary food, and a dollar that goes very far. Medellín has become one of Latin America's most compelling cities — and it's only 5 hours from Texas.",
+      "Eternal spring weather, extraordinary food, and a dollar that goes very far. Medellín has become one of Latin America's most compelling cities — only 5 hours from Miami or Houston.",
     category: 'destination-guide',
     categoryLabel: 'Destination Guide',
     image:
@@ -396,12 +396,12 @@ const blogPosts = [
     content: [
       {
         type: 'lead',
-        text: "Ten years ago, Medellín was a city most Americans knew only from news reports. Today, it's one of the most dynamic, livable, and genuinely exciting cities in the Americas — and for Texas travelers, it represents extraordinary value.",
+        text: "Ten years ago, Medellín was a city most Americans knew only from news reports. Today, it's one of the most dynamic, livable, and genuinely exciting cities in the Americas — and it represents extraordinary value for budget travelers.",
       },
-      { type: 'h2', text: 'Getting There from Texas' },
+      { type: 'h2', text: 'Getting There' },
       {
         type: 'p',
-        text: "Roundtrip flights to Medellín's José María Córdova Airport (MDE) typically run $350–550 from DFW and Houston on a good day. Copa Airlines connects through Panama City; LATAM flies through Bogotá. American and United also have options via their hub cities. Flight time is 5–6 hours from Texas — a long weekend is genuinely viable.",
+        text: "Roundtrip flights to Medellín's José María Córdova Airport (MDE) typically run $350–550 from Miami or Houston on a good day. Copa Airlines connects through Panama City; LATAM flies through Bogotá. American and United also have options via their hub cities. Flight time is 5–6 hours from major US cities — a long weekend is genuinely viable.",
       },
       {
         type: 'callout',
@@ -411,12 +411,12 @@ const blogPosts = [
       { type: 'h2', text: 'The Climate That Makes It Special' },
       {
         type: 'p',
-        text: "Medellín sits at 5,000 feet in an Andean valley. The result is what locals call \"eternal spring\" — average temperatures of 68–75°F year-round with almost no humidity. Coming from a Texas summer, it feels miraculous. There are rainy and dry seasons but neither is extreme, and you can visit any month without major weather concerns.",
+        text: "Medellín sits at 5,000 feet in an Andean valley. The result is what locals call \"eternal spring\" — average temperatures of 68–75°F year-round with almost no humidity. If you're used to hot, humid summers, it feels miraculous. There are rainy and dry seasons but neither is extreme, and you can visit any month without major weather concerns.",
       },
       { type: 'h2', text: 'Where to Stay' },
       {
         type: 'p',
-        text: "El Poblado is the main tourist neighborhood — safe, walkable, and packed with restaurants, cafés, and bars. It's the most expensive part of the city but still very affordable by Texas standards ($55–90/night for a good hotel). Laureles is preferred by long-term expats and locals for its less touristy character and the excellent La 70 restaurant and bar street.",
+        text: "El Poblado is the main tourist neighborhood — safe, walkable, and packed with restaurants, cafés, and bars. It's the most expensive part of the city but still very affordable by US standards ($55–90/night for a good hotel). Laureles is preferred by long-term expats and locals for its less touristy character and the excellent La 70 restaurant and bar street.",
       },
       { type: 'h2', text: 'The Food' },
       {
@@ -521,7 +521,7 @@ const blogPosts = [
     slug: 'best-value-international-destinations',
     title: 'The Best-Value International Destinations Right Now',
     excerpt:
-      "When flight prices spike globally, the smart move isn't to stop traveling — it's to go where the value is. These destinations deliver the best experience per dollar from Texas airports.",
+      "When flight prices spike globally, the smart move isn't to stop traveling — it's to go where the value is. These destinations deliver the best experience per dollar from any major US airport.",
     category: 'destination-guide',
     categoryLabel: 'Destination Guide',
     image:
@@ -529,7 +529,7 @@ const blogPosts = [
     publishedAt: '2026-04-02',
     readTime: '6 min read',
     featured: true,
-    tags: ['budget destinations', 'international travel', 'Texas', 'value travel'],
+    tags: ['budget destinations', 'international travel', 'value travel'],
     content: [
       {
         type: 'lead',
@@ -538,7 +538,7 @@ const blogPosts = [
       { type: 'h2', text: '1. Mexico City, Mexico — From ~$200 Roundtrip' },
       {
         type: 'p',
-        text: "Nothing on this list competes with Mexico City for pure value. You're 3–4 hours from one of the world's great cities. Street food runs $2–4 per meal. World-class museums are free or nearly free on Sundays. The neighborhoods of Roma, Condesa, and Coyoacán are each worth entire days. Direct flights exist from all four major Texas airports on American, United, Aeromexico, and Volaris.",
+        text: "Nothing on this list competes with Mexico City for pure value. You're 3–4 hours from one of the world's great cities from much of the US. Street food runs $2–4 per meal. World-class museums are free or nearly free on Sundays. The neighborhoods of Roma, Condesa, and Coyoacán are each worth entire days. Direct flights exist from most major US airports on American, United, Aeromexico, and Volaris.",
       },
       { type: 'h2', text: '2. Medellín or Bogotá, Colombia — From ~$350 Roundtrip' },
       {
@@ -553,7 +553,7 @@ const blogPosts = [
       { type: 'h2', text: '4. Portugal (Lisbon or Porto) — From ~$550 Roundtrip' },
       {
         type: 'p',
-        text: "Portugal remains cheaper than most of Western Europe despite recent price increases. Lisbon is beautiful, walkable, and has an extraordinary food and wine scene. Porto is smaller and arguably more charming. Both cities are best in shoulder season (April–May or September–October). TAP Portugal and United both connect from Texas.",
+        text: "Portugal remains cheaper than most of Western Europe despite recent price increases. Lisbon is beautiful, walkable, and has an extraordinary food and wine scene. Porto is smaller and arguably more charming. Both cities are best in shoulder season (April–May or September–October). TAP Portugal and United both connect from major US cities.",
       },
       { type: 'h2', text: '5. Vietnam — From ~$750 Roundtrip' },
       {
@@ -585,7 +585,7 @@ const blogPosts = [
     content: [
       {
         type: 'lead',
-        text: "The travel credit card space is overwhelming. Every card promises \"up to 5x points\" and a sign-up bonus that sounds transformative. Most aren't worth it unless you fly a specific way and understand how to redeem. Here's an honest breakdown for Texas travelers.",
+        text: "The travel credit card space is overwhelming. Every card promises \"up to 5x points\" and a sign-up bonus that sounds transformative. Most aren't worth it unless you fly a specific way and understand how to redeem. Here's an honest breakdown for budget travelers.",
       },
       { type: 'h2', text: 'The Best All-Around Card: Chase Sapphire Preferred ($95/year)' },
       {
@@ -630,7 +630,7 @@ const blogPosts = [
     slug: 'mexico-city-4-day-guide',
     title: "Mexico City in 4 Days: The Complete Guide",
     excerpt:
-      "Four-hour direct flights. A dollar that still stretches. World-class food, museums, and neighborhoods. Mexico City is the easiest and most rewarding international trip from Texas.",
+      "Four-hour direct flights from much of the US. A dollar that still stretches. World-class food, museums, and neighborhoods. Mexico City is one of the easiest and most rewarding international trips you can take.",
     category: 'destination-guide',
     categoryLabel: 'Destination Guide',
     image:
@@ -642,7 +642,7 @@ const blogPosts = [
     content: [
       {
         type: 'lead',
-        text: "Mexico City is having a moment — and for travelers from Texas, it's hard to beat. Four-hour direct flights from Austin, Houston, Dallas, and San Antonio. A dollar that still stretches. World-class food, museums, and neighborhoods worth entire days of wandering. Here's how to do it right in four days.",
+        text: "Mexico City is having a moment — and it's hard to beat for budget travelers. Direct flights from most major US cities. A dollar that still stretches. World-class food, museums, and neighborhoods worth entire days of wandering. Here's how to do it right in four days.",
       },
       {
         type: 'callout',
@@ -705,7 +705,7 @@ const blogPosts = [
       { type: 'h2', text: 'Flexibility Is Your Greatest Asset' },
       {
         type: 'p',
-        text: "The biggest driver of price variation isn't the airline — it's when you fly. Being flexible by even 2–3 days can save $100–300 on international routes. Mid-week departures (Tuesday and Wednesday) consistently cost less than weekend travel. January through early March, and September through November, are the cheapest months to fly internationally from Texas. Spring break, Thanksgiving, and Christmas carry significant premiums across every route.",
+        text: "The biggest driver of price variation isn't the airline — it's when you fly. Being flexible by even 2–3 days can save $100–300 on international routes. Mid-week departures (Tuesday and Wednesday) consistently cost less than weekend travel. January through early March, and September through November, are consistently the cheapest months to fly internationally. Spring break, Thanksgiving, and Christmas carry significant premiums across every route.",
       },
       { type: 'h2', text: "Set Alerts — Don't Search Obsessively" },
       {
@@ -730,7 +730,7 @@ const blogPosts = [
       { type: 'h2', text: 'Credit Card Points Are Worth Learning' },
       {
         type: 'p',
-        text: "If you're not earning points on every dollar you spend, you're leaving free travel on the table. The Chase Sapphire Preferred and Capital One Venture X are the most flexible cards for Texas travelers — both allow transfer to multiple airline partners. The American Airlines AAdvantage program is particularly strong out of DFW and Austin. One good sign-up bonus (typically 60,000–100,000 points) can cover a transatlantic flight.",
+        text: "If you're not earning points on every dollar you spend, you're leaving free travel on the table. The Chase Sapphire Preferred and Capital One Venture X are the most flexible cards for travelers — both allow transfer to multiple airline partners. The American Airlines AAdvantage program is strong if you fly through a major hub. One good sign-up bonus (typically 60,000–100,000 points) can cover a transatlantic flight.",
       },
       { type: 'h2', text: "Myths That Don't Work" },
       {

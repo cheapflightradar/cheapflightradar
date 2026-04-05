@@ -123,11 +123,11 @@ export default function EsimPage() {
           </ul>
         </div>
 
-        {/* Popular destinations from Texas */}
+        {/* Flight info */}
         <div className="my-8 p-5 bg-blue-50 rounded-xl">
-          <h3 className="font-bold text-gray-900 mb-2">Flying to {country.country} from Texas?</h3>
+          <h3 className="font-bold text-gray-900 mb-2">Traveling to {country.country}?</h3>
           <p className="text-sm text-gray-600 mb-3">
-            Most Texas travelers fly from {country.popularFrom.join(', ')}. Flight time is approximately {country.flightTime}.
+            Popular US departure airports: {country.popularFrom.join(', ')}. Flight time is approximately {country.flightTime}.
           </p>
           <FlightCTA dest={country.airaloSlug.toUpperCase()} destLabel={country.country} />
         </div>

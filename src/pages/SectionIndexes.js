@@ -120,10 +120,10 @@ export function DestinationIndexPage() {
     <div className="bg-white">
       <div className="bg-gradient-to-br from-blue-600 to-indigo-700 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-blue-200 font-semibold mb-2 text-sm uppercase tracking-wide">From Texas to the World</p>
+          <p className="text-blue-200 font-semibold mb-2 text-sm uppercase tracking-wide">Explore the World</p>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Destination Guides</h1>
           <p className="text-blue-100 text-lg max-w-2xl mx-auto">
-            In-depth travel guides built for budget-conscious Texas travelers. Real costs, real neighborhoods, real tips.
+            In-depth travel guides built for curious, budget-conscious travelers. Real costs, real neighborhoods, real tips.
           </p>
         </div>
       </div>
@@ -170,7 +170,7 @@ export function DestinationIndexPage() {
                 <div className="p-4 pb-3">
                   <p className="text-gray-600 text-sm mb-2 line-clamp-2">{dest.tagline}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-                    <span>~${dest.avgFlightPrice.avg} RT from Texas</span>
+                    <span>~${dest.avgFlightPrice.avg} avg RT</span>
                     <span className="text-emerald-600 font-semibold">From ${dest.budgetPerDay.backpacker}/day</span>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export function FlightsIndexPage() {
   const [originFilter, setOriginFilter] = React.useState('all');
 
   const origins = [
-    { iata: 'all', city: 'All Texas' },
+    { iata: 'all', city: 'All Routes' },
     { iata: 'DFW', city: 'Dallas (DFW)' },
     { iata: 'IAH', city: 'Houston (IAH)' },
     { iata: 'AUS', city: 'Austin (AUS)' },
@@ -219,10 +219,10 @@ export function FlightsIndexPage() {
     <div className="bg-white">
       <div className="bg-gradient-to-br from-sky-600 to-blue-700 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sky-200 font-semibold mb-2 text-sm uppercase tracking-wide">Texas → The World</p>
+          <p className="text-sky-200 font-semibold mb-2 text-sm uppercase tracking-wide">Budget Routes</p>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">International Flight Routes</h1>
           <p className="text-sky-100 text-lg max-w-2xl mx-auto">
-            Flight prices, airlines, and booking tips for every major international route from Texas airports.
+            Flight prices, airlines, and booking tips for every major international route.
           </p>
         </div>
       </div>
@@ -427,9 +427,9 @@ export function AirportsIndexPage() {
       <div className="bg-gradient-to-br from-slate-700 to-gray-800 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-slate-300 font-semibold mb-2 text-sm uppercase tracking-wide">Your Departure Points</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Texas Airport Guides</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Airport Guides</h1>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Complete guides for every Texas airport: routes, airlines, lounges, parking, and transport tips.
+            Complete guides for major airports around the world: routes, airlines, lounges, and transport tips.
           </p>
         </div>
       </div>
@@ -437,7 +437,7 @@ export function AirportsIndexPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Texas airports */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Texas Departure Airports</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Airports</h2>
         <div className="grid md:grid-cols-2 gap-4 mb-12">
           {texasAirports.map((airport) => (
             <Link

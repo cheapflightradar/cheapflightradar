@@ -160,7 +160,7 @@ export default function RoutePage() {
         {/* Back */}
         <div className="mt-8 pt-6 border-t border-gray-100">
           <Link to="/flights" className="text-emerald-600 font-semibold hover:underline">
-            ← View all routes from Texas
+            ← View all routes
           </Link>
         </div>
       </div>

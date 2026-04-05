@@ -213,11 +213,16 @@ const NewsletterSection = ({ variant = 'dark' }) => {
 };
 
 // ==================== STICKY BAR ====================
-// eslint-disable-next-line no-unused-vars
 const StickyEmailBar = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState('');
   const { subscribe, status, message } = useSubscribe();
+
+  useEffect(() => {
+    // Show bar after 8 seconds on page
+    const showTimer = setTimeout(() => setIsVisible(true), 8000);
+    return () => clearTimeout(showTimer);
+  }, []);
 
   useEffect(() => {
     if (status === 'success') {
@@ -481,19 +486,20 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="text-white font-semibold text-sm mb-4">Popular Airports</h4>
+          <h4 className="text-white font-semibold text-sm mb-4">Popular Destinations</h4>
           <ul className="space-y-2 text-sm">
             {[
-              { label: 'Dallas / Fort Worth (DFW)', slug: 'dfw' },
-              { label: 'Houston Intercontinental (IAH)', slug: 'iah' },
-              { label: 'Houston Hobby (HOU)', slug: 'hou' },
-              { label: 'Austin (AUS)', slug: 'aus' },
-              { label: 'San Antonio (SAT)', slug: 'sat' },
-            ].map((a) => (
-              <li key={a.label}>
-                <Link to={`/airports/${a.slug}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              { label: 'Mexico City', slug: '/destinations/mexico-city' },
+              { label: 'Lisbon', slug: '/destinations/lisbon' },
+              { label: 'Medellín', slug: '/destinations/medellin' },
+              { label: 'Bangkok', slug: '/destinations/bangkok' },
+              { label: 'Barcelona', slug: '/destinations/barcelona' },
+              { label: 'Tokyo', slug: '/destinations/tokyo' },
+            ].map((d) => (
+              <li key={d.label}>
+                <Link to={d.slug} className="flex items-center gap-2 hover:text-white transition-colors">
                   <MapPin size={11} className="text-emerald-500 flex-shrink-0" />
-                  {a.label}
+                  {d.label}
                 </Link>
               </li>
             ))}
@@ -846,50 +852,72 @@ const BlogPostPage = () => {
 // ==================== ABOUT PAGE ====================
 const AboutPage = () => (
   <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-24">
-    <h1 className="text-3xl font-bold text-gray-900 mb-8">About CheapFlightRadar</h1>
+    <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-4">About</p>
+    <h1 className="text-4xl font-bold text-gray-900 mb-8 leading-tight">
+      The friend who always finds<br />the cheap flight.
+    </h1>
 
     <div className="space-y-5 text-gray-700 text-lg leading-relaxed">
       <p>
-        CheapFlightRadar was built by a Texas traveler who was tired of overpaying for flights.
-        We scan hundreds of routes out of Austin, Houston, Dallas, and San Antonio around the
-        clock, and publish deals the moment we find them.
+        You know that person in every group chat who books the same trip for half the price?
+        That's the idea behind CheapFlightRadar. We track prices, test tools, read the fine print
+        — so you don't have to.
       </p>
       <p>
-        Right now, global airfares are at historically high levels — fuel costs, geopolitical
-        disruption, and sustained demand have pushed prices up across most major routes. Rather
-        than go quiet and wait it out, we're pivoting to content that actually helps Texas
-        travelers get the most out of every trip.
+        This isn't luxury travel content. There are no hotel suites or business-class reviews
+        here. It's practical stuff: when to book, where to look, which eSIM actually works in
+        Colombia, how much a week in Lisbon actually costs if you're not staying at a chain hotel.
       </p>
       <p>
-        While the deals come back — and they will — we're publishing the stuff that matters:
-        budget strategies, credit card guides, destination breakdowns, and honest travel tips from
-        real experience.
+        We cover destinations all over the world — Latin America, Europe, Asia, the Caribbean.
+        Every guide is built around real budgets, honest numbers, and actually useful tips. The
+        kind of thing you'd tell a friend over a beer, not a press trip.
       </p>
       <p>
-        When prices drop, CheapFlightRadar will be back in full deal-hunting mode. Until then,
-        we'll be here helping you plan smarter.
+        All flight booking links on this site go through{' '}
+        <a
+          href="https://kiwi.tpx.gr/5lFIeRk3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-600 font-semibold hover:underline"
+        >
+          Kiwi.com
+        </a>
+        {' '}— one of the best tools for finding cheap fares, especially if your travel dates are
+        flexible. For connectivity abroad, we recommend{' '}
+        <a
+          href="https://airalo.tpx.gr/OfM2Xs4n"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-600 font-semibold hover:underline"
+        >
+          Airalo
+        </a>
+        {' '}for eSIMs and{' '}
+        <a
+          href="https://www.trip.com/t/hbb4IghIiT2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-600 font-semibold hover:underline"
+        >
+          Trip.com
+        </a>
+        {' '}for hotels. These are affiliate links — we earn a small commission if you book,
+        at no extra cost to you.
       </p>
     </div>
 
-    <div className="mt-12 p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
-      <h3 className="font-bold text-gray-900 mb-1">Texas Airports We Cover</h3>
-      <p className="text-gray-500 text-sm mb-5">
-        We track deals from all four major Texas cities.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        {[
-          'Austin (AUS)',
-          'Houston Intercontinental (IAH)',
-          'Houston Hobby (HOU)',
-          'Dallas / Fort Worth (DFW)',
-          'San Antonio (SAT)',
-        ].map((airport) => (
-          <div key={airport} className="flex items-center gap-2 text-sm text-gray-700">
-            <MapPin size={14} className="text-emerald-600 flex-shrink-0" />
-            {airport}
-          </div>
-        ))}
-      </div>
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      {[
+        { stat: '320+', label: 'Destination & route pages' },
+        { stat: '$0', label: 'It costs to read any of it' },
+        { stat: '1', label: 'Rule: find the cheaper option' },
+      ].map(({ stat, label }) => (
+        <div key={stat} className="p-5 bg-gray-50 rounded-2xl">
+          <div className="text-3xl font-bold text-emerald-600 mb-1">{stat}</div>
+          <div className="text-sm text-gray-500">{label}</div>
+        </div>
+      ))}
     </div>
 
     <div className="mt-12">
@@ -904,6 +932,7 @@ const App = () => (
     <ScrollToTop />
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
+      <StickyEmailBar />
       <div className="flex-1">
         <Routes>
           {/* Core pages */}

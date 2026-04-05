@@ -89,7 +89,7 @@ export default function BestTimePage() {
 
           {/* Price chart (simplified visual) */}
           <div className="bg-gray-50 rounded-xl p-4 mb-4">
-            <p className="text-xs text-gray-500 mb-3 font-semibold uppercase">Flight Price Trend (RT from Texas)</p>
+            <p className="text-xs text-gray-500 mb-3 font-semibold uppercase">Flight Price Trend (avg round trip)</p>
             <div className="flex items-end gap-1 h-16">
               {data.monthly.map((m) => {
                 const height = priceRange > 0
