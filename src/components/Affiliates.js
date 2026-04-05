@@ -227,4 +227,3 @@ export function EsimComparisonTable({ country, plans = [] }) {
   );
 }
 
-export default { FlightCTA, HotelCTA, EsimCTA, TripCTA, EsimComparisonTable };

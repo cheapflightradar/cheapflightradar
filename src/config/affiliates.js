@@ -3,7 +3,6 @@
 // Update KIWI_PARTNER_ID with your Kiwi.com partner ID when available
 
 const AIRALO_REF_CODE = 'CHEAPFLIGHTRADAR'; // TODO: Replace with real code from airalo.com/affiliate
-const KIWI_PARTNER_ID = '';                  // TODO: Replace when approved
 
 export const affiliates = {
   // ── Airalo eSIM ─────────────────────────────────────────────
