@@ -95,9 +95,6 @@ export default function BestTimePage() {
                 const height = priceRange > 0
                   ? Math.max(15, Math.round(((m.flightPrice - minPrice) / priceRange) * 100))
                   : 50;
-                const isGood = data.overall.bestMonths.includes(m.month) ||
-                               (m.month === 'Jan' && data.overall.bestMonths.includes('January')) ||
-                               false;
                 return (
                   <div key={m.month} className="flex flex-col items-center flex-1">
                     <div

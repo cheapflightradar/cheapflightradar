@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FlightCTA } from '../components/Affiliates';
-import { findAirportBySlug, texasAirports } from '../data/airportData';
+import { findAirportBySlug } from '../data/airportData';
 
 export default function AirportPage() {
   const { code } = useParams();

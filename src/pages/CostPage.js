@@ -19,7 +19,6 @@ export default function CostPage() {
 
   const scenarios = ['budget', 'midrange', 'comfort'];
   const scenarioLabels = { budget: 'Budget', midrange: 'Mid-Range', comfort: 'Comfortable' };
-  const scenarioColors = { budget: 'emerald', midrange: 'blue', comfort: 'purple' };
 
   const activeData = data.scenarios[activeScenario];
 

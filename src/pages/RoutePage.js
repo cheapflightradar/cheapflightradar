@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FlightCTA, HotelCTA, EsimCTA } from '../components/Affiliates';
+import { HotelCTA, EsimCTA } from '../components/Affiliates';
 import { findRouteBySlug } from '../data/routeData';
 import affiliates from '../config/affiliates';
 

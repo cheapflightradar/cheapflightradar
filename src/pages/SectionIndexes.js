@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import esimData from '../data/esimData';
 import destinationData from '../data/destinationData';
-import routeData, { getRoutesByOrigin } from '../data/routeData';
+import routeData from '../data/routeData';
 import costData from '../data/costData';
 import bestTimeData from '../data/bestTimeData';
-import airportData, { texasAirports, internationalAirports } from '../data/airportData';
-import { EsimCTA, FlightCTA, HotelCTA } from '../components/Affiliates';
+import { texasAirports, internationalAirports } from '../data/airportData';
+import { EsimCTA, FlightCTA } from '../components/Affiliates';
 import affiliates from '../config/affiliates';
 
 // ─────────────────────────────────────────────────────────────
@@ -359,7 +359,6 @@ export function BestTimeIndexPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid sm:grid-cols-2 gap-6 mb-12">
           {bestTimeData.map((item) => {
-            const bestMonth = item.monthly.reduce((a, b) => a.rating > b.rating ? a : b);
             const cheapestMonth = item.monthly.reduce((a, b) => a.flightPrice < b.flightPrice ? a : b);
             return (
               <Link

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FlightCTA, HotelCTA, EsimCTA, TripCTA } from '../components/Affiliates';
+import { FlightCTA, HotelCTA, EsimCTA } from '../components/Affiliates';
 import { findDestinationBySlug } from '../data/destinationData';
 
 export default function DestinationPage() {
