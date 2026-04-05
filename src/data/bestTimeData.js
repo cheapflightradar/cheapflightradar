@@ -33,10 +33,10 @@ const bestTimeData = [
       { month: 'Dec', flightPrice: 380, weather: 'Perfect 27°C, sunny', crowds: 'Very High (holidays)', rating: 3, note: 'Gorgeous weather; holiday prices are brutal.' },
     ],
     tips: [
-      "November is the secret best month — dry season has just started, crowds are low, and prices haven't spiked yet.",
+      'November is the secret best month — dry season has just started, crowds are low, and prices haven\'t spiked yet.',
       'Book Christmas/New Year travel by October — prices triple in December.',
       'Spring Break (mid-March to early April) prices can hit $400+ RT. February is identical weather for half the price.',
-      "Hurricane season (June–October) doesn't mean certain storms — many years are fine. September and October are the riskiest weeks.",
+      'Hurricane season (June–October) doesn\'t mean certain storms — many years are fine. September and October are the riskiest weeks.',
     ],
   },
 
@@ -69,10 +69,10 @@ const bestTimeData = [
       { month: 'Dec', flightPrice: 300, weather: 'Cool 18°C, very clear skies', crowds: 'High (posadas, holiday)', rating: 3, note: 'Beautiful festive atmosphere but pricier.' },
     ],
     tips: [
-      "Día de Muertos (November 1–2) in CDMX is one of the world's great cultural events. Book 6+ weeks ahead.",
+      'Día de Muertos (November 1–2) in CDMX is one of the world\'s great cultural events. Book 6+ weeks ahead.',
       'The rainy season (June–September) has afternoon storms, but mornings are clear — reorganize sightseeing accordingly.',
-      "CDMX altitude is 2,240m — you'll feel it the first day regardless of season. Drink lots of water.",
-      "October and November are when the city's cultural calendar is richest — film festivals, music, art.",
+      'CDMX altitude is 2,240m — you\'ll feel it the first day regardless of season. Drink lots of water.',
+      'October and November are when the city\'s cultural calendar is richest — film festivals, music, art.',
     ],
   },
 
@@ -83,8 +83,8 @@ const bestTimeData = [
     destinationSlug: null,
     flag: '🇪🇺',
     heroImage: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80',
-    metaTitle: 'Best Time to Visit Europe from Texas — 2026 Month-by-Month Guide',
-    metaDesc: 'Best time to fly to Europe from Texas: April–May and September–October for perfect weather and lower prices. Avoid July–August crowds.',
+    metaTitle: 'Best Time to Visit Europe — 2026 Month-by-Month Guide',
+    metaDesc: 'Best time to fly to Europe: April–May and September–October for perfect weather and lower prices. Avoid July–August crowds.',
     overall: {
       bestMonths: ['April', 'May', 'September', 'October'],
       avoidMonths: ['July', 'August'],
@@ -105,7 +105,7 @@ const bestTimeData = [
       { month: 'Dec', flightPrice: 750, weather: 'Cold 5°C, Christmas markets', crowds: 'High (Christmas markets)', rating: 3, note: 'Magical atmosphere. Book early for Christmas market trips.' },
     ],
     tips: [
-      "September is Europe's secret best month: summer weather, 30–40% fewer visitors than August, and prices haven"t spiked yet.',
+      'September is Europe\'s secret best month: summer weather, 30–40% fewer visitors than August, and prices haven\'t spiked yet.',
       'Easter week (late March/April) is surprisingly busy and prices jump — budget an extra 30% if traveling then.',
       'Christmas markets in Germany, Austria, and Czech Republic (late November–December 23) are genuinely magical and not as overrun as July.',
       'School holiday schedules drive European tourism — British, French, and German summer breaks flood sites in July–August.',
@@ -119,7 +119,7 @@ const bestTimeData = [
     destinationSlug: 'tokyo',
     flag: '🇯🇵',
     heroImage: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80',
-    metaTitle: 'Best Time to Visit Japan from Texas — 2026 Sakura & Budget Guide',
+    metaTitle: 'Best Time to Visit Japan — 2026 Sakura & Budget Guide',
     metaDesc: 'Best time for Japan: October–November and January–February for budget. Cherry blossom (late March–April) is magical but expensive. Avoid Golden Week.',
     overall: {
       bestMonths: ['October', 'November', 'January', 'February'],
@@ -144,7 +144,7 @@ const bestTimeData = [
       'Cherry blossom timing varies by year (late March to mid-April). Check Japan Meteorological Corporation forecasts from January.',
       'Golden Week (late April to early May) is when Japan takes vacation domestically — every popular site is packed and prices spike.',
       'Obon (August 13–15): millions of Japanese return to hometowns. Intercity trains are full; book far ahead or avoid.',
-      "Fall foliage (koyo) in Kyoto's Arashiyama and Nara peaks in mid-to-late November — plan to be there for it.",
+      'Fall foliage (koyo) in Kyoto\'s Arashiyama and Nara peaks in mid-to-late November — plan to be there for it.',
     ],
   },
 
@@ -177,7 +177,7 @@ const bestTimeData = [
       { month: 'Dec', flightPrice: 450, weather: 'Dry season returns. Festive mood.', crowds: 'High (holidays)', rating: 4, note: 'Christmas in Colombia is festive and joyful.' },
     ],
     tips: [
-      "Medellín's Feria de las Flores (August Flower Festival) is one of Latin America"s best festivals — book 3+ months ahead.',
+      'Medellín\'s Feria de las Flores (August Flower Festival) is one of Latin America\'s best festivals — book 3+ months ahead.',
       'Cartagena is warm and beach-worthy year-round but gets very hot in dry season (Dec–Feb, 32°C+).',
       'Colombia has two rainy seasons: April–May and October–November. Plan around them.',
       'The Coffee Region (Salento, Manizales) is beautiful in dry months — muddy roads make it hard in rainy season.',
@@ -191,7 +191,7 @@ const bestTimeData = [
     destinationSlug: 'costa-rica',
     flag: '🇨🇷',
     heroImage: 'https://images.unsplash.com/photo-1580237541049-2d715a09486e?w=1200&q=80',
-    metaTitle: 'Best Time to Visit Costa Rica from Texas — 2026 Guide',
+    metaTitle: 'Best Time to Visit Costa Rica — 2026 Guide',
     metaDesc: 'Best time for Costa Rica: December–April (dry season). Avoid September–October (peak rain). Caribbean coast is opposite season.',
     overall: {
       bestMonths: ['December', 'January', 'February', 'March', 'April'],
@@ -208,7 +208,7 @@ const bestTimeData = [
       { month: 'Jul', flightPrice: 320, weather: 'Guanacaste gets drier (micro-climate)', crowds: 'Moderate', rating: 4, note: 'Guanacaste is great in July. Caribbean side very rainy.' },
       { month: 'Aug', flightPrice: 315, weather: 'Mid-rainy season on Pacific side', crowds: 'Moderate', rating: 3, note: 'US summer brings visitors despite rain.' },
       { month: 'Sep', flightPrice: 245, weather: 'Heaviest rain of year', crowds: 'Very Low', rating: 1, note: 'Cheapest but rainiest. Some roads close.' },
-      { month: 'Oct', flightPrice: 250, weather: 'Still rainy, tapering late October', crowds: 'Very Low', rating: 2, note: "Caribbean coast's best time though." },
+      { month: 'Oct', flightPrice: 250, weather: 'Still rainy, tapering late October', crowds: 'Very Low', rating: 2, note: 'Caribbean coast\'s best time though.' },
       { month: 'Nov', flightPrice: 270, weather: 'Rain tapering, transitional', crowds: 'Low', rating: 3, note: 'Gets better as month goes on.' },
       { month: 'Dec', flightPrice: 395, weather: 'Dry season returns! Best conditions.', crowds: 'High (holidays)', rating: 4, note: 'Christmas peak pricing. Worth it for the weather.' },
     ],

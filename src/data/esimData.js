@@ -44,11 +44,11 @@ const esimData = [
       },
       {
         q: 'Can I use WhatsApp calls with an eSIM?',
-        a: "Absolutely. WhatsApp, FaceTime (WiFi calling), and all VoIP apps work great. Just make sure you're not accidentally using cellular calling from your primary US SIM.",
+        a: 'Absolutely. WhatsApp, FaceTime (WiFi calling), and all VoIP apps work great. Just make sure you\'re not accidentally using cellular calling from your primary US SIM.',
       },
       {
         q: 'Does the eSIM replace my US number?',
-        a: "No — it runs alongside your regular SIM. Your US number stays active for calls and texts (you'll just pay your carrier"s per-minute rate for those, which is usually cheap or included). The eSIM handles your data.',
+        a: 'No — it runs alongside your regular SIM. Your US number stays active for calls and texts (you\'ll just pay your carrier\'s per-minute rate for those, which is usually cheap or included). The eSIM handles your data.',
       },
       {
         q: 'Which Airalo plan should I buy for a week in Tulum?',
@@ -82,7 +82,7 @@ const esimData = [
     tips: [
       'Download Google Maps offline for the coffee region (Salento, Manizales) — coverage gets spotty.',
       'Claro has the widest coverage across Colombia including smaller towns.',
-      "WiFi in Medellín's El Poblado neighborhood is excellent — supplement with a smaller data plan.",
+      'WiFi in Medellín\'s El Poblado neighborhood is excellent — supplement with a smaller data plan.',
       'The Digital Nomad Visa lets you stay 2 years — get a 30-day plan and top up monthly.',
     ],
     popularFrom: ['Houston (IAH)', 'Dallas (DFW)', 'Miami (MIA)'],
@@ -99,7 +99,7 @@ const esimData = [
       },
       {
         q: 'Can I get a local SIM instead?',
-        a: "You can at the airport (Claro and Tigo both have kiosks), but you'll need your passport and may wait 20–30 minutes. An eSIM you activate in 5 minutes from your couch the night before.",
+        a: 'You can at the airport (Claro and Tigo both have kiosks), but you\'ll need your passport and may wait 20–30 minutes. An eSIM you activate in 5 minutes from your couch the night before.',
       },
     ],
   },
@@ -128,8 +128,8 @@ const esimData = [
       savings: 'Save ~$128 on a 2-week trip',
     },
     tips: [
-      "Airalo's Europe regional plan covers 30+ countries — great if you"re doing a multi-country trip.',
-      "Spain has one of Europe's best rail networks (Renfe) — download the app before you land.",
+      'Airalo\'s Europe regional plan covers 30+ countries — great if you\'re doing a multi-country trip.',
+      'Spain has one of Europe\'s best rail networks (Renfe) — download the app before you land.',
       'Movistar and Vodafone both have rock-solid 5G in the main cities.',
       'The Camino de Santiago has decent coverage on the French route but some rural gaps — download Wikiloc maps offline.',
     ],
@@ -139,14 +139,14 @@ const esimData = [
     faqs: [
       {
         q: 'Can I use a single eSIM for Spain + Portugal?',
-        a: "Yes — Airalo sells Europe-wide regional plans that cover both countries plus 28 more EU/EEA nations. If you're island-hopping or train-tripping across borders, the regional plan is the better deal.",
+        a: 'Yes — Airalo sells Europe-wide regional plans that cover both countries plus 28 more EU/EEA nations. If you\'re island-hopping or train-tripping across borders, the regional plan is the better deal.',
       },
       {
-        q: "How does Spain's eSIM compare to a local SIM?",
+        q: 'How does Spain\'s eSIM compare to a local SIM?',
         a: 'Local SIMs at Madrid Barajas (MAD) or Barcelona El Prat (BCN) run €10–15 and require a passport registration. An eSIM is instant, cheaper, and you set it up from home. Win on every front.',
       },
       {
-        q: "Does Airalo's Spain eSIM work in the Canary Islands?",
+        q: 'Does Airalo\'s Spain eSIM work in the Canary Islands?',
         a: 'Yes — the Canary Islands are part of Spain (not just EU but actually Spain), so a Spain eSIM covers Gran Canaria, Tenerife, Lanzarote, etc.',
       },
     ],
@@ -176,7 +176,7 @@ const esimData = [
       savings: 'Save ~$126 and skip the return hassle',
     },
     tips: [
-      "Activate your eSIM on the plane when you enable airplane mode + WiFi — you'll be connected before you reach immigration.",
+      'Activate your eSIM on the plane when you enable airplane mode + WiFi — you\'ll be connected before you reach immigration.',
       'Google Maps works perfectly for JR train navigation — a life-saver in Tokyo.',
       'Most convenience stores (7-Eleven, Lawson, FamilyMart) have free WiFi — great for video calls.',
       'IC Cards (Suica/Pasmo) are now available on iPhone Apple Wallet — no physical card needed.',
@@ -196,7 +196,7 @@ const esimData = [
       },
       {
         q: 'What if I need a Japanese phone number?',
-        a: "eSIMs don't include a local number — they"re data only. For calling Japanese numbers, use Line or WhatsApp. For emergencies, 110 (police) and 119 (ambulance) work from any phone without a local number.',
+        a: 'eSIMs don\'t include a local number — they\'re data only. For calling Japanese numbers, use Line or WhatsApp. For emergencies, 110 (police) and 119 (ambulance) work from any phone without a local number.',
       },
     ],
   },
@@ -227,7 +227,7 @@ const esimData = [
       'Book Colosseum tickets 2–3 weeks in advance — the site often sells out. Having data helps when you realize this on arrival.',
       'Trains in Italy run on Trenitalia and Italo — download both apps before your trip.',
       'The Cinque Terre hiking trails have OK signal — enough for emergencies and Maps.',
-      "Airalo's Europe plan covers Italy + all neighboring countries if you"re doing a Grand Tour.',
+      'Airalo\'s Europe plan covers Italy + all neighboring countries if you\'re doing a Grand Tour.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)', 'Austin (AUS)'],
     flightTime: '10–12 hours from Texas (usually 1 stop)',
@@ -235,7 +235,7 @@ const esimData = [
     faqs: [
       {
         q: 'Does an eSIM work on the Cinque Terre hiking trail?',
-        a: "Mostly yes — coverage is good in the villages and on most of the trail. A few cliff-side sections have weak signal. Download Google Maps offline for the Via dell'Amore section just in case.",
+        a: 'Mostly yes — coverage is good in the villages and on most of the trail. A few cliff-side sections have weak signal. Download Google Maps offline for the Via dell\'Amore section just in case.',
       },
       {
         q: 'Can I buy a TIM SIM card at the Rome airport?',
@@ -279,10 +279,10 @@ const esimData = [
     faqs: [
       {
         q: 'Is there good WiFi at Bangkok Suvarnabhumi airport (BKK)?',
-        a: "Yes — airport WiFi is decent. But you'll want your own data the moment you"re in a taxi to the hotel. Bangkok traffic is legendary and Google Maps on cellular is essential.',
+        a: 'Yes — airport WiFi is decent. But you\'ll want your own data the moment you\'re in a taxi to the hotel. Bangkok traffic is legendary and Google Maps on cellular is essential.',
       },
       {
-        q: "What's the best eSIM plan for island-hopping in Thailand?",
+        q: 'What\'s the best eSIM plan for island-hopping in Thailand?',
         a: 'A 5 GB / 15-day AIS-network plan covers most islands well. On Koh Tao and Koh Chang, signal can get slow during peak hours — avoid large downloads then.',
       },
     ],
@@ -314,7 +314,7 @@ const esimData = [
       'Portugal is in the EU so an Airalo Europe regional plan works great here.',
       'Sintra day trip from Lisbon: the palaces are packed — having data for timed entry reservations is essential.',
       'The Algarve coast has great coverage even in smaller beach towns.',
-      "Consider Portugal's Digital Nomad Visa — the tech scene in Lisbon is booming.",
+      'Consider Portugal\'s Digital Nomad Visa — the tech scene in Lisbon is booming.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
     flightTime: '10–11 hours from Texas (usually 1 stop)',
@@ -322,7 +322,7 @@ const esimData = [
     faqs: [
       {
         q: 'Does an eSIM work on the Azores?',
-        a: "Yes — but you'll need a plan that covers Portugal"s autonomous regions. Check that your plan includes Azores and Madeira. A general "Portugal" plan typically covers both, but double-check before buying.',
+        a: 'Yes — but you\'ll need a plan that covers Portugal\'s autonomous regions. Check that your plan includes Azores and Madeira. A general "Portugal" plan typically covers both, but double-check before buying.',
       },
     ],
   },
@@ -353,7 +353,7 @@ const esimData = [
       'Download offline maps for the Sacred Valley and Machu Picchu before you leave Cusco.',
       'Claro has the best Cusco coverage. Movistar is stronger in Lima.',
       'Book Machu Picchu tickets online (advance reservation required) — the booking site requires reliable internet.',
-      "The Inca Trail is a 4-day hike with no signal — your eSIM won't help there, but it"s great for the rest.',
+      'The Inca Trail is a 4-day hike with no signal — your eSIM won\'t help there, but it\'s great for the rest.',
       'Altitude sickness apps and offline guides are worth downloading before heading above 3,500m.',
     ],
     popularFrom: ['Houston (IAH)', 'Dallas (DFW)', 'Miami (MIA)'],
@@ -362,11 +362,11 @@ const esimData = [
     faqs: [
       {
         q: 'Will my eSIM work at Machu Picchu?',
-        a: "Surprisingly yes — Claro and Movistar have towers serving Aguas Calientes and the Machu Picchu citadel itself. Signal is weak inside some ruins but you'll have data to upload that sunrise photo.",
+        a: 'Surprisingly yes — Claro and Movistar have towers serving Aguas Calientes and the Machu Picchu citadel itself. Signal is weak inside some ruins but you\'ll have data to upload that sunrise photo.',
       },
       {
         q: 'What about the Amazon jungle?',
-        a: "In Iquitos and Puerto Maldonado (main Amazon gateways) you'll have OK signal in town. Lodges inside the jungle are typically WiFi only via satellite, and coverage drops off quickly outside towns.",
+        a: 'In Iquitos and Puerto Maldonado (main Amazon gateways) you\'ll have OK signal in town. Lodges inside the jungle are typically WiFi only via satellite, and coverage drops off quickly outside towns.',
       },
     ],
   },
@@ -397,7 +397,7 @@ const esimData = [
       'Buy a Navigo Découverte transit card (physical card, €5) for unlimited Paris Metro/RER rides per week.',
       'Orange has the best Paris Metro coverage — most Airalo France plans use Orange or SFR.',
       'The French Riviera (Nice, Cannes, Monaco) has excellent coverage even on beach and yacht.',
-      "Download SNCF app for train schedules — France's TGV network is world-class.",
+      'Download SNCF app for train schedules — France\'s TGV network is world-class.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
     flightTime: '10–11 hours from Texas (usually 1 stop)',
@@ -409,7 +409,7 @@ const esimData = [
       },
       {
         q: 'Is a Europe-wide plan better than a France-only plan?',
-        a: "If you're doing France only, a France plan is slightly cheaper. But if you"re adding Belgium, Germany, Switzerland, or Italy, get the Europe regional plan — it's a much better deal for multi-country trips.',
+        a: 'If you\'re doing France only, a France plan is slightly cheaper. But if you\'re adding Belgium, Germany, Switzerland, or Italy, get the Europe regional plan — it\'s a much better deal for multi-country trips.',
       },
     ],
   },
@@ -439,7 +439,7 @@ const esimData = [
       'Use Ferryhopper app to book Greek island ferries — an absolute must, requires good internet.',
       'Santorini gets very crowded in summer — book volcano tours and sunset dinner spots in advance.',
       'Cosmote has the best island coverage overall, especially on smaller Cyclades islands.',
-      "Download offline Google Maps for Santorini's Oia neighborhood — the caldera-side alleys are a maze.",
+      'Download offline Google Maps for Santorini\'s Oia neighborhood — the caldera-side alleys are a maze.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
     flightTime: '12–14 hours from Texas (usually 1–2 stops)',
@@ -447,7 +447,7 @@ const esimData = [
     faqs: [
       {
         q: 'Will an eSIM work on the ferry between islands?',
-        a: "Yes for most major routes. Cosmote has decent coverage on the open Aegean. You'll stay connected on routes like Piraeus→Santorini or Santorini→Mykonos. Signal weakens in the middle of the sea but you"ll have signal near ports.',
+        a: 'Yes for most major routes. Cosmote has decent coverage on the open Aegean. You\'ll stay connected on routes like Piraeus→Santorini or Santorini→Mykonos. Signal weakens in the middle of the sea but you\'ll have signal near ports.',
       },
     ],
   },
@@ -477,7 +477,7 @@ const esimData = [
     tips: [
       'Grab (SE Asia Uber equivalent) is essential in Hanoi and HCMC — requires data.',
       'Ha Long Bay cruise boats often have WiFi — your eSIM is mainly for the travel days.',
-      "Download maps of Hoi An's Ancient Town offline — it"s small but easy to get turned around.',
+      'Download maps of Hoi An\'s Ancient Town offline — it\'s small but easy to get turned around.',
       'The Reunification Express train from HCMC to Hanoi has WiFi in some classes — supplement with eSIM.',
     ],
     popularFrom: ['Dallas (DFW)', 'Houston (IAH)'],
@@ -513,7 +513,7 @@ const esimData = [
       savings: 'Save ~$91 on a 10-day trip',
     },
     tips: [
-      "Kolbi (the state carrier) has the widest rural coverage — choose Kolbi-backed plans if you're going deep into nature.",
+      'Kolbi (the state carrier) has the widest rural coverage — choose Kolbi-backed plans if you\'re going deep into nature.',
       'Roads in Costa Rica are notoriously bad in the rainy season — Google Maps helps, but download offline too.',
       'WhatsApp is the communication standard in Costa Rica — everyone from tour guides to shuttle drivers uses it.',
       'Manuel Antonio National Park requires advance online booking — do it before you arrive in the country.',
@@ -524,7 +524,7 @@ const esimData = [
     faqs: [
       {
         q: 'Is there good internet near Arenal Volcano?',
-        a: "Yes — La Fortuna (the main town near Arenal) has good 4G coverage and most hotels have WiFi. Signal drops once you're in the jungle on hiking trails, but you"ll have it everywhere you sleep and eat.',
+        a: 'Yes — La Fortuna (the main town near Arenal) has good 4G coverage and most hotels have WiFi. Signal drops once you\'re in the jungle on hiking trails, but you\'ll have it everywhere you sleep and eat.',
       },
     ],
   },
