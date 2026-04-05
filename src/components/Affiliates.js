@@ -52,14 +52,14 @@ export function FlightCTA({ origin, dest, originLabel, destLabel, variant = 'def
 }
 
 // ─────────────────────────────────────────────
-//  HotelCTA  — links to Expedia
+//  HotelCTA  — links to Trip.com
 // ─────────────────────────────────────────────
 export function HotelCTA({ city, variant = 'default' }) {
-  const url = affiliates.expedia.hotels;
+  const url = affiliates.trip.hotels;
 
   const label = city
-    ? `Find Hotels in ${city} on Expedia`
-    : affiliates.expedia.cta;
+    ? `Find Hotels in ${city} on Trip.com`
+    : affiliates.trip.cta;
 
   if (variant === 'inline') {
     return (
@@ -83,7 +83,7 @@ export function HotelCTA({ city, variant = 'default' }) {
             Find Hotels{city ? ` in ${city}` : ''}
           </p>
           <p className="text-amber-700 text-sm mb-3">
-            {affiliates.expedia.note}
+            {affiliates.trip.note}
           </p>
           <a
             href={url}
@@ -221,26 +221,47 @@ export function SailyCTA({ variant = 'default' }) {
 }
 
 // ─────────────────────────────────────────────
-//  EsimProvidersCTA  — Airalo + Saily side by side
+//  EsimProvidersCTA  — Saily + Airalo side by side
 // ─────────────────────────────────────────────
 export function EsimProvidersCTA({ country, countrySlug }) {
   const airaloUrl = countrySlug
     ? affiliates.airalo.country(countrySlug)
     : affiliates.airalo.home;
   const airaloLabel = country ? `Get ${country} eSIM on Airalo` : 'Get Your eSIM on Airalo';
+  const sailyLabel = country ? `Get ${country} eSIM on Saily` : affiliates.saily.cta;
 
   return (
     <div className="my-8">
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
-        Compare eSIM Providers
+        Our Recommended eSIM Providers
       </p>
       <div className="grid sm:grid-cols-2 gap-3">
+        {/* Saily — #1 pick, NO app needed */}
+        <div className="bg-violet-50 border-2 border-violet-400 rounded-xl p-5 flex flex-col">
+          <div className="flex items-center justify-between mb-1">
+            <p className="font-bold text-violet-900 text-base">Saily by Nord</p>
+            <span className="text-xs bg-violet-600 text-white px-2 py-0.5 rounded-full font-semibold">
+              ⭐ #1 Pick
+            </span>
+          </div>
+          <p className="text-xs text-violet-700 font-semibold mb-1">✅ No app download needed</p>
+          <p className="text-xs text-violet-600 mb-4 flex-1">{affiliates.saily.note}</p>
+          <a
+            href={affiliates.saily.home}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center bg-violet-600 text-white px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-violet-700 transition-colors"
+          >
+            {sailyLabel} →
+          </a>
+        </div>
+
         {/* Airalo */}
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 flex flex-col">
           <div className="flex items-center justify-between mb-1">
             <p className="font-bold text-emerald-900 text-base">Airalo</p>
-            <span className="text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full font-semibold">
-              #1 Pick
+            <span className="text-xs bg-emerald-100 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-semibold">
+              Also Great
             </span>
           </div>
           <p className="text-xs text-emerald-700 mb-1">200+ countries · Plans from $4</p>
@@ -252,26 +273,6 @@ export function EsimProvidersCTA({ country, countrySlug }) {
             className="block w-full text-center bg-emerald-600 text-white px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-emerald-700 transition-colors"
           >
             {airaloLabel} →
-          </a>
-        </div>
-
-        {/* Saily */}
-        <div className="bg-violet-50 border border-violet-200 rounded-xl p-5 flex flex-col">
-          <div className="flex items-center justify-between mb-1">
-            <p className="font-bold text-violet-900 text-base">Saily by Nord</p>
-            <span className="text-xs bg-violet-100 text-violet-700 border border-violet-200 px-2 py-0.5 rounded-full font-semibold">
-              Top Alternative
-            </span>
-          </div>
-          <p className="text-xs text-violet-700 mb-1">No data caps on popular plans</p>
-          <p className="text-xs text-violet-600 mb-4 flex-1">{affiliates.saily.note}</p>
-          <a
-            href={affiliates.saily.home}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center bg-violet-600 text-white px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-violet-700 transition-colors"
-          >
-            {affiliates.saily.cta} →
           </a>
         </div>
       </div>

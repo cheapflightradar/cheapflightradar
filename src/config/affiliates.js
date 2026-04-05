@@ -35,10 +35,10 @@ export const affiliates = {
   // ── Saily eSIM ──────────────────────────────────────────────
   saily: {
     name: 'Saily',
-    tagline: 'Reliable eSIM by Nord. No data caps on popular plans.',
+    tagline: 'eSIM by Nord Security. No app download required — activate with a QR code.',
     home: 'https://saily.tpx.gr/yOJg905y',
-    cta: 'Check Saily Plans',
-    note: 'Good alternative to Airalo for some regions',
+    cta: 'Get Your eSIM on Saily',
+    note: 'No app download needed — buy online and activate via QR code. Made by the people behind NordVPN.',
   },
 
   // ── Yesim eSIM ──────────────────────────────────────────────

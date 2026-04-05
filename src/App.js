@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 import blogPosts from './data/blogPosts';
 import { SeoHead } from './components/SeoHead';
-import { FlightCTA, HotelCTA, EsimCTA, SailyCTA } from './components/Affiliates';
+import { FlightCTA, HotelCTA, EsimCTA, SailyCTA, EsimProvidersCTA } from './components/Affiliates';
 
 // ── Page-level loading skeleton ───────────────────────────────
 const PageLoader = () => (
@@ -386,9 +386,9 @@ const ContentRenderer = ({ content }) => (
             </ol>
           );
         case 'cta-esim':
-          return <EsimCTA key={i} country={block.country} countrySlug={block.countrySlug} />;
+          return <EsimProvidersCTA key={i} country={block.country} countrySlug={block.countrySlug} />;
         case 'cta-saily':
-          return <SailyCTA key={i} />;
+          return <EsimProvidersCTA key={i} />;
         case 'cta-flight':
           return <FlightCTA key={i} destLabel={block.destLabel} />;
         case 'cta-hotel':
@@ -958,7 +958,16 @@ const AboutPage = () => (
           Kiwi.com
         </a>
         {' '}— one of the best tools for finding cheap fares, especially if your travel dates are
-        flexible. For connectivity abroad, we recommend{' '}
+        flexible. For eSIMs we recommend{' '}
+        <a
+          href="https://saily.tpx.gr/yOJg905y"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-600 font-semibold hover:underline"
+        >
+          Saily
+        </a>
+        {' '}(no app download needed — buy online and activate via QR code) and{' '}
         <a
           href="https://airalo.tpx.gr/OfM2Xs4n"
           target="_blank"
@@ -967,16 +976,25 @@ const AboutPage = () => (
         >
           Airalo
         </a>
-        {' '}for eSIMs and{' '}
+        {' '}as a solid second option. For hotels we use{' '}
         <a
-          href="https://www.tkqlhce.com/click-101689576-12639039"
+          href="https://www.trip.com/t/hbb4IghIiT2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-600 font-semibold hover:underline"
+        >
+          Trip.com
+        </a>
+        {' '}and for travel packages{' '}
+        <a
+          href="https://www.dpbolvw.net/click-101689576-13364951"
           target="_blank"
           rel="noopener noreferrer"
           className="text-emerald-600 font-semibold hover:underline"
         >
           Expedia
         </a>
-        {' '}for hotels. These are affiliate links — we earn a small commission if you book,
+        . These are affiliate links — we earn a small commission if you book,
         at no extra cost to you.
       </p>
     </div>
