@@ -295,7 +295,7 @@ export function TripCTA({ origin, dest, city, country, countrySlug, originLabel,
 }
 
 // ─────────────────────────────────────────────
-//  EsimComparisonTable  — Airalo vs Saily vs carrier
+//  EsimComparisonTable  — plans with Saily + Airalo buttons
 // ─────────────────────────────────────────────
 export function EsimComparisonTable({ country, plans = [] }) {
   return (
@@ -318,7 +318,24 @@ export function EsimComparisonTable({ country, plans = [] }) {
               <td className="p-3 border border-gray-200 font-semibold">${plan.price.toFixed(2)}</td>
               <td className="p-3 border border-gray-200 text-gray-600 text-xs">{plan.priceNote}</td>
               <td className="p-3 border border-gray-200">
-                <EsimCTA country={country} variant="inline" />
+                <div className="flex flex-col gap-2 min-w-[180px]">
+                  <a
+                    href={affiliates.saily.home}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-violet-600 text-white px-3 py-2 rounded-lg font-semibold text-xs hover:bg-violet-700 transition-colors"
+                  >
+                    📱 Saily {country ? `— No App Needed` : ''}
+                  </a>
+                  <a
+                    href={affiliates.airalo.home}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-emerald-600 text-white px-3 py-2 rounded-lg font-semibold text-xs hover:bg-emerald-700 transition-colors"
+                  >
+                    📱 Airalo
+                  </a>
+                </div>
               </td>
             </tr>
           ))}

@@ -92,8 +92,8 @@ export default function EsimPage() {
 
         {/* Plan comparison table */}
         <div className="my-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Airalo Plans for {country.country}</h2>
-          <p className="text-gray-600 mb-4 text-sm">Prices verified April 2026. Available on Airalo.</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">eSIM Plans for {country.country}</h2>
+          <p className="text-gray-600 mb-4 text-sm">Prices verified April 2026. Available on Airalo and Saily.</p>
           <EsimComparisonTable country={country.country} plans={country.plans} />
         </div>
 
