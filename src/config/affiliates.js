@@ -38,7 +38,7 @@ export const affiliates = {
     tagline: 'eSIM by Nord Security. No app download required — activate with a QR code.',
     home: 'https://saily.tpx.gr/yOJg905y',
     cta: 'Get Your eSIM on Saily',
-    note: 'No app download needed — buy online and activate via QR code. Made by the people behind NordVPN.',
+    note: 'Buy online and activate via QR code. Made by the people behind NordVPN.',
   },
 
   // ── Yesim eSIM ──────────────────────────────────────────────

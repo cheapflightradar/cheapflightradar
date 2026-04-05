@@ -244,7 +244,7 @@ export function EsimProvidersCTA({ country, countrySlug }) {
               ⭐ #1 Pick
             </span>
           </div>
-          <p className="text-xs text-violet-700 font-semibold mb-1">✅ No app download needed</p>
+          <p className="text-xs text-violet-700 font-semibold mb-1">Buy online, activate via QR code</p>
           <p className="text-xs text-violet-600 mb-4 flex-1">{affiliates.saily.note}</p>
           <a
             href={affiliates.saily.home}
@@ -325,7 +325,7 @@ export function EsimComparisonTable({ country, plans = [] }) {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 bg-violet-600 text-white px-3 py-2 rounded-lg font-semibold text-xs hover:bg-violet-700 transition-colors"
                   >
-                    📱 Saily {country ? `— No App Needed` : ''}
+                    📱 Saily
                   </a>
                   <a
                     href={affiliates.airalo.home}
