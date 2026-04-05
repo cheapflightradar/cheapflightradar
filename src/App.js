@@ -89,17 +89,13 @@ const formatDate = (dateStr) =>
   });
 
 // ==================== UI COMPONENTS ====================
-const CategoryBadge = ({ category, categoryLabel, size = 'sm' }) => {
+const CategoryBadge = ({ category, categoryLabel }) => {
   const colors = {
-    'budget-tips': 'bg-emerald-100 text-emerald-700',
-    'destination-guide': 'bg-blue-100 text-blue-700',
+    'budget-tips': 'text-emerald-700',
+    'destination-guide': 'text-blue-600',
   };
   return (
-    <span
-      className={`inline-flex items-center px-3 py-1 rounded-full font-semibold ${
-        size === 'sm' ? 'text-xs' : 'text-sm'
-      } ${colors[category] || 'bg-gray-100 text-gray-600'}`}
-    >
+    <span className={`text-xs font-semibold uppercase tracking-widest ${colors[category] || 'text-gray-500'}`}>
       {categoryLabel}
     </span>
   );
@@ -108,28 +104,26 @@ const CategoryBadge = ({ category, categoryLabel, size = 'sm' }) => {
 const BlogCard = ({ post }) => (
   <Link
     to={`/blog/${post.slug}`}
-    className="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-200"
+    className="group block"
   >
-    <div className="aspect-[16/9] overflow-hidden bg-gray-100">
+    <div className="aspect-[16/9] overflow-hidden rounded-xl bg-gray-100 mb-4">
       <img
         src={post.image}
         alt={post.title}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       />
     </div>
-    <div className="p-6">
-      <CategoryBadge category={post.category} categoryLabel={post.categoryLabel} />
-      <h3 className="mt-3 text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors leading-snug">
-        {post.title}
-      </h3>
-      <p className="mt-2 text-gray-500 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
-      <div className="mt-4 flex items-center gap-4 text-xs text-gray-400">
-        <span className="flex items-center gap-1">
-          <Clock size={11} />
-          {post.readTime}
-        </span>
-        <span>{formatDate(post.publishedAt)}</span>
-      </div>
+    <CategoryBadge category={post.category} categoryLabel={post.categoryLabel} />
+    <h3 className="mt-2 text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition-colors leading-snug">
+      {post.title}
+    </h3>
+    <p className="mt-2 text-gray-500 text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
+    <div className="mt-3 flex items-center gap-4 text-xs text-gray-400">
+      <span className="flex items-center gap-1">
+        <Clock size={11} />
+        {post.readTime}
+      </span>
+      <span>{formatDate(post.publishedAt)}</span>
     </div>
   </Link>
 );
@@ -180,8 +174,7 @@ const NewsletterSection = ({ variant = 'dark' }) => {
           isLight ? 'text-gray-600' : 'text-gray-300'
         }`}
       >
-        Budget hacks, destination guides, and flight deal alerts for Texas travelers. No spam,
-        unsubscribe anytime.
+        Budget hacks, destination guides, and flight deal alerts. No spam, unsubscribe anytime.
       </p>
 
       {status === 'success' ? (
@@ -254,7 +247,7 @@ const StickyEmailBar = () => {
               <div className="text-white text-sm">
                 <span className="font-semibold">Weekly travel tips</span>
                 <span className="text-gray-400 ml-2 hidden sm:inline">
-                  — budget hacks &amp; destination guides for Texas travelers
+                  — budget hacks &amp; destination guides for curious travelers
                 </span>
               </div>
               <form onSubmit={handleSubmit} className="flex gap-2 w-full sm:w-auto items-center">
@@ -399,13 +392,8 @@ const Header = () => {
             <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center shadow-sm">
               <Radar size={17} className="text-white" />
             </div>
-            <div>
-              <div className="font-bold text-gray-900 text-sm leading-tight">
-                CheapFlightRadar
-              </div>
-              <div className="text-xs text-emerald-600 leading-tight hidden sm:block">
-                Travel Smart. Spend Less.
-              </div>
+            <div className="font-bold text-gray-900 text-sm">
+              CheapFlightRadar
             </div>
           </Link>
 
@@ -462,7 +450,7 @@ const Header = () => {
 
 // ==================== FOOTER ====================
 const Footer = () => (
-  <footer className="bg-gray-900 text-gray-400 mt-24">
+  <footer className="bg-gray-900 text-gray-400">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
@@ -474,7 +462,7 @@ const Footer = () => (
           </div>
           <p className="text-sm font-medium text-gray-300">Travel Smart. Spend Less.</p>
           <p className="text-xs mt-2 leading-relaxed">
-            Helping Texas travelers explore the world — budget tips, destination guides, and flight
+            Helping travelers explore the world — budget tips, destination guides, and flight
             deal alerts.
           </p>
         </div>
@@ -492,7 +480,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="text-white font-semibold text-sm mb-4">Texas Airports</h4>
+          <h4 className="text-white font-semibold text-sm mb-4">Popular Airports</h4>
           <ul className="space-y-2 text-sm">
             {[
               { label: 'Dallas / Fort Worth (DFW)', slug: 'dfw' },
@@ -523,6 +511,7 @@ const Footer = () => (
 const HomePage = () => {
   const navigate = useNavigate();
   const featuredPosts = blogPosts.filter((p) => p.featured).slice(0, 3);
+  const [featuredPost, ...secondaryPosts] = featuredPosts;
 
   return (
     <main>
@@ -536,24 +525,18 @@ const HomePage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-950/85 via-gray-900/65 to-gray-900/20" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
-          <div className="max-w-lg">
-            <div className="inline-flex items-center gap-2 bg-emerald-600/20 border border-emerald-500/30 rounded-full px-4 py-1.5 mb-6">
-              <MapPin size={13} className="text-emerald-400" />
-              <span className="text-emerald-300 text-sm font-medium">
-                Texas-based travel blog
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 md:py-44">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-5">Travel Blog</p>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tight">
               Travel Smart.
               <br />
               Spend Less.
             </h1>
-            <p className="mt-4 text-xl text-gray-300 leading-relaxed">
-              Budget travel tips, destination guides, and flight deal alerts — for travelers based
-              in Texas.
+            <p className="mt-5 text-lg text-gray-300 leading-relaxed max-w-sm">
+              Budget travel tips, destination guides, and flight deal alerts — for curious travelers, wherever you're headed.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-5">
               <button
                 onClick={() => navigate('/blog')}
                 className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 shadow-lg"
@@ -562,24 +545,19 @@ const HomePage = () => {
               </button>
               <button
                 onClick={() => navigate('/blog?category=destination-guide')}
-                className="bg-white/10 border border-white/25 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors backdrop-blur-sm"
+                className="text-white/80 hover:text-white font-medium text-sm flex items-center gap-1.5 transition-colors"
               >
-                Destination Guides
+                Destination Guides <ArrowRight size={13} />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Posts */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">Latest Posts</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Tips and guides for Texas travelers
-            </p>
-          </div>
+      {/* Featured Posts — editorial layout */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
+        <div className="flex items-baseline justify-between mb-8">
+          <h2 className="text-3xl font-bold text-gray-900">Latest Posts</h2>
           <Link
             to="/blog"
             className="text-emerald-600 hover:text-emerald-700 font-medium text-sm flex items-center gap-1 transition-colors"
@@ -587,61 +565,82 @@ const HomePage = () => {
             View all <ChevronRight size={15} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+
+        {/* Hero post — large horizontal */}
+        {featuredPost && (
+          <Link
+            to={`/blog/${featuredPost.slug}`}
+            className="group block mb-10"
+          >
+            <div className="md:grid md:grid-cols-5 md:gap-8 md:items-center">
+              <div className="md:col-span-3 aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 mb-5 md:mb-0">
+                <img
+                  src={featuredPost.image}
+                  alt={featuredPost.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <CategoryBadge category={featuredPost.category} categoryLabel={featuredPost.categoryLabel} />
+                <h3 className="mt-3 text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors leading-snug">
+                  {featuredPost.title}
+                </h3>
+                <p className="mt-3 text-gray-500 leading-relaxed line-clamp-3">{featuredPost.excerpt}</p>
+                <div className="mt-5 flex items-center gap-4 text-xs text-gray-400">
+                  <span className="flex items-center gap-1.5"><Clock size={11} />{featuredPost.readTime}</span>
+                  <span>{formatDate(featuredPost.publishedAt)}</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        )}
+
+        {/* Secondary posts — 2-col grid */}
+        {secondaryPosts.length > 0 && (
+          <>
+            <div className="border-t border-gray-100 mb-8" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {secondaryPosts.map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
-      {/* Sections grid */}
-      <section className="bg-gray-50 py-16">
+      {/* Explore sections — clean link list, no icon boxes */}
+      <section className="bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Everything You Need to Plan Your Trip</h2>
-          <p className="text-gray-500 text-center text-sm mb-10">
-            From flight prices to eSIMs — practical tools for real travelers
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <h2 className="text-xl font-bold text-gray-900 mb-1">Explore the guides</h2>
+          <p className="text-gray-400 text-sm mb-6">Destinations, tools, and tips — all in one place</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10">
             {[
-              { to: '/flights', icon: PlaneTakeoff, color: 'blue', label: 'Flight Routes', desc: 'Price data and booking tips for every major Texas → international route.' },
-              { to: '/destinations', icon: MapPin, color: 'indigo', label: 'Destination Guides', desc: 'In-depth guides with real costs, neighborhoods, and itineraries.' },
-              { to: '/esim', icon: Wifi, color: 'emerald', label: 'eSIM Guides', desc: 'Skip roaming fees. Get a local data plan from $4 before you board.' },
-              { to: '/trip-costs', icon: DollarSign, color: 'amber', label: 'Trip Cost Calculator', desc: 'Honest daily budgets: backpacker, mid-range, and comfortable travel.' },
-              { to: '/best-time', icon: Calendar, color: 'violet', label: 'Best Time to Visit', desc: 'Month-by-month flight prices, weather, and crowd data.' },
-              { to: '/blog?category=budget-tips', icon: TrendingDown, color: 'rose', label: 'Budget Tips', desc: 'Flight strategies, credit card hacks, and timing tactics.' },
-            ].map(({ to, icon: Icon, color, label, desc }) => {
-              const colorMap = {
-                blue: { bg: 'bg-blue-100', icon: 'text-blue-600', hover: 'hover:border-blue-200', link: 'text-blue-600' },
-                indigo: { bg: 'bg-indigo-100', icon: 'text-indigo-600', hover: 'hover:border-indigo-200', link: 'text-indigo-600' },
-                emerald: { bg: 'bg-emerald-100', icon: 'text-emerald-600', hover: 'hover:border-emerald-200', link: 'text-emerald-600' },
-                amber: { bg: 'bg-amber-100', icon: 'text-amber-600', hover: 'hover:border-amber-200', link: 'text-amber-600' },
-                violet: { bg: 'bg-violet-100', icon: 'text-violet-600', hover: 'hover:border-violet-200', link: 'text-violet-600' },
-                rose: { bg: 'bg-rose-100', icon: 'text-rose-600', hover: 'hover:border-rose-200', link: 'text-rose-600' },
-              };
-              const c = colorMap[color];
-              return (
-                <Link
-                  key={to}
-                  to={to}
-                  className={`group bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-md ${c.hover} transition-all duration-200`}
-                >
-                  <div className={`w-11 h-11 ${c.bg} rounded-xl flex items-center justify-center mb-4`}>
-                    <Icon size={20} className={c.icon} />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{label}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-                  <div className={`mt-4 ${c.link} font-medium text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-200`}>
-                    Explore <ArrowRight size={13} />
-                  </div>
-                </Link>
-              );
-            })}
+              { to: '/flights', icon: PlaneTakeoff, label: 'Flight Routes', desc: 'Price data and booking tips for popular international routes.' },
+              { to: '/destinations', icon: MapPin, label: 'Destination Guides', desc: 'In-depth guides with real costs, neighborhoods, and itineraries.' },
+              { to: '/esim', icon: Wifi, label: 'eSIM Guides', desc: 'Skip roaming fees. Get a local data plan from $4 before you board.' },
+              { to: '/trip-costs', icon: DollarSign, label: 'Trip Cost Calculator', desc: 'Honest daily budgets: backpacker, mid-range, and comfortable travel.' },
+              { to: '/best-time', icon: Calendar, label: 'Best Time to Visit', desc: 'Month-by-month flight prices, weather, and crowd data.' },
+              { to: '/blog?category=budget-tips', icon: TrendingDown, label: 'Budget Tips', desc: 'Flight strategies, credit card hacks, and timing tactics.' },
+            ].map(({ to, icon: Icon, label, desc }) => (
+              <Link
+                key={to}
+                to={to}
+                className="group flex items-start gap-4 py-4 border-b border-gray-200 transition-colors"
+              >
+                <Icon size={15} className="text-gray-400 mt-0.5 flex-shrink-0 group-hover:text-emerald-600 transition-colors" />
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-gray-900 text-sm group-hover:text-emerald-600 transition-colors">{label}</div>
+                  <div className="text-gray-400 text-xs mt-0.5 leading-relaxed">{desc}</div>
+                </div>
+                <ArrowRight size={13} className="text-gray-300 mt-0.5 flex-shrink-0 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <NewsletterSection />
       </section>
     </main>
@@ -682,7 +681,7 @@ const BlogListPage = () => {
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-gray-900">All Posts</h1>
         <p className="mt-2 text-gray-500">
-          Budget travel tips and destination guides for Texas travelers
+          Travel tips, destination guides, and stories for curious travelers
         </p>
       </div>
 
@@ -941,7 +940,6 @@ const App = () => (
         </Routes>
       </div>
       <Footer />
-      <StickyEmailBar />
     </div>
   </BrowserRouter>
 );
