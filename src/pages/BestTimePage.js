@@ -73,9 +73,9 @@ export default function BestTimePage() {
               </div>
             </div>
           </div>
-          {data.overall['sweet spot'] && (
+          {data.overall.sweetSpot && (
             <p className="mt-3 text-sm text-emerald-800">
-              <span className="font-semibold">Sweet spot: </span>{data.overall['sweet spot']}
+              <span className="font-semibold">Sweet spot: </span>{data.overall.sweetSpot}
             </p>
           )}
         </div>

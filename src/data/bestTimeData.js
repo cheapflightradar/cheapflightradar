@@ -17,7 +17,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['November', 'December (early)', 'January', 'February'],
       avoidMonths: ['September', 'October'],
-      sweet spot: 'November and February — good weather, lower crowds than peak season',
+      sweetSpot: 'November and February — good weather, lower crowds than peak season',
     },
     monthly: [
       { month: 'Jan', flightPrice: 210, weather: 'Sunny 28°C, very low humidity', crowds: 'Moderate', rating: 4, note: 'Post-holiday calm. Great time to go.' },
@@ -53,7 +53,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['October', 'November', 'February', 'March', 'April'],
       avoidMonths: ['July', 'August'],
-      sweet spot: 'October–November: Día de Muertos atmosphere and perfect weather',
+      sweetSpot: 'October–November: Día de Muertos atmosphere and perfect weather',
     },
     monthly: [
       { month: 'Jan', flightPrice: 220, weather: 'Dry 20°C, cool mornings', crowds: 'Low', rating: 4, note: 'Clear skies, low prices, relaxed city.' },
@@ -89,7 +89,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['April', 'May', 'September', 'October'],
       avoidMonths: ['July', 'August'],
-      sweet spot: 'May: crowds not yet peak, weather perfect, prices 20–30% below summer',
+      sweetSpot: 'May: crowds not yet peak, weather perfect, prices 20–30% below summer',
     },
     monthly: [
       { month: 'Jan', flightPrice: 580, weather: 'Cold 5–10°C, rainy, short days', crowds: 'Very Low', rating: 3, note: 'Cheapest flights of the year. Museums without queues.' },
@@ -125,7 +125,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['October', 'November', 'January', 'February'],
       avoidMonths: ['Golden Week (late April–early May)', 'Obon (mid-August)'],
-      sweet spot: 'October: fall foliage, great weather, manageable crowds',
+      sweetSpot: 'October: fall foliage, great weather, manageable crowds',
     },
     monthly: [
       { month: 'Jan', flightPrice: 780, weather: 'Cold 5°C, clear skies, low crowds', crowds: 'Low', rating: 4, note: 'Cheapest flights. Snow in Kyoto/Nikko is beautiful.' },
@@ -161,7 +161,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['December', 'January', 'February', 'July', 'August'],
       avoidMonths: ['April', 'May', 'October', 'November'],
-      sweet spot: 'July: Medellín Flower Festival, great weather across Colombia',
+      sweetSpot: 'July: Medellín Flower Festival, great weather across Colombia',
     },
     monthly: [
       { month: 'Jan', flightPrice: 380, weather: 'Medellín dry 26°C (eternal spring)', crowds: 'Moderate', rating: 5, note: 'Post-Christmas. Ideal conditions across Colombia.' },
@@ -197,7 +197,7 @@ const bestTimeData = [
     overall: {
       bestMonths: ['December', 'January', 'February', 'March', 'April'],
       avoidMonths: ['September', 'October'],
-      sweet spot: 'January: perfect dry weather, post-holiday prices drop',
+      sweetSpot: 'January: perfect dry weather, post-holiday prices drop',
     },
     monthly: [
       { month: 'Jan', flightPrice: 295, weather: 'Dry 28°C, sunny', crowds: 'Moderate', rating: 5, note: 'Post-holiday calm. Perfect conditions.' },
