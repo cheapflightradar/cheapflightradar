@@ -96,10 +96,10 @@ const airportData = [
       { name: 'Air France Lounge', terminal: 'E', access: 'Air France/KLM business class or Flying Blue Platinum' },
     ],
     tips: [
-      'IAH is United's hub — superb connectivity to South America (Copa, Avianca) and transatlantic routes.',
+      "IAH is United's hub — superb connectivity to South America (Copa, Avianca) and transatlantic routes.",
       'Terminal connections require going through security again in some cases — allow 90+ min for domestic→international connections.',
       'The Polaris Lounge in Terminal E is one of the best in North America if you have business class access.',
-      'Hobby (HOU) is Houston's other airport — check both for Southwest and cheaper domestic fares.',
+      "Hobby (HOU) is Houston's other airport — check both for Southwest and cheaper domestic fares.",
     ],
     bestFor: 'Best for South America routes (especially Colombia, Peru) and flights via United hub connections.',
   },
@@ -183,7 +183,7 @@ const airportData = [
     lounges: [],
     tips: [
       'SAT has fewer international options than DFW/IAH — worth comparing prices at all 3 Texas airports.',
-      'For most international destinations, it's worth driving to Houston or Dallas if prices differ by $100+.',
+      "For most international destinations, it's worth driving to Houston or Dallas if prices differ by $100+.",
       'San Antonio to Austin or Houston by car is 1–1.5 hours — expanding your airport options significantly.',
     ],
     bestFor: 'Convenient for San Antonio residents for Mexico routes. Limited international selection vs. DFW/IAH.',
@@ -223,8 +223,8 @@ const airportData = [
     },
     lounges: [],
     tips: [
-      'Southwest's hub at HOU means often the cheapest Mexico prices in Texas — always check southwest.com.',
-      'Southwest fares don't appear on Google Flights or Kayak — their website only.',
+      "Southwest's hub at HOU means often the cheapest Mexico prices in Texas — always check southwest.com.",
+      "Southwest fares don't appear on Google Flights or Kayak — their website only.",
       'HOU is smaller and less stressful than IAH — faster security and easier navigation.',
       'The METRORail Red Line to downtown Houston is $1.25 — a great option for avoiding Uber surge pricing.',
     ],
@@ -245,19 +245,19 @@ const airportData = [
     transport: [
       { type: 'ADO Bus', dest: 'Cancún City', cost: '$4', time: '30 min', note: 'Most reliable budget option' },
       { type: 'ADO Bus', dest: 'Playa del Carmen', cost: '$12', time: '70 min', note: 'Excellent value vs. taxis' },
-      { type: 'ADO Bus', dest: 'Tulum', cost: '$16', time: '100 min', note: 'Direct from airport — don't take taxi' },
+      { type: 'ADO Bus', dest: 'Tulum', cost: '$16', time: '100 min', note: "Direct from airport — don't take taxi" },
       { type: 'Official Taxi', dest: 'Hotel Zone (Zona Hotelera)', cost: '$25 fixed rate', time: '20 min', note: 'Use official taxi desk inside airport, not outside hustlers' },
       { type: 'Shared Shuttle', dest: 'Playa del Carmen', cost: '$15–20', time: '80 min', note: 'Multiple operators — compare at arrivals' },
     ],
     tips: [
-      'The MOST IMPORTANT tip: don't talk to anyone outside the airport. ADO bus counter is inside, right after customs.',
+      "The MOST IMPORTANT tip: don't talk to anyone outside the airport. ADO bus counter is inside, right after customs.",
       'Ignore all "transfer" offers from men with clipboards outside arrivals — overpriced and often sketchy.',
       'Get pesos at the airport ATM (Banorte or HSBC inside — not outside). Exchange rate is OK, not great.',
       'The ADO bus from CUN to Playa del Carmen ($12) is the smartest move. Comfortable, A/C, on time.',
-      'TSA PreCheck doesn't apply on return from Mexico — budget extra time for US customs/immigration.',
+      "TSA PreCheck doesn't apply on return from Mexico — budget extra time for US customs/immigration.",
     ],
     terminals: ['Terminal 2 (most US airlines)', 'Terminal 3 (international, newer)', 'Terminal 4 (charter/budget)'],
-    customs: 'Push the traffic light button on exit — red light means bag inspection, green means you're free to go. Randomized.',
+    customs: "Push the traffic light button on exit — red light means bag inspection, green means you're free to go. Randomized.",
   },
 
   {
@@ -269,7 +269,7 @@ const airportData = [
     type: 'international',
     heroImage: 'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80',
     metaTitle: 'Mexico City Airport (MEX & AIFA) Guide 2026 — Getting In and Around CDMX',
-    metaDesc: 'Mexico City airport guide: MEX vs AIFA, how to get to your hotel safely, avoid scams, and navigate one of the world's busiest airports.',
+    metaDesc: "Mexico City airport guide: MEX vs AIFA, how to get to your hotel safely, avoid scams, and navigate one of the world's busiest airports.",
     transport: [
       { type: 'Metro Line 5', dest: 'City center (Terminal Aérea station)', cost: '$0.30', time: '25–45 min', note: 'ONLY recommended with light luggage — can be chaotic' },
       { type: 'Authorized Airport Taxi', dest: 'Roma/Condesa/Polanco', cost: '$15–22', time: '20–40 min', note: 'Buy ticket inside from official desks — NOT street taxis' },
@@ -279,8 +279,8 @@ const airportData = [
     tips: [
       'Uber from MEX is the safest and most transparent transport — price quoted upfront, no fare surprises.',
       'AIFA (the newer airport) is 50km north of the city. Check carefully which airport your flight uses.',
-      'Terminal 1 and Terminal 2 at MEX are NOT connected inside — if you're connecting, check which terminal.',
-      'Don't take taxis from outside the building. Authorized taxi booths are inside the terminal.',
+      "Terminal 1 and Terminal 2 at MEX are NOT connected inside — if you're connecting, check which terminal.",
+      "Don't take taxis from outside the building. Authorized taxi booths are inside the terminal.",
     ],
     terminals: ['Terminal 1 (domestic + some international)', 'Terminal 2 (Aeromexico hub + Skyteam partners)'],
     customs: 'Similar to CUN — traffic light system. US citizens clear in separate line. Global Entry eligible.',
@@ -302,7 +302,7 @@ const airportData = [
       { type: 'Uber/InDriver', dest: 'El Poblado', cost: '$14–20', time: '50–70 min', note: 'Most recommended — transparent pricing, safe' },
     ],
     tips: [
-      'MDE is in Rionegro, 45km from Medellín's El Poblado — budget 50–70 minutes to your hotel.',
+      "MDE is in Rionegro, 45km from Medellín's El Poblado — budget 50–70 minutes to your hotel.",
       'Uber works well from MDE. Book in arrivals, driver meets you outside.',
       'The mountain road has beautiful views but can get foggy at night — not an issue, just slow.',
     ],

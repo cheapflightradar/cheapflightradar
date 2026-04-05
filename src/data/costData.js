@@ -220,7 +220,7 @@ const costData = [
       },
     ],
     moneyTips: [
-      'Stay in Playa del Carmen — not Tulum beach road. You'll pay 3–5x more on the Tulum beach zone for the same comfort.',
+      "Stay in Playa del Carmen — not Tulum beach road. You'll pay 3–5x more on the Tulum beach zone for the same comfort.",
       'Colectivos (shared vans) are the real budget hero: Playa→Tulum for $3 vs. $20 taxi.',
       'Buy pesos at the airport exchange (not ideal rate) for convenience, then use ATMs for the rest.',
       'Go to Chichen Itzá early: 8am vs. 10am is the difference between a magical experience and a sweaty mob scene.',
@@ -333,7 +333,7 @@ const costData = [
     ],
     moneyTips: [
       'The Colombian peso is weak vs. dollar — $1 buys 4,000+ pesos. Everything feels incredibly cheap.',
-      'Pay in cash pesos at local restaurants — you'll pay 15–30% more at places that take USD.',
+      "Pay in cash pesos at local restaurants — you'll pay 15–30% more at places that take USD.",
       'The Metro + Metrocable system is extraordinary — $0.80 per ride, covers most of the city.',
       'Stay in Laureles neighborhood for 30–40% cheaper accommodation than El Poblado with the same safety.',
       'Almuerzo (set lunch, $4–6) at local restaurants is 3 courses. Eat big at lunch, light at dinner.',
@@ -438,7 +438,7 @@ const costData = [
       'Budget airlines within Europe (Ryanair, EasyJet, Vueling) are $30–80 between cities — often faster and cheaper than trains.',
       'Get an Airalo Europe regional eSIM — covers 30+ countries for $15–25 for 10GB.',
       'Book train tickets on Trainline or Omio 4–6 weeks ahead for 30–50% discounts on major routes.',
-      'Museum passes: Paris Musées Pass and Roma Pass save money if you're doing 4+ attractions in a few days.',
+      "Museum passes: Paris Musées Pass and Roma Pass save money if you're doing 4+ attractions in a few days.",
     ],
   },
 
@@ -548,7 +548,7 @@ const costData = [
       'Japan is less expensive than expected for a developed country — especially with a strong USD.',
       'Konbini (7-Eleven, Lawson, FamilyMart) serve genuinely good food. Breakfast + lunch for $8–10 is realistic.',
       'The JR Pass ($440 for 14 days) pays for itself if you take more than 3 shinkansen rides — calculate before buying.',
-      'Pay cash everywhere — many restaurants, temples, and small shops don't take cards.',
+      "Pay cash everywhere — many restaurants, temples, and small shops don't take cards.",
       'Suica IC card works at metro, bus, convenience stores, and many vending machines — load ¥5,000 on arrival.',
       'Sake and beer from convenience stores runs ¥150–250 ($1–1.70) — much cheaper than bars.',
     ],
