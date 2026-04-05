@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { EsimCTA, EsimComparisonTable, FlightCTA, HotelCTA } from '../components/Affiliates';
+import { EsimCTA, EsimProvidersCTA, EsimComparisonTable, FlightCTA, HotelCTA } from '../components/Affiliates';
 import { findEsimBySlug } from '../data/esimData';
 import { SeoHead } from '../components/SeoHead';
 
@@ -100,20 +100,22 @@ export default function EsimPage() {
         {/* eSIM vs. Carrier comparison */}
         <div className="my-8 bg-red-50 border border-red-100 rounded-xl p-5">
           <h2 className="text-xl font-bold text-gray-900 mb-3">eSIM vs. Carrier Roaming</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             <div className="bg-white rounded-lg p-4 text-center">
-              <div className="text-red-500 font-bold text-lg mb-1">Carrier Roaming</div>
-              <div className="text-2xl font-bold text-gray-900">{country.vsCarrier.carrierCost}</div>
+              <div className="text-red-500 font-bold text-sm mb-1">Carrier Roaming</div>
+              <div className="text-xl font-bold text-gray-900">{country.vsCarrier.carrierCost}</div>
             </div>
-            <div className="flex items-center justify-center">
-              <div className="text-emerald-600 font-bold text-2xl">→</div>
+            <div className="bg-white rounded-lg p-4 text-center border-2 border-emerald-200">
+              <div className="text-emerald-600 font-bold text-sm mb-1">Airalo eSIM</div>
+              <div className="text-xl font-bold text-gray-900">{country.vsCarrier.esimCost}</div>
             </div>
-            <div className="bg-white rounded-lg p-4 text-center">
-              <div className="text-emerald-500 font-bold text-lg mb-1">Airalo eSIM</div>
-              <div className="text-2xl font-bold text-gray-900">{country.vsCarrier.esimCost}</div>
+            <div className="bg-white rounded-lg p-4 text-center border-2 border-violet-200">
+              <div className="text-violet-600 font-bold text-sm mb-1">Saily eSIM</div>
+              <div className="text-xl font-bold text-gray-900">~Same</div>
             </div>
           </div>
-          <p className="text-center mt-3 font-bold text-emerald-700 text-lg">{country.vsCarrier.savings} 💰</p>
+          <p className="text-center mt-3 font-bold text-emerald-700 text-lg">{country.vsCarrier.savings} vs. carrier 💰</p>
+          <p className="text-center text-xs text-gray-500 mt-1">Both Airalo and Saily beat carrier roaming by a wide margin</p>
         </div>
 
         {/* Tips */}
@@ -163,10 +165,8 @@ export default function EsimPage() {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="my-8">
-          <EsimCTA country={country.country} countrySlug={country.airaloSlug} variant="hero" />
-        </div>
+        {/* Bottom CTA — both providers */}
+        <EsimProvidersCTA country={country.country} countrySlug={country.airaloSlug} />
 
         {/* Hotels at the destination → Expedia */}
         <HotelCTA city={country.topDestinations[0] || country.country} />

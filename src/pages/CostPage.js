@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FlightCTA, HotelCTA, EsimCTA } from '../components/Affiliates';
+import { FlightCTA, HotelCTA, EsimProvidersCTA } from '../components/Affiliates';
 import { findCostBySlug } from '../data/costData';
 import { SeoHead } from '../components/SeoHead';
 
@@ -159,10 +159,8 @@ export default function CostPage() {
           </ul>
         </div>
 
-        {/* eSIM reminder */}
-        {data.destinationSlug && (
-          <EsimCTA country={data.country} />
-        )}
+        {/* eSIM — both providers */}
+        <EsimProvidersCTA country={data.country} />
 
         {/* Link to destination guide */}
         {data.destinationSlug && (

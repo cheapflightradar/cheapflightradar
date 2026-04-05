@@ -7,7 +7,7 @@ import routeData from '../data/routeData';
 import costData from '../data/costData';
 import bestTimeData from '../data/bestTimeData';
 import { texasAirports, internationalAirports } from '../data/airportData';
-import { EsimCTA, FlightCTA } from '../components/Affiliates';
+import { EsimProvidersCTA, FlightCTA } from '../components/Affiliates';
 import affiliates from '../config/affiliates';
 
 // ─────────────────────────────────────────────────────────────
@@ -93,8 +93,8 @@ export function EsimIndexPage() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <EsimCTA variant="hero" />
+        {/* Bottom CTA — both providers */}
+        <EsimProvidersCTA />
       </div>
     </main>
   );
