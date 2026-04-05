@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 import blogPosts from './data/blogPosts';
 import { SeoHead } from './components/SeoHead';
-import { FlightCTA, HotelCTA, EsimCTA, SailyCTA, EsimProvidersCTA } from './components/Affiliates';
+import { FlightCTA, HotelCTA, EsimProvidersCTA } from './components/Affiliates';
 
 // ── Page-level loading skeleton ───────────────────────────────
 const PageLoader = () => (

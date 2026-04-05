@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FlightCTA, HotelCTA, EsimCTA, EsimProvidersCTA } from '../components/Affiliates';
+import { FlightCTA, HotelCTA, EsimProvidersCTA } from '../components/Affiliates';
 import { findBestTimeBySlug } from '../data/bestTimeData';
 import { SeoHead } from '../components/SeoHead';
 

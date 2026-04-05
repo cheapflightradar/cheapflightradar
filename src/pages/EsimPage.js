@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { EsimCTA, EsimProvidersCTA, EsimComparisonTable, FlightCTA, HotelCTA } from '../components/Affiliates';
+import { EsimProvidersCTA, EsimComparisonTable, FlightCTA, HotelCTA } from '../components/Affiliates';
 import { findEsimBySlug } from '../data/esimData';
 import { SeoHead } from '../components/SeoHead';
 
@@ -71,8 +71,8 @@ export default function EsimPage() {
           <p className="text-lg text-gray-700 leading-relaxed">{country.intro}</p>
         </div>
 
-        {/* Main Airalo CTA */}
-        <EsimCTA country={country.country} countrySlug={country.airaloSlug} variant="hero" />
+        {/* Main eSIM CTA — both providers */}
+        <EsimProvidersCTA country={country.country} countrySlug={country.airaloSlug} />
 
         {/* Networks & Coverage */}
         <div className="my-8">
