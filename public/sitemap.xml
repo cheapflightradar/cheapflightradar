@@ -423,6 +423,33 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- New York (JFK) routes -->
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-cancun</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-mexico-city</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-london</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-paris</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-lisbon</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/new-york-to-medellin</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Los Angeles (LAX) routes -->
+  <url><loc>https://www.cheapflightradar.com/flights/los-angeles-to-cancun</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/los-angeles-to-mexico-city</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/los-angeles-to-tokyo</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/los-angeles-to-bali</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/los-angeles-to-london</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Miami (MIA) routes -->
+  <url><loc>https://www.cheapflightradar.com/flights/miami-to-medellin</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/miami-to-cancun</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/miami-to-lisbon</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/miami-to-costa-rica</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Chicago (ORD) routes -->
+  <url><loc>https://www.cheapflightradar.com/flights/chicago-to-cancun</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/chicago-to-mexico-city</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/chicago-to-london</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.cheapflightradar.com/flights/chicago-to-rome</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- ═══════════════════════════════════════════ -->
   <!-- eSIM GUIDES (12)                            -->
   <!-- ═══════════════════════════════════════════ -->

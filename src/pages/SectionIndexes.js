@@ -204,6 +204,10 @@ export function FlightsIndexPage() {
 
   const origins = [
     { iata: 'all', city: 'All Routes' },
+    { iata: 'JFK', city: 'New York (JFK)' },
+    { iata: 'LAX', city: 'Los Angeles (LAX)' },
+    { iata: 'MIA', city: 'Miami (MIA)' },
+    { iata: 'ORD', city: 'Chicago (ORD)' },
     { iata: 'DFW', city: 'Dallas (DFW)' },
     { iata: 'IAH', city: 'Houston (IAH)' },
     { iata: 'AUS', city: 'Austin (AUS)' },
