@@ -885,8 +885,14 @@ const BlogPostPage = () => {
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <ContentRenderer content={post.content} />
 
+        {/* Author bio */}
+        <div className="mt-12 pt-8 border-t border-gray-100">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Written by</p>
+          <AuthorBio compact />
+        </div>
+
         {/* Newsletter CTA */}
-        <div className="mt-16">
+        <div className="mt-10">
           <NewsletterSection variant="light" />
         </div>
 
@@ -921,33 +927,91 @@ const BlogPostPage = () => {
   );
 };
 
+// ==================== AUTHOR BIO ====================
+const AUTHOR = {
+  name: 'Alvaro',
+  title: 'Programmer, traveler, and the guy who finds the cheap flight.',
+  photo: null, // swap in a URL when ready, e.g. 'https://...'
+  bio: [
+    "I'm Alvaro — born in Costa Rica (the coffee capital of the world, and somehow the one Costa Rican who doesn't drink the stuff). I've been living in Austin for the past 7 years, working as a programmer and slowly losing track of how many airports I've been through.",
+    "I travel as much as I can, and over the years I've picked up a lot about how to do it without going broke. The right time to book, the tools that actually work, the eSIM that won't die on you in the middle of nowhere, the neighborhoods worth staying in versus the ones that just look good in photos.",
+    "This blog is everything I've learned — shared the way I'd tell a friend: honest, direct, no fluff.",
+  ],
+};
+
+const AuthorBio = ({ compact = false }) => (
+  <div className={`flex gap-5 ${compact ? 'items-center p-5 bg-gray-50 rounded-2xl border border-gray-100' : 'items-start'}`}>
+    {/* Avatar */}
+    <div className="shrink-0">
+      {AUTHOR.photo ? (
+        <img
+          src={AUTHOR.photo}
+          alt={AUTHOR.name}
+          className={`rounded-full object-cover ${compact ? 'w-14 h-14' : 'w-20 h-20'}`}
+        />
+      ) : (
+        <div className={`rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-bold text-white ${compact ? 'w-14 h-14 text-xl' : 'w-20 h-20 text-3xl'}`}>
+          A
+        </div>
+      )}
+    </div>
+
+    {/* Text */}
+    <div className="flex-1 min-w-0">
+      {compact ? (
+        <>
+          <p className="font-bold text-gray-900 text-base leading-tight">{AUTHOR.name}</p>
+          <p className="text-xs text-gray-500 mt-0.5 mb-2">{AUTHOR.title}</p>
+          <p className="text-sm text-gray-600 leading-relaxed">{AUTHOR.bio[0]}</p>
+        </>
+      ) : (
+        <>
+          <p className="font-bold text-gray-900 text-xl mb-0.5">{AUTHOR.name}</p>
+          <p className="text-sm text-emerald-600 font-medium mb-4">{AUTHOR.title}</p>
+          <div className="space-y-3">
+            {AUTHOR.bio.map((p, i) => (
+              <p key={i} className="text-gray-700 leading-relaxed">{p}</p>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </div>
+);
+
 // ==================== ABOUT PAGE ====================
 const AboutPage = () => (
   <main id="main-content" className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-24">
     <SeoHead
-      title="About CheapFlightRadar"
-      description="Budget travel tips and destination guides from the friend who always finds the cheap flight. Honest numbers, real budgets, no press trips."
+      title="About CheapFlightRadar — Alvaro"
+      description="I'm Alvaro, a Costa Rican programmer living in Austin. I travel as much as I can and share everything I've learned about doing it without going broke."
     />
     <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-4">About</p>
-    <h1 className="text-4xl font-bold text-gray-900 mb-8 leading-tight">
+    <h1 className="text-4xl font-bold text-gray-900 mb-10 leading-tight">
       The friend who always finds<br />the cheap flight.
     </h1>
 
+    {/* Author bio — full version */}
+    <div className="mb-12 pb-12 border-b border-gray-100">
+      <AuthorBio />
+    </div>
+
     <div className="space-y-5 text-gray-700 text-lg leading-relaxed">
+      <h2 className="text-2xl font-bold text-gray-900">What this site is</h2>
       <p>
         You know that person in every group chat who books the same trip for half the price?
-        That's the idea behind CheapFlightRadar. We track prices, test tools, read the fine print
+        That's the idea behind CheapFlightRadar. I track prices, test tools, read the fine print
         — so you don't have to.
       </p>
       <p>
         This isn't luxury travel content. There are no hotel suites or business-class reviews
         here. It's practical stuff: when to book, where to look, which eSIM actually works in
-        Colombia, how much a week in Lisbon actually costs if you're not staying at a chain hotel.
+        Colombia, how much a week in Lisbon really costs if you're not staying at a chain hotel.
       </p>
       <p>
-        We cover destinations all over the world — Latin America, Europe, Asia, the Caribbean.
-        Every guide is built around real budgets, honest numbers, and actually useful tips. The
-        kind of thing you'd tell a friend over a beer, not a press trip.
+        I cover destinations all over the world — Latin America especially (it's home), but also
+        Europe, Asia, and the Caribbean. Every guide is built around real budgets, honest numbers,
+        and actually useful tips. The kind of thing you'd tell a friend over a beer, not a press trip.
       </p>
       <p>
         All flight booking links on this site go through{' '}
