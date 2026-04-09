@@ -8,6 +8,7 @@ export const AUTHOR = {
   bio: [
     "I'm Alvaro — born in Costa Rica (the coffee capital of the world, and somehow the one Costa Rican who doesn't drink the stuff). I've been living in Austin for the past 7 years, working as a programmer and slowly losing track of how many airports I've been through.",
     "I travel as much as I can, and over the years I've picked up a lot about how to do it without going broke. The right time to book, the tools that actually work, the eSIM that won't die on you in the middle of nowhere, the neighborhoods worth staying in versus the ones that just look good in photos.",
+    "When I'm not at a gate somewhere, I'm out walking with my wife and our 3 senior dogs — which, honestly, is its own kind of adventure.",
     "This blog is everything I've learned — shared the way I'd tell a friend: honest, direct, no fluff.",
   ],
 };
